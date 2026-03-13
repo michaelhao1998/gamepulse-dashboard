@@ -74,6 +74,17 @@ function updateAll(games) {
     updateRecentTab(games);
     updateValidationTab(games);
     updateFilterMatch(games.length);
+
+    // 预初始化 Agent 维护的 Tab（确保切换时数据已就绪）
+    if (typeof pipelineData !== 'undefined' && pipelineData.length > 0) {
+        setTimeout(() => updatePipelineTab(), 100);
+    }
+    if (typeof newsData !== 'undefined' && newsData.length > 0) {
+        setTimeout(() => updateNewsTab(), 150);
+    }
+    if (typeof earningsCompanies !== 'undefined' && earningsCompanies.length > 0) {
+        setTimeout(() => updateEarningsTab(), 200);
+    }
 }
 
 function updateFilterMatch(count) {
