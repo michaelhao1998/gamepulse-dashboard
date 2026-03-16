@@ -1,7 +1,7 @@
 // ============================================
 // 待上线 Pipeline 数据模块
 // 2026年端主大作信息汇总
-// 补充完整玩法简析 + 新增更多产品 + 定期刷新
+// 补充完整玩法简析 + 新增更多产品 + 定期刷新 | 最后更新: 2026-03-16
 // ============================================
 
 const pipelineData = [
@@ -29,6 +29,7 @@ const pipelineData = [
     { name: "Control Resonant", publisher: "Remedy", studio: "Remedy Entertainment", releaseDate: "2026年Q2", platforms: "PC+Switch+PS5+Xbox", heat: "中低", heatNote: "前作销量500万", gameplay: "超自然第三人称动作冒险，以迪伦·法登为主角对抗异常实体" },
 
     // ===== 2026 Q3 (7-9月) =====
+    { name: "碧蓝幻想Relink：无尽黄昏", publisher: "Cygames", studio: "Cygames", releaseDate: "2026/7/9", platforms: "PC+Switch2+PS5", heat: "中", heatNote: "前作全球销量300万+，Steam特别好评", gameplay: "多人联机ARPG，新增召唤系统与单人极沌空处模式" },
     { name: "幻兽帕鲁集换式卡牌", publisher: "Pocketpair", studio: "/", releaseDate: "2026/7/30", platforms: "待定", heat: "中", heatNote: "《幻兽帕鲁》IP", gameplay: "集换式卡牌" },
     { name: "Beast of Reincarnation", publisher: "Game Freak", studio: "/", releaseDate: "2026/8/4", platforms: "PC+PS5+Xbox", heat: "中", heatNote: "宝可梦开发商Game Freak转型之作", gameplay: "大型动作RPG，非宝可梦的全新IP，首日入库Game Pass" },
     { name: "Halloween: The Game", publisher: "IllFonic&Gun Interactive", studio: "/", releaseDate: "2026/9/8", platforms: "PC+PS5+Xbox", heat: "低", heatNote: "", gameplay: "非对称对抗+恐怖冒险" },
@@ -52,7 +53,7 @@ const pipelineData = [
     { name: "The Duskbloods", publisher: "待定", studio: "/", releaseDate: "2026年", platforms: "Switch2", heat: "中低", heatNote: "", gameplay: "角色扮演冒险" },
     { name: "漫威1943：九头蛇崛起", publisher: "Skydance New Media", studio: "/", releaseDate: "2026年", platforms: "PC+PS5+Xbox", heat: "中低", heatNote: "漫威IP", gameplay: "二战背景动作冒险，多角色切换协作战斗" },
     { name: "冒险家艾略特的千年物语", publisher: "史克威尔艾尼克斯", studio: "/", releaseDate: "2026年", platforms: "PC+Switch+PS5+Xbox", heat: "低", heatNote: "玩法类似《塞尔达》，信息较少", gameplay: "开放世界动作冒险，类《塞尔达》解谜探索" },
-    { name: "宝可梦：风 / 浪", publisher: "任天堂", studio: "宝可梦公司", releaseDate: "2026年", platforms: "Switch2", heat: "高", heatNote: "宝可梦IP", gameplay: "回合制战斗+类《宝可梦传说：阿尔宙斯》战斗系统" },
+    { name: "宝可梦：风 / 浪", publisher: "任天堂", studio: "宝可梦公司", releaseDate: "2027年", platforms: "Switch2", heat: "高", heatNote: "宝可梦第十世代新作，2027年Switch 2独占发售", gameplay: "回合制战斗+类《宝可梦传说：阿尔宙斯》战斗系统" },
     { name: "战锤40K：机械神教2", publisher: "Kasedo Games", studio: "/", releaseDate: "2026年", platforms: "PC+PS5+Xbox", heat: "低", heatNote: "《战锤》IP，核心粉丝忠诚度高", gameplay: "策略战棋" },
 
     // ===== 2027年 =====
@@ -77,6 +78,7 @@ const pipelineData = [
     { name: "South of Midnight", publisher: "微软", studio: "Compulsion Games", releaseDate: "2026/4/8", platforms: "PC+Xbox", heat: "中", heatNote: "Xbox Developer Direct重点展示", gameplay: "第三人称动作冒险，美国南方民间传说为背景，编织魔法战斗系统" },
     { name: "文明7", publisher: "2K Games", studio: "Firaxis Games", releaseDate: "2026/2/11", platforms: "PC+PS5+Xbox+Switch", heat: "中高", heatNote: "经典策略IP，系列销量7000万+", gameplay: "回合制策略模拟，建设文明帝国从远古到现代", released: true },
     { name: "马里奥卡丁车世界", publisher: "任天堂", studio: "/", releaseDate: "2026/6/5", platforms: "Switch2", heat: "高", heatNote: "Switch 2首发护航大作", gameplay: "卡丁车竞速，多人派对赛车" },
+    { name: "CALX", publisher: "Dear Villagers", studio: "True Colors", releaseDate: "2026/6/4", platforms: "PC", heat: "低", heatNote: "Future Games Show春季展公布，氛围感3D动作冒险", gameplay: "3D动作冒险，氛围感探索与战斗" },
     { name: "生化危机9：安魂曲", publisher: "卡普空", studio: "/", releaseDate: "2026/6/13", platforms: "PC+PS5+Xbox", heat: "中高", heatNote: "生化危机系列最新作", gameplay: "恐怖生存动作冒险，第三人称视角" },
     { name: "勇者斗恶龙7 Reimagined", publisher: "史克威尔艾尼克斯", studio: "/", releaseDate: "2026/3/13", platforms: "PC+Switch2+PS5+Xbox", heat: "中", heatNote: "DQ系列经典重制", gameplay: "JRPG，回合制战斗+职业转换系统", released: true },
     { name: "Doom: The Dark Ages", publisher: "微软", studio: "id Software", releaseDate: "2026/5/15", platforms: "PC+PS5+Xbox", heat: "中高", heatNote: "Doom系列新作，前传时间线", gameplay: "第一人称射击，中世纪奇幻设定+超高速战斗节奏" },

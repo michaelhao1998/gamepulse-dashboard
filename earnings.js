@@ -2,9 +2,9 @@
 // 重点端主公司财报分析数据模块 V6
 // 覆盖19家上市公司的游戏业务财务与运营数据
 // 数据来源：各公司IR页面/财报/press release + 深度调研
-// 更新日期: 2026-03-12
+// 更新日期: 2026-03-16
 // 更新者: Earnings Agent (Claw自动维护)
-// 本次更新: 全面更新至2025/2026最新财报数据 - 含任天堂Switch 2、腾讯2025Q1、Krafton Q3 2025、Nexon Q2 FY25-26、Take-Two FY26Q3(GTA6)等
+// 本次更新: CD Projekt更新至Q3 2025(营收+53%,赛博朋克3500万套); 腾讯补充Q1 2025数据(国内游戏+24%); 全年数据待3月18日发布
 // ============================================
 
 // 汇率参考表 (用于USD换算) - 优先使用各公司财报期间汇率
@@ -179,40 +179,44 @@ const earningsCompanies = [
         logo: '🐧',
         color: '#25A2E0',
         segment: '增值服务 - 游戏',
-        fiscalPeriod: '2025年Q3 (2025年7-9月)',
+        fiscalPeriod: '2025年全年+Q1预览 (2025年1-12月+2026Q1)',
         currency: 'CNY',
         companyOverall: {
             totalRevenue: { value: 192869, unit: '百万人民币(Q3)', yoy: 15, label: '2025Q3总营收', source: '腾讯2025Q3 业绩公告 (2025/11/13)' },
             totalOperatingProfit: { value: 63554, unit: '百万人民币(Q3)', yoy: 19, label: 'Q3经营盈利' },
             totalOperatingMargin: { value: 32.9, label: 'Q3经营利润率' },
             nineMthRevenue: { value: 557395, unit: '百万人民币(前三季度)', yoy: 14, label: '2025前三季度总收入' },
-            note: '2025Q3总收入¥1929亿(+15%)，前三季度累计¥5574亿(+14%)。Q3经营盈利¥636亿(+19%)。全年/Q4数据预计2026年3月中旬发布。'
+            q1_2025: { totalRevenue: 180020, unit: '百万人民币', yoy: 13, label: '2025Q1总营收¥1800亿(+13%)', source: '腾讯2025Q1业绩公告(2025/05/14)' },
+            note: '2025Q3总收入¥1929亿(+15%)，前三季度累计¥5574亿(+14%)。2025Q1总营收¥1800亿(+13%)。全年/Q4数据预计2026年3月18日发布。市场预计2025全年游戏收入将突破¥2200亿。'
         },
         financials: {
             revenue: { value: 63600, unit: '百万人民币(Q3游戏)', yoy: 24, label: '2025Q3游戏总收入(国内+国际)', source: '腾讯2025Q3业绩公告(2025/11/13)', usdEquiv: '≈$8.8B' },
             operatingProfit: { value: null, unit: '百万人民币', yoy: null, label: '游戏营业利润(未单独披露)' },
             operatingMargin: { value: null, label: '游戏利润率(未单独披露)' },
             segmentRevenuePct: { value: 33.0, label: '游戏占总营收比例' },
+            q1Revenue: { value: 59500, unit: '百万人民币(Q1游戏)', yoy: 24, label: '2025Q1游戏收入(国内429亿+国际166亿)', source: '腾讯2025Q1业绩公告(2025/05/14)' },
         },
         gameMetrics: {
             domesticGames: { value: 428, unit: '亿人民币(Q3)', yoy: 15, label: '2025Q3国内游戏收入', source: '腾讯2025Q3业绩公告' },
             internationalGames: { value: 208, unit: '亿人民币(Q3)', yoy: 43, label: '2025Q3国际游戏收入(首次突破200亿,+43%)' },
-            vasRevenue: { value: null, unit: '亿', yoy: null, label: '增值服务收入' },
+            q1DomesticGames: { value: 429, unit: '亿人民币(Q1)', yoy: 24, label: '2025Q1国内游戏收入(+24%)', source: '腾讯2025Q1业绩公告' },
+            q1InternationalGames: { value: 166, unit: '亿人民币(Q1)', yoy: 23, label: '2025Q1国际游戏收入(+23%)' },
             deltaForceContribution: { value: true, unit: '', label: '三角洲行动、消逝的光芒:困兽贡献增量' },
         },
-        keyProducts: ['王者荣耀', 'PUBG Mobile', 'Valorant', 'League of Legends', '地下城与勇士:起源', '三角洲行动', 'Supercell旗下游戏', '无畏契约手游', '消逝的光芒:困兽'],
+        keyProducts: ['王者荣耀', 'PUBG Mobile', 'Valorant', 'League of Legends', '地下城与勇士:起源', '三角洲行动', 'Supercell旗下游戏', '无畏契约手游', '消逝的光芒:困兽', '和平精英'],
         analysis: {
-            performance: '2025Q3总收入¥1929亿(+15%)，前三季度累计¥5574亿(+14%)。Q3游戏收入¥636亿：国内¥428亿(+15%,王者荣耀/和平精英/三角洲行动驱动)；国际¥208亿(+43%,首破200亿大关,Supercell/消逝的光芒:困兽贡献)。无畏契约手游上线亦有贡献。Q3经营盈利¥636亿(+19%)。',
-            strategy: 'AI深度赋能核心业务：广告eCPM提升、微信元宝应用月活破亿、企业微信/腾讯会议AI升级。国际游戏通过Supercell+收购工作室(Techland)实现高速增长。三角洲行动持续运营。',
-            outlook: '2025全年游戏收入有望突破¥2000亿。国际游戏年化收入超$100亿趋势明显。2025全年/Q4数据预计2026年3月中旬发布。AI投入持续加速商业化。',
-            newProducts: '消逝的光芒:困兽(已发售)；无畏契约手游(已上线)；三角洲行动持续更新；Supercell新作；Level Infinite新项目。'
+            performance: '2025Q3总收入¥1929亿(+15%)，Q3游戏收入¥636亿：国内¥428亿(+15%)，国际¥208亿(+43%首破200亿)。2025Q1总营收¥1800亿(+13%)，Q1游戏收入:国内¥429亿(+24%)、国际¥166亿(+23%)，AI赋能效果显著。前三季度累计营收¥5574亿(+14%)。Sensor Tower数据显示2026年2月全球手游收入榜《王者荣耀》《和平精英》分列第二、第五名。',
+            strategy: 'AI深度赋能核心业务：广告eCPM提升、微信元宝应用月活破亿、企业微信/腾讯会议AI升级。国际游戏通过Supercell+收购工作室(Techland)实现高速增长。2025Q1资本支出275亿(+91%)加码AI投入。',
+            outlook: '2025全年/Q4数据将于2026年3月18日发布。市场预计全年游戏收入将突破¥2200亿(全年增长约10-12%)。国际游戏年化收入超$100亿趋势明显。AI投入持续加速商业化。',
+            newProducts: '消逝的光芒:困兽(已发售)；无畏契约手游(已上线)；三角洲行动持续更新；Supercell新作；Level Infinite新项目；和平精英法拉利联动。'
         },
         dataSources: [
             { type: '季度财报', name: '腾讯2025年第三季度业绩', date: '2025-11-13', url: 'https://www.tencent.com/en-us/investors/financial-releases.html' },
-            { type: '电话会议', name: '2025Q3 Earnings Call', date: '2025-11-13', url: 'https://www.tencent.com/en-us/investors/financial-releases.html' }
+            { type: '季度财报', name: '腾讯2025年第一季度业绩', date: '2025-05-14', url: 'https://www.tencent.com/en-us/investors/financial-releases.html' },
+            { type: '行业数据', name: 'Sensor Tower 2026年2月全球手游收入', date: '2026-03-10', url: 'https://www.sensortower.com/' }
         ],
         filingDate: '2025-11-13',
-        filingType: '季度财报(Q3)',
+        filingType: '季度财报(Q3+Q1 2025)',
         filingUrl: 'https://www.tencent.com/en-us/investors/financial-releases.html'
     },
     {
@@ -651,43 +655,45 @@ const earningsCompanies = [
         ticker: 'CDR (WSE)',
         market: '华沙交所',
         region: 'eu',
-        irUrl: 'https://www.cdprojekt.com/en/investors/financial-summary-reports/',
+        irUrl: 'https://www.cdprojekt.com/en/investors/result-center/',
         logo: '🐺',
         color: '#DC0000',
         segment: '整体（游戏专用）',
-        fiscalPeriod: '2025年Q1 (2025年1-3月)',
+        fiscalPeriod: '2025年Q3 (2025年7-9月)',
         currency: 'PLN',
         financials: {
-            revenue: { value: 226.3, unit: '百万兹罗提(Q1)', yoy: -0.2, label: 'Q1净营收', source: 'CD Projekt Q1 2025 Results / GamesIndustry.biz (2025/05/29)', usdEquiv: '≈$60.2M' },
+            revenue: { value: 349, unit: '百万兹罗提(Q3)', yoy: 53, label: 'Q3净营收(+53%)', source: 'CD Projekt Q3 2025 Result Center (2025/11)', usdEquiv: '≈$86.2M' },
             operatingProfit: { value: null, unit: '百万兹罗提', yoy: null, label: '营业利润(未单独披露)' },
             operatingMargin: { value: null, label: '营业利润率' },
             segmentRevenuePct: { value: 100, label: '游戏占比' },
-            netProfit: { value: 86, unit: '百万兹罗提(Q1)', yoy: -14, label: '净利润(PLN 8600万,-14%)', usdEquiv: '≈$22.8M' },
+            netProfit: { value: 193, unit: '百万兹罗提(Q3)', yoy: 150, label: '净利润(PLN 1.93亿,同比2.5倍)', usdEquiv: '≈$47.7M' },
+            netProfitMargin: { value: 55, unit: '%', label: 'Q3净利率55%' },
+            investmentInFuture: { value: 118, unit: '百万兹罗提(Q3)', label: '对未来发行产品的投资' },
             fy2024Revenue: { value: 4608, unit: '百万兹罗提(2024全年)', yoy: 270, label: '2024全年营收参考', usdEquiv: '≈$1.14B' },
         },
         gameMetrics: {
-            cyberpunkTotalSales: { value: 30, unit: '百万套+', label: '赛博朋克2077总销量' },
-            phantomLibertySales: { value: 10, unit: '百万套+', label: '往日之影累计销量(突破1000万)', source: 'GamesIndustry.biz' },
-            witcher3TotalSales: { value: 60, unit: '百万套+', label: '巫师3总销量(超6000万套)', source: 'CD Projekt Q1 2025' },
+            cyberpunkTotalSales: { value: 35, unit: '百万套+', label: '赛博朋克2077总销量(突破3500万)', source: 'CD Projekt Q3 2025 Result Center' },
+            phantomLibertySales: { value: 10, unit: '百万套+', label: '往日之影累计销量(突破1000万)' },
+            witcher3TotalSales: { value: 60, unit: '百万套+', label: '巫师3总销量(超6000万套)' },
             witcher3Revenue: { value: 2400, unit: '百万兹罗提(累计)', label: '巫师3累计收入(PLN 24亿)' },
             cashPosition: { value: 1408, unit: '百万兹罗提', label: '现金及等价物(截至2025/09)' },
-            polarisDev: { value: 420, unit: '人', label: '巫师4(Polaris)开发团队规模', source: 'GamesIndustry.biz' },
+            polarisDev: { value: 420, unit: '人', label: '巫师4(Polaris)开发团队规模' },
             teamSize: { value: 730, unit: '人+', label: '开发团队总规模' },
         },
-        keyProducts: ['赛博朋克2077', '巫师3', 'GOG平台', '新巫师:Polaris(开发中)', '赛博朋克续作:Orion(前期制作)'],
+        keyProducts: ['赛博朋克2077', '巫师3', 'GOG平台', '新巫师:Polaris(开发中)', '赛博朋克续作:Orion(前期制作)', '赛博朋克2077终极版(Switch 2)'],
         analysis: {
-            performance: 'Q1 2025营收PLN 2.263亿(≈$6020万,-0.2%持平),净利润PLN 8600万(≈$2280万,-14%)。CFO表示业绩受赛博朋克2077及往日之影持续强劲销售支撑。巫师3累计销量超6000万套(累计收入PLN 24亿)。往日之影突破1000万套。2025年是产品空档/研发投入年。',
-            strategy: 'CDPR进入"多项目并行"阶段。新巫师三部曲首作(Polaris)已有420人团队全力开发中。赛博朋克续作(Orion)由波士顿工作室推进前期制作。2025年招聘重点集中Orion。总团队超730人。',
-            outlook: '2025-2026为产品空档期,收入依赖数字长尾销售。现金储备充裕(PLN 14亿+)支撑长期多项目开发。Polaris预计2027年后推出。2025全年财报预计2026年3月底发布。',
-            newProducts: '《新巫师：Polaris》(2027+)；《赛博朋克续作：Orion》(2028+)；第三IP探索中。'
+            performance: 'Q3 2025营收PLN 3.49亿(≈$8620万,+53% YoY)，净利润PLN 1.93亿(≈$4770万,同比增长2.5倍)，净利率高达55%。赛博朋克2077总销量突破3500万套(较上季增长500万套)。巫师3累计超6000万套。Q3对未来产品投资PLN 1.18亿，反映Polaris和Orion开发投入加速。',
+            strategy: 'CDPR进入"多项目并行"阶段。新巫师三部曲首作(Polaris)已有420人团队全力开发中。赛博朋克续作(Orion)由波士顿工作室推进前期制作。与Scopely达成IP合作开发手游。赛博朋克2077终极版将于2025年6月5日登陆Switch 2。总团队超730人。',
+            outlook: '2025年数字长尾销售持续强劲(Q3营收+53%表现远超预期)。现金储备充裕(PLN 14亿+)支撑长期多项目开发。Polaris预计2027年后推出。2025全年财报预计2026年3月底发布。Switch 2版本将拓展新用户群。',
+            newProducts: '《赛博朋克2077终极版》Switch 2版(2025/06/05)；《新巫师：Polaris》(2027+)；《赛博朋克续作：Orion》(2028+)；Scopely合作手游(IP待定)。'
         },
         dataSources: [
-            { type: '季度财报', name: 'CD Projekt Q1 2025 Financial Results', date: '2025-05-29', url: 'https://www.cdprojekt.com/en/investors/financial-summary-reports/' },
-            { type: '行业报道', name: 'GamesIndustry.biz Q1 2025 Analysis', date: '2025-05-29', url: 'https://www.gamesindustry.biz/cd-projekt-posts-flat-sales-results-for-q1-2025' }
+            { type: '季度财报', name: 'CD Projekt Q3 2025 Financial Results', date: '2025-11-15', url: 'https://www.cdprojekt.com/en/investors/result-center/' },
+            { type: '官方公告', name: 'Scopely IP合作 + Switch 2版本公告', date: '2025-11-15', url: 'https://www.cdprojekt.com/en/investors/result-center/' }
         ],
-        filingDate: '2025-05-29',
-        filingType: '季度财报(Q1)',
-        filingUrl: 'https://www.cdprojekt.com/en/investors/financial-summary-reports/'
+        filingDate: '2025-11-15',
+        filingType: '季度财报(Q3)',
+        filingUrl: 'https://www.cdprojekt.com/en/investors/result-center/'
     },
     {
         id: 'krafton',

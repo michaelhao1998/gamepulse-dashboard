@@ -1,7 +1,7 @@
 // ============================================
 // 行业热点新闻数据模块
 // [AUTO-GENERATED] 由 Claw Agent 自动更新，请勿手动编辑
-// 最后更新: 2026-03-16T12:00:00Z
+// 最后更新: 2026-03-16T20:00:00Z
 // 更新者: news-agent
 // ============================================
 
@@ -531,21 +531,105 @@ const newsData = [
         "sentiment": "positive"
     },
     {
-        "id": 23,
-        "title": "Steam同时在线人数突破4204万，刷新历史纪录",
-        "summary": "据SteamDB数据显示，2026年1月11日晚Steam平台同时在线玩家数突破4204万人，刷新此前4181万的历史纪录。其中约1340万名玩家正在游戏中。此数据反映了PC游戏平台持续增长的用户活跃度。",
-        "source": "SteamDB",
-        "sourceUrl": "https://steamdb.info/",
-        "category": "market",
-        "importance": "medium",
-        "date": "2026-01-12",
+        "id": 32,
+        "title": "微软公布下一代Xbox主机Project Helix，alpha版预计2027年",
+        "summary": "微软在GDC 2026期间首次公开下一代Xbox主机代号\"Project Helix\"的详细信息。据The Verge报道，Xbox硬件负责人Jason Ronald透露该主机将采用定制化架构，目前尚处于早期开发阶段，alpha版本预计2027年才能完成。这标志着微软正式开启了次世代主机竞争的新篇章。",
+        "source": "VGC",
+        "sourceUrl": "https://www.theverge.com/games/893119/xbox-project-helix-jason-ronald-gdc-2026",
+        "category": "platform",
+        "importance": "high",
+        "date": "2026-03-13",
         "tags": [
-            "Steam",
-            "在线人数",
-            "平台数据",
-            "纪录"
+            "Xbox",
+            "Project Helix",
+            "次世代",
+            "微软"
         ],
         "sentiment": "positive"
+    },
+    {
+        "id": 33,
+        "title": "《寂静岭2重制版》全球销量突破500万份，Konami启动促销",
+        "summary": "Konami宣布由Bloober Team开发的《寂静岭2重制版》全球销量已突破500万份。为庆祝这一里程碑，Konami在PlayStation Store启动春季促销活动，《寂静岭》系列多款作品参与折扣。这一成绩证明了经典恐怖IP在现代市场的强大号召力。",
+        "source": "EuroGamer",
+        "sourceUrl": "https://www.eurogamer.net/silent-hill-2-remake-passes-5m-copies-sold-sale",
+        "category": "game",
+        "importance": "medium",
+        "date": "2026-03-12",
+        "tags": [
+            "寂静岭2",
+            "Konami",
+            "Bloober Team",
+            "销量"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 34,
+        "title": "任天堂Indie World展示会公布18款独立游戏登陆Switch/Switch 2",
+        "summary": "任天堂3月3日举办线上Indie World展示会，共宣布18款新登陆和即将登陆Switch平台的独立游戏，包括多款Switch 2独占作品：《夜勤人2：无尽宝库》《午夜漫步》《熔炉密林Rotwood》等。展示会展现了任天堂持续扶持独立开发者的平台策略。",
+        "source": "NintendoNews",
+        "sourceUrl": "https://www.nintendo.com/indie-world/",
+        "category": "platform",
+        "importance": "medium",
+        "date": "2026-03-10",
+        "tags": [
+            "任天堂",
+            "Indie World",
+            "独立游戏",
+            "Switch 2"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 35,
+        "title": "《碧蓝幻想Relink：无尽黄昏》定档7月9日，登陆Switch 2/PS5/Steam",
+        "summary": "Cygames在任天堂合作伙伴直面会上公布ARPG《碧蓝幻想Relink：无尽黄昏》将于2026年7月9日全球同步发售，登陆Switch 2、PS5、PS4和Steam。新作追加召唤系统、专精技能、单人模式等新内容，支持最多四人跨平台联机。原版全球销量已突破300万份。",
+        "source": "Fami通",
+        "sourceUrl": "https://www.3dmgame.com/news/28299/",
+        "category": "game",
+        "importance": "medium",
+        "date": "2026-03-10",
+        "tags": [
+            "碧蓝幻想",
+            "Cygames",
+            "Switch 2",
+            "ARPG"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 36,
+        "title": "《红色沙漠》Steam愿望单突破300万，3月20日发售在即",
+        "summary": "Pearl Abyss开放世界动作冒险游戏《红色沙漠》Steam愿望单数量突破300万，玩家期待度持续攀升。游戏确认3月20日全球发售，登陆PC和PS5/Mac平台，主打雇佣兵团冒险叙事与深度动作战斗系统，据Eurogamer报道其战斗维度的细腻程度备受关注。",
+        "source": "EuroGamer",
+        "sourceUrl": "https://www.eurogamer.net/crimson-desert-passes-3-million-wishlists-as-excitement-around-the-single-player-rpg-builds",
+        "category": "game",
+        "importance": "medium",
+        "date": "2026-03-14",
+        "tags": [
+            "红色沙漠",
+            "Pearl Abyss",
+            "Steam",
+            "开放世界"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 37,
+        "title": "《CALX》定档6月4日登陆PC，稍后登陆PS5/Xbox/Switch",
+        "summary": "在Future Games Show春季展示会上，意大利工作室True Colors与法国发行商Dear Villagers宣布氛围感3D动作冒险游戏《CALX》将于2026年6月4日在PC平台发售，并计划于2026年晚些时候登陆PS5、Xbox和Switch主机平台。游戏试玩版现已上线Steam。",
+        "source": "3DM",
+        "sourceUrl": "https://www.3dmgame.com/news/202603/3939683.html",
+        "category": "game",
+        "importance": "low",
+        "date": "2026-03-13",
+        "tags": [
+            "CALX",
+            "独立游戏",
+            "Future Games Show"
+        ],
+        "sentiment": "neutral"
     },
     {
         "id": 24,
