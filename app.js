@@ -71,7 +71,6 @@ async function loadDataFileInfo() {
 
 function updateAll(games) {
     updateStrategyTab(games);
-    updateRecentTab(games);
     updateValidationTab(games);
     updateFilterMatch(games.length);
 
@@ -589,58 +588,6 @@ function generateAIInsight(games) {
     setTimeout(typeNext, 500);
 }
 
-// ============ Tab: 近期新游监控 ============
-
-function updateRecentTab(games) {
-    const recentGames = getRecentGames(games);
-    setText('recentCount', recentGames.length);
-
-    // 平台分布图
-    const platDist = getRecentPlatformDist(recentGames);
-    renderRecentPlatformPie(platDist);
-
-    // XGP分布图
-    const xgpDist = getRecentXgpDist(recentGames);
-    renderRecentXgpPie(xgpDist);
-
-    // 游戏列表
-    const tbody = document.getElementById('recentGamesBody');
-    if (!tbody) return;
-
-    const check = (val) => val === 'Y' ? '<span class="check-y">✓</span>' : '<span class="check-n">-</span>';
-
-    let html = '';
-    recentGames.forEach(g => {
-        let xgpCls = 'none';
-        if (g.xgpType === '首发入库XGP') xgpCls = 'sim';
-        else if (g.xgpType === '后发入库XGP') xgpCls = 'aft';
-
-        const dailyRev = g.mscienceDailyRev || g.dailyRevenue;
-
-        html += `<tr class="clickable-row" data-game-idx="${allGames.indexOf(g)}">
-            <td class="game-name text-left">${g.name}</td>
-            <td>${g.publisher} ${g.isMajor ? '<span class="major-badge">大厂</span>' : ''}</td>
-            <td>${g.mainGenre || '-'} ${g.isGenreInferred ? '<span class="inferred-badge">*推断</span>' : ''}</td>
-            <td>${g.releaseDate || '-'}</td>
-            <td class="text-center">${check(g.isPC)}</td>
-            <td class="text-center">${check(g.isPS)}</td>
-            <td class="text-center">${check(g.isConsole)}</td>
-            <td class="text-center">${check(g.isXbox)}</td>
-            <td><span class="xgp-tag ${xgpCls}">${g.xgpType}</span></td>
-            <td class="num">${dailyRev > 0 ? '$' + Math.round(dailyRev).toLocaleString() : '-'}</td>
-        </tr>`;
-    });
-    tbody.innerHTML = html;
-
-    // 行点击
-    tbody.querySelectorAll('.clickable-row').forEach(row => {
-        row.addEventListener('click', () => {
-            const idx = parseInt(row.dataset.gameIdx);
-            if (idx >= 0 && allGames[idx]) showGameDetail(allGames[idx]);
-        });
-    });
-}
-
 // ============ Tab: 底表数据校验 ============
 
 function updateValidationTab(games) {
@@ -911,7 +858,7 @@ function bindEvents() {
             if (target) target.classList.add('active');
 
             // 仅CSV相关Tab显示筛选栏和数据声明条
-            const csvTabs = ['strategy', 'recent', 'validation'];
+            const csvTabs = ['strategy'];
             const filterBar = document.getElementById('filterBar');
             const dataBanner = document.getElementById('dataBanner');
             if (filterBar) filterBar.style.display = csvTabs.includes(tab) ? '' : 'none';
@@ -2209,8 +2156,7 @@ function filterCmdResults(query, container) {
         { icon: '🎯', name: '待上线Pipeline', action: 'tab:pipeline', keywords: ['pipeline', '待上线', '管线'] },
         { icon: '📰', name: '行业热点新闻', action: 'tab:news', keywords: ['新闻', 'news', '热点', '行业'] },
         { icon: '💰', name: '重点公司财报分析', action: 'tab:earnings', keywords: ['财报', 'earnings', '公司', '收入'] },
-        { icon: '🕐', name: '近期新游监控', action: 'tab:recent', keywords: ['近期', 'recent', '新游', '监控'] },
-        { icon: '🔍', name: '底表数据校验', action: 'tab:validation', keywords: ['校验', 'validation', '数据', '底表'] },
+        { icon: '🏪', name: 'PS&Xbox商店监控', action: 'tab:storewatch', keywords: ['商店', 'storewatch', 'ps', 'xbox', '资源位'] },
     ];
 
     let html = '';

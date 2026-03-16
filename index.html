@@ -48,14 +48,7 @@
                 <span class="nav-label">重点公司财报分析</span>
                 <span class="nav-badge" id="badgeEarnings"></span>
             </a>
-            <a href="#" class="nav-item" data-tab="recent">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l3 2"/></svg>
-                <span class="nav-label">近期新游监控</span>
-            </a>
-            <a href="#" class="nav-item" data-tab="validation">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10l4 4 8-8"/><rect x="2" y="2" width="16" height="16" rx="2"/></svg>
-                <span class="nav-label">底表数据校验</span>
-            </a>
+
             <a href="#" class="nav-item" data-tab="storewatch">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h16v12H2z"/><path d="M6 8h3v4H6zM11 6h3v6h-3z"/><circle cx="14" cy="14" r="2"/></svg>
                 <span class="nav-label">PS&Xbox商店监控</span>
@@ -130,8 +123,6 @@
                         <div class="cmd-item" data-action="tab:pipeline"><span class="cmd-icon">🎯</span>待上线Pipeline</div>
                         <div class="cmd-item" data-action="tab:news"><span class="cmd-icon">📰</span>行业热点新闻</div>
                         <div class="cmd-item" data-action="tab:earnings"><span class="cmd-icon">💰</span>重点公司财报分析</div>
-                        <div class="cmd-item" data-action="tab:recent"><span class="cmd-icon">🕐</span>近期新游监控</div>
-                        <div class="cmd-item" data-action="tab:validation"><span class="cmd-icon">🔍</span>底表数据校验</div>
                         <div class="cmd-item" data-action="tab:storewatch"><span class="cmd-icon">🏪</span>PS&Xbox商店监控</div>
                     </div>
                 </div>
@@ -453,6 +444,45 @@
                     <div class="typing-indicator">分析中<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
                 </div>
             </div>
+
+            <!-- ==================== 底表数据校验 (嵌入已上线概览Tab底部) ==================== -->
+            <div class="data-table-section" style="margin-top:24px;">
+                <div class="table-header">
+                    <h3>🔍 数据探查与清洗校验 <span class="table-count" id="validationCount"></span></h3>
+                    <div class="table-controls">
+                        <input type="text" placeholder="搜索游戏/发行商..." id="validationSearch" class="table-search">
+                    </div>
+                </div>
+                <div class="table-wrapper" style="max-height:700px;overflow-y:auto;">
+                    <table id="validationTable">
+                        <thead>
+                            <tr>
+                                <th class="text-left sortable-th" data-sort-key="name">游戏名称 <span class="sort-icon">⇅</span></th>
+                                <th class="sortable-th" data-sort-key="publisher">发行公司 <span class="sort-icon">⇅</span></th>
+                                <th class="sortable-th" data-sort-key="genre">品类 <span class="sort-icon">⇅</span></th>
+                                <th class="sortable-th" data-sort-key="date">发行日期 <span class="sort-icon">⇅</span></th>
+                                <th class="num sortable-th" data-sort-key="lifetime">Mscience总收入($) <span class="sort-icon">⇅</span></th>
+                                <th class="num sortable-th" data-sort-key="dailyCalc">日均流水(计算值) <span class="sort-icon">⇅</span></th>
+                                <th class="num sortable-th" data-sort-key="dailyOrig">日均流水(原始值) <span class="sort-icon">⇅</span></th>
+                                <th class="num sortable-th" data-sort-key="days">上线天数 <span class="sort-icon">⇅</span></th>
+                                <th class="text-center">PC</th>
+                                <th class="text-center">PS</th>
+                                <th class="text-center">主机</th>
+                                <th class="text-center">Xbox</th>
+                                <th class="text-center">XGP</th>
+                                <th class="text-center sortable-th" data-sort-key="check">校验 <span class="sort-icon">⇅</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="validationBody"></tbody>
+                    </table>
+                </div>
+                <div class="table-pagination" id="validationPagination">
+                    <button id="validationPrevPage" class="page-btn" disabled>上一页</button>
+                    <span id="validationPageInfo">第 1 页</span>
+                    <button id="validationNextPage" class="page-btn">下一页</button>
+                </div>
+            </div>
+
         </section>
 
         <!-- ==================== TAB: 待上线Pipeline ==================== -->
@@ -763,91 +793,7 @@
             </div>
         </section>
 
-        <!-- ==================== TAB: 近期新游监控 ==================== -->
-        <section class="tab-content" id="tab-recent">
-            <div class="chart-card wide">
-                <div class="chart-header">
-                    <h3>🕐 近期新游监控</h3>
-                    <div class="recent-badge" id="recentBadge">共监控到 <strong id="recentCount">0</strong> 款新作</div>
-                </div>
-                <div style="padding:20px;">
-                    <p class="section-hint">自动截取盘面中最近 2 个月的新游发行动向，洞察最新跨端组合拳。</p>
-                    
-                    <!-- 双饼图 -->
-                    <div class="charts-grid" style="margin-top:16px;">
-                        <div class="chart-card">
-                            <div class="chart-header"><h3>平台跨端发行深度</h3></div>
-                            <div class="chart-body"><canvas id="recentPlatformPie"></canvas></div>
-                        </div>
-                        <div class="chart-card">
-                            <div class="chart-header"><h3>Xbox 阵营订阅制倾向</h3></div>
-                            <div class="chart-body"><canvas id="recentXgpPie"></canvas></div>
-                        </div>
-                    </div>
-                    
-                    <!-- 游戏列表 -->
-                    <div class="table-wrapper" style="margin-top:20px;">
-                        <table id="recentGamesTable">
-                            <thead>
-                                <tr>
-                                    <th class="text-left">游戏名称</th>
-                                    <th>发行公司</th>
-                                    <th>品类</th>
-                                    <th>发行日期</th>
-                                    <th class="text-center">PC</th>
-                                    <th class="text-center">PS</th>
-                                    <th class="text-center">主机</th>
-                                    <th class="text-center">Xbox</th>
-                                    <th>XGP策略</th>
-                                    <th class="num">日均流水($)</th>
-                                </tr>
-                            </thead>
-                            <tbody id="recentGamesBody"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- ==================== TAB: 底表数据校验 ==================== -->
-        <section class="tab-content" id="tab-validation">
-            <div class="data-table-section">
-                <div class="table-header">
-                    <h3>🔍 数据探查与清洗校验 <span class="table-count" id="validationCount"></span></h3>
-                    <div class="table-controls">
-                        <input type="text" placeholder="搜索游戏/发行商..." id="validationSearch" class="table-search">
-                    </div>
-                </div>
-                <div class="table-wrapper" style="max-height:700px;overflow-y:auto;">
-                    <table id="validationTable">
-                        <thead>
-                            <tr>
-                                <th class="text-left sortable-th" data-sort-key="name">游戏名称 <span class="sort-icon">⇅</span></th>
-                                <th class="sortable-th" data-sort-key="publisher">发行公司 <span class="sort-icon">⇅</span></th>
-                                <th class="sortable-th" data-sort-key="genre">品类 <span class="sort-icon">⇅</span></th>
-                                <th class="sortable-th" data-sort-key="date">发行日期 <span class="sort-icon">⇅</span></th>
-                                <th class="num sortable-th" data-sort-key="lifetime">Mscience总收入($) <span class="sort-icon">⇅</span></th>
-                                <th class="num sortable-th" data-sort-key="dailyCalc">日均流水(计算值) <span class="sort-icon">⇅</span></th>
-                                <th class="num sortable-th" data-sort-key="dailyOrig">日均流水(原始值) <span class="sort-icon">⇅</span></th>
-                                <th class="num sortable-th" data-sort-key="days">上线天数 <span class="sort-icon">⇅</span></th>
-                                <th class="text-center">PC</th>
-                                <th class="text-center">PS</th>
-                                <th class="text-center">主机</th>
-                                <th class="text-center">Xbox</th>
-                                <th class="text-center">XGP</th>
-                                <th class="text-center sortable-th" data-sort-key="check">校验 <span class="sort-icon">⇅</span></th>
-                            </tr>
-                        </thead>
-                        <tbody id="validationBody"></tbody>
-                    </table>
-                </div>
-                <div class="table-pagination" id="validationPagination">
-                    <button id="validationPrevPage" class="page-btn" disabled>上一页</button>
-                    <span id="validationPageInfo">第 1 页</span>
-                    <button id="validationNextPage" class="page-btn">下一页</button>
-                </div>
-            </div>
-        </section>
 
         <!-- StoreWatch Tab -->
         <section class="tab-content" id="tab-storewatch">
