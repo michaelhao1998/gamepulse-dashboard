@@ -47,6 +47,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 更新导航角标
     updateNavBadges();
 
+    // 更新数据新鲜度指示器
+    updateDataFreshness();
+
     // 检查Agent状态
     checkAgentStatus();
 });
@@ -1193,8 +1196,10 @@ function renderPipelineTable(games) {
     let html = '';
     games.forEach(g => {
         const heatClass = getHeatClass(g.heat);
-        html += `<tr>
-            <td class="game-name text-left">${g.name}</td>
+        const releasedTag = g.released ? ' <span class="released-badge-sm">✅已发售</span>' : '';
+        const rowClass = g.released ? ' class="row-released"' : '';
+        html += `<tr${rowClass}>
+            <td class="game-name text-left">${g.name}${releasedTag}</td>
             <td>${g.publisher}</td>
             <td>${g.studio}</td>
             <td>${g.releaseDate}</td>
@@ -2340,6 +2345,95 @@ function updateNavBadges() {
             badgeStorewatch.classList.add('visible');
         }
     }
+}
+
+// ============ 数据新鲜度指示器 ============
+
+function updateDataFreshness() {
+    const container = document.getElementById('freshnessItems');
+    if (!container) return;
+
+    const now = new Date();
+    const modules = [];
+
+    // Pipeline 新鲜度 - 基于最新 releaseDate 的游戏是否标记了 released
+    if (typeof pipelineData !== 'undefined') {
+        // 没有内嵌更新时间，用文件中数据的特征判断
+        const unreleased = pipelineData.filter(g => {
+            const m = g.releaseDate.match(/(\d{4})\/(\d{1,2})\/(\d{1,2})/);
+            if (m) {
+                const d = new Date(parseInt(m[1]), parseInt(m[2]) - 1, parseInt(m[3]));
+                return d < now && !g.released;
+            }
+            return false;
+        });
+        modules.push({
+            name: 'Pipeline',
+            icon: '🎮',
+            status: unreleased.length === 0 ? 'fresh' : 'stale',
+            detail: unreleased.length === 0 ? '数据已更新' : `${unreleased.length}款已过期未标记`,
+            threshold: '7天'
+        });
+    }
+
+    // News 新鲜度 - 基于最新文章日期
+    if (typeof newsData !== 'undefined' && newsData.length > 0) {
+        const latestDate = newsData.reduce((max, n) => {
+            const d = new Date(n.date);
+            return d > max ? d : max;
+        }, new Date(0));
+        const daysAgo = Math.floor((now - latestDate) / (1000 * 60 * 60 * 24));
+        modules.push({
+            name: '新闻',
+            icon: '📰',
+            status: daysAgo <= 3 ? 'fresh' : daysAgo <= 7 ? 'warn' : 'stale',
+            detail: daysAgo === 0 ? '今日更新' : `${daysAgo}天前`,
+            threshold: '3天'
+        });
+    }
+
+    // Earnings 新鲜度 - 基于公司 filingDate
+    if (typeof earningsCompanies !== 'undefined') {
+        const staleCompanies = earningsCompanies.filter(c => {
+            const fd = new Date(c.filingDate);
+            return (now - fd) / (1000 * 60 * 60 * 24) > 120;
+        });
+        const estimatedCompanies = earningsCompanies.filter(c =>
+            c.filingType && c.filingType.includes('估算')
+        );
+        const issues = staleCompanies.length + estimatedCompanies.length;
+        modules.push({
+            name: '财报',
+            icon: '💰',
+            status: issues === 0 ? 'fresh' : issues <= 3 ? 'warn' : 'stale',
+            detail: issues === 0 ? '数据正常' : `${staleCompanies.length}过期/${estimatedCompanies.length}估算`,
+            threshold: '120天'
+        });
+    }
+
+    // StoreWatch 新鲜度
+    if (typeof storewatchMeta !== 'undefined') {
+        const lastUpdate = new Date(storewatchMeta.lastUpdated);
+        const daysAgo = Math.floor((now - lastUpdate) / (1000 * 60 * 60 * 24));
+        modules.push({
+            name: '商店监控',
+            icon: '🏪',
+            status: daysAgo <= 1 ? 'fresh' : daysAgo <= 3 ? 'warn' : 'stale',
+            detail: `${daysAgo}天前`,
+            threshold: '1天'
+        });
+    }
+
+    const statusColors = { fresh: '#22c55e', warn: '#f59e0b', stale: '#ef4444' };
+    const statusIcons = { fresh: '🟢', warn: '🟡', stale: '🔴' };
+
+    container.innerHTML = modules.map(m => `
+        <div class="freshness-item" title="${m.name}: ${m.detail} (阈值: ${m.threshold})">
+            <span class="freshness-dot" style="background:${statusColors[m.status]}"></span>
+            <span class="freshness-label">${m.icon} ${m.name}</span>
+            <span class="freshness-detail" style="color:${statusColors[m.status]}">${m.detail}</span>
+        </div>
+    `).join('');
 }
 
 // ============ Agent状态检查 ============

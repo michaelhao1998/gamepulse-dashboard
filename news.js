@@ -1,7 +1,7 @@
 // ============================================
 // 行业热点新闻数据模块
 // [AUTO-GENERATED] 由 Claw Agent 自动更新，请勿手动编辑
-// 最后更新: 2026-03-12T12:00:00Z
+// 最后更新: 2026-03-16T12:00:00Z
 // 更新者: news-agent
 // ============================================
 
@@ -578,6 +578,109 @@ const newsData = [
             "卡普空",
             "Switch 2",
             "新作"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 26,
+        "title": "GDC 2026 GDCA颁奖：《折言》获玩家选择奖，日本独立游戏创历史",
+        "summary": "在3月13日于旧金山举办的GDC 2026 Game Developers Choice Awards上，日本互动视觉小说《折言》(and Roger)荣获\"玩家选择奖\"(Audience Award)，成为首个在GDCA获奖的日本独立游戏作品，创造历史性壮举。游戏累计销量已突破10万份，同时获得英国BAFTA提名。",
+        "source": "GameDeveloper",
+        "sourceUrl": "https://gdconf.com/news",
+        "category": "market",
+        "importance": "medium",
+        "date": "2026-03-13",
+        "tags": [
+            "GDC",
+            "GDCA",
+            "独立游戏",
+            "游戏奖项"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 27,
+        "title": "《红色沙漠》发布发售预告片，Pearl Abyss全球发售在即",
+        "summary": "Pearl Abyss正式发布《红色沙漠》(Crimson Desert)官方发售预告片，确认游戏将于2026年3月20日全球发售。这款开放世界动作冒险游戏经历多次延期后终于定档，登陆PC和PS5平台，被评价为兼具《街头霸王》格斗深度的动作系统。",
+        "source": "IGN",
+        "sourceUrl": "https://www.ign.com/",
+        "category": "game",
+        "importance": "medium",
+        "date": "2026-03-14",
+        "tags": [
+            "红色沙漠",
+            "Pearl Abyss",
+            "开放世界",
+            "新作"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 28,
+        "title": "《极限竞速：地平线6》IGN First独家曝光：东京城市规模史无前例",
+        "summary": "IGN First独家报道了《极限竞速：地平线6》的东京城市地图详情。Playground Games设计总监透露，东京城市规模之大甚至需要独立开发团队。游戏将于2026年5月19日登陆Xbox/PC，首日加入Game Pass Ultimate，稍后登陆PS5，支持Xbox Play Anywhere。",
+        "source": "Xbox Wire",
+        "sourceUrl": "https://news.xbox.com/en-us/",
+        "category": "game",
+        "importance": "medium",
+        "date": "2026-03-15",
+        "tags": [
+            "极限竞速",
+            "Xbox",
+            "Game Pass",
+            "赛车"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 29,
+        "title": "《和平精英》亮相GDC 2026展示AI+游戏前沿成果",
+        "summary": "腾讯光子工作室群携《和平精英》在GDC 2026大会上展示了\"大模型+AI Bot\"架构，分享了AI在游戏中的前沿应用成果。策划副总监薛冰的演讲获得全球科技和游戏行业的高度肯定，展示了中国游戏厂商在AI应用领域的领先地位。",
+        "source": "GamesIndustry",
+        "sourceUrl": "https://www.gamesindustry.biz/",
+        "category": "market",
+        "importance": "medium",
+        "date": "2026-03-14",
+        "tags": [
+            "腾讯",
+            "AI",
+            "GDC",
+            "和平精英"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 30,
+        "title": "《无主之地4》首个故事DLC\"Mad Ellie\"3月26日上线",
+        "summary": "2K和Gearbox Software宣布《无主之地4》首个故事包DLC\"Mad Ellie and the Vault of the Damned\"将于3月26日发售，登陆PS5和Xbox Series X/S。无主之地4自发售以来获得广泛好评（IGN称\"系列最佳\"），本次DLC是后续内容计划的首弹。",
+        "source": "3DM",
+        "sourceUrl": "https://www.3dmgame.com/",
+        "category": "game",
+        "importance": "medium",
+        "date": "2026-03-13",
+        "tags": [
+            "无主之地4",
+            "DLC",
+            "2K",
+            "射击游戏"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 31,
+        "title": "马里奥40周年庆典：任天堂MAR10 Day 2026 & 超级马里奥Galaxy电影定档",
+        "summary": "任天堂隆重庆祝超级马里奥兄弟40周年。MAR10 Day 2026活动公布了多项庆祝计划，包括：超级马里奥Galaxy电影定档2026年4月1日上映（3月9日Direct公布预告）；多款Switch 2新作展示；以及系列纪念活动和周边商品。马里奥IP持续展现强大的跨媒体变现能力。",
+        "source": "NintendoNews",
+        "sourceUrl": "https://mynintendonews.com/",
+        "category": "platform",
+        "importance": "high",
+        "date": "2026-03-10",
+        "tags": [
+            "任天堂",
+            "马里奥",
+            "MAR10",
+            "电影",
+            "Switch 2"
         ],
         "sentiment": "positive"
     }

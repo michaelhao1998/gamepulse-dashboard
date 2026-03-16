@@ -6,8 +6,8 @@
 
 const pipelineData = [
     // ===== 2026 Q1 (1-3月) =====
-    { name: "零～红蝶～REMAKE～", publisher: "光荣特库摩", studio: "/", releaseDate: "2026/3/12", platforms: "PC+Switch2+PS5+Xbox", heat: "低", heatNote: "经典恐怖IP重制版", gameplay: "和风恐怖冒险，使用「射影机」拍照对抗幽灵的独特战斗方式" },
-    { name: "怪物猎人物语3：命运双龙", publisher: "卡普空", studio: "/", releaseDate: "2026/3/13", platforms: "PC+Switch+PS5", heat: "中高", heatNote: "《怪物猎人》IP系列，系列销量1亿500万", gameplay: "ARPG，击败怪物获得素材强化角色，收服怪物携伴冒险" },
+    { name: "零～红蝶～REMAKE～", publisher: "光荣特库摩", studio: "/", releaseDate: "2026/3/12", platforms: "PC+Switch2+PS5+Xbox", heat: "低", heatNote: "经典恐怖IP重制版", gameplay: "和风恐怖冒险，使用「射影机」拍照对抗幽灵的独特战斗方式", released: true },
+    { name: "怪物猎人物语3：命运双龙", publisher: "卡普空", studio: "/", releaseDate: "2026/3/13", platforms: "PC+Switch+PS5", heat: "中高", heatNote: "《怪物猎人》IP系列，系列销量1亿500万", gameplay: "ARPG，击败怪物获得素材强化角色，收服怪物携伴冒险", released: true },
     { name: "MLB The Show 26", publisher: "EA", studio: "San Diego Studios", releaseDate: "2026/3/17", platforms: "PC+Switch+PS5+Xbox", heat: "中低", heatNote: "美国职棒大联盟官方授权", gameplay: "棒球模拟运动游戏，主打投打对决、球队管理与赛季模拟" },
     { name: "死亡搁浅2：冥滩之上", publisher: "小岛工作室", studio: "/", releaseDate: "2026/3/19", platforms: "PC", heat: "中低", heatNote: "PS端首周销量140万", gameplay: "开放世界动作冒险，核心为「连接」主题的送货与探索，融合潜行与战斗" },
     { name: "真·三国无双2 with 猛将传 Remastered", publisher: "光荣特库摩", studio: "/", releaseDate: "2026/3/19", platforms: "PC+Switch+PS5", heat: "低", heatNote: "IP重制版，垂类头部", gameplay: "割草游戏，腾讯代理手游《真三国无双 霸》" },
@@ -75,10 +75,10 @@ const pipelineData = [
 
     // ===== 以下为网络搜索补充的新产品 =====
     { name: "South of Midnight", publisher: "微软", studio: "Compulsion Games", releaseDate: "2026/4/8", platforms: "PC+Xbox", heat: "中", heatNote: "Xbox Developer Direct重点展示", gameplay: "第三人称动作冒险，美国南方民间传说为背景，编织魔法战斗系统" },
-    { name: "文明7", publisher: "2K Games", studio: "Firaxis Games", releaseDate: "2026/2/11", platforms: "PC+PS5+Xbox+Switch", heat: "中高", heatNote: "经典策略IP，系列销量7000万+", gameplay: "回合制策略模拟，建设文明帝国从远古到现代" },
+    { name: "文明7", publisher: "2K Games", studio: "Firaxis Games", releaseDate: "2026/2/11", platforms: "PC+PS5+Xbox+Switch", heat: "中高", heatNote: "经典策略IP，系列销量7000万+", gameplay: "回合制策略模拟，建设文明帝国从远古到现代", released: true },
     { name: "马里奥卡丁车世界", publisher: "任天堂", studio: "/", releaseDate: "2026/6/5", platforms: "Switch2", heat: "高", heatNote: "Switch 2首发护航大作", gameplay: "卡丁车竞速，多人派对赛车" },
     { name: "生化危机9：安魂曲", publisher: "卡普空", studio: "/", releaseDate: "2026/6/13", platforms: "PC+PS5+Xbox", heat: "中高", heatNote: "生化危机系列最新作", gameplay: "恐怖生存动作冒险，第三人称视角" },
-    { name: "勇者斗恶龙7 Reimagined", publisher: "史克威尔艾尼克斯", studio: "/", releaseDate: "2026/3/13", platforms: "PC+Switch2+PS5+Xbox", heat: "中", heatNote: "DQ系列经典重制", gameplay: "JRPG，回合制战斗+职业转换系统" },
+    { name: "勇者斗恶龙7 Reimagined", publisher: "史克威尔艾尼克斯", studio: "/", releaseDate: "2026/3/13", platforms: "PC+Switch2+PS5+Xbox", heat: "中", heatNote: "DQ系列经典重制", gameplay: "JRPG，回合制战斗+职业转换系统", released: true },
     { name: "Doom: The Dark Ages", publisher: "微软", studio: "id Software", releaseDate: "2026/5/15", platforms: "PC+PS5+Xbox", heat: "中高", heatNote: "Doom系列新作，前传时间线", gameplay: "第一人称射击，中世纪奇幻设定+超高速战斗节奏" },
 ];
 
