@@ -3607,11 +3607,37 @@ body.presentation-mode .presentation-indicator {
 
 /* ============ STOREWATCH TAB ============ */
 
+/* --- 数据底座说明 --- */
+.sw-header-area {
+    margin-bottom: 20px;
+}
+
+.sw-data-source-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    margin-top: 12px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-tertiary);
+}
+
+.sw-data-source-note svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--text-tertiary);
+}
+
+/* --- 平台切换按钮 --- */
 .storewatch-platform-switch {
     display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
-    padding: 4px;
+    gap: 8px;
+    margin-bottom: 24px;
+    padding: 5px;
     background: var(--bg-tertiary);
     border-radius: var(--radius-lg);
     width: fit-content;
@@ -3629,7 +3655,7 @@ body.presentation-mode .presentation-indicator {
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
 }
 
 .sw-platform-btn:hover {
@@ -3637,17 +3663,37 @@ body.presentation-mode .presentation-indicator {
     background: var(--bg-secondary);
 }
 
-.sw-platform-btn.active {
-    background: var(--accent);
+/* 汇总按钮 */
+.sw-btn-overview.active {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
     color: #fff;
-    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 3px 12px rgba(99, 102, 241, 0.35);
 }
 
+/* PlayStation 品牌色 */
+.sw-btn-ps.active {
+    background: linear-gradient(135deg, #003087, #0070d1);
+    color: #fff;
+    box-shadow: 0 3px 12px rgba(0, 48, 135, 0.4);
+}
+
+/* Xbox 品牌色 */
+.sw-btn-xbox.active {
+    background: linear-gradient(135deg, #107c10, #2d9d2d);
+    color: #fff;
+    box-shadow: 0 3px 12px rgba(16, 124, 16, 0.4);
+}
+
+/* --- KPI 卡片 --- */
 .sw-kpi-row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 16px;
     margin-bottom: 24px;
+}
+
+.sw-kpi-4col {
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .sw-kpi-card {
@@ -3669,6 +3715,20 @@ body.presentation-mode .presentation-indicator {
     background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(99, 102, 241, 0.02));
 }
 
+.sw-kpi-card.sw-kpi-ps {
+    border-color: #003087;
+    background: linear-gradient(135deg, rgba(0, 48, 135, 0.12), rgba(0, 112, 209, 0.04));
+}
+
+.sw-kpi-card.sw-kpi-ps .sw-kpi-value { color: #4da6ff; }
+
+.sw-kpi-card.sw-kpi-xbox {
+    border-color: #107c10;
+    background: linear-gradient(135deg, rgba(16, 124, 16, 0.12), rgba(45, 157, 45, 0.04));
+}
+
+.sw-kpi-card.sw-kpi-xbox .sw-kpi-value { color: #4cca4c; }
+
 .sw-kpi-value {
     font-size: 24px;
     font-weight: 700;
@@ -3687,6 +3747,7 @@ body.presentation-mode .presentation-indicator {
     letter-spacing: 0.5px;
 }
 
+/* --- 资源位排序图例 --- */
 .sw-slot-legend {
     background: var(--bg-secondary);
     border: 1px solid var(--border-primary);
@@ -3694,6 +3755,9 @@ body.presentation-mode .presentation-indicator {
     padding: 20px;
     margin-bottom: 24px;
 }
+
+.sw-legend-ps { border-left: 4px solid #003087; }
+.sw-legend-xbox { border-left: 4px solid #107c10; }
 
 .sw-slot-legend h4 {
     margin: 0 0 12px;
@@ -3718,10 +3782,15 @@ body.presentation-mode .presentation-indicator {
     border-left: 3px solid transparent;
 }
 
-.sw-slot-tier.tier-1 { border-left-color: #f59e0b; background: rgba(245, 158, 11, 0.06); }
-.sw-slot-tier.tier-2 { border-left-color: var(--accent); background: rgba(99, 102, 241, 0.06); }
-.sw-slot-tier.tier-3 { border-left-color: #22d3ee; background: rgba(34, 211, 238, 0.06); }
-.sw-slot-tier.tier-4 { border-left-color: #a78bfa; background: rgba(167, 139, 250, 0.06); }
+/* PlayStation 资源位 tier 颜色 */
+.sw-slot-tier.ps-tier.tier-1 { border-left-color: #003087; background: rgba(0, 48, 135, 0.1); }
+.sw-slot-tier.ps-tier.tier-2 { border-left-color: #0070d1; background: rgba(0, 112, 209, 0.08); }
+.sw-slot-tier.ps-tier.tier-3 { border-left-color: #00bfff; background: rgba(0, 191, 255, 0.06); }
+
+/* Xbox 资源位 tier 颜色 */
+.sw-slot-tier.xbox-tier.tier-1 { border-left-color: #107c10; background: rgba(16, 124, 16, 0.1); }
+.sw-slot-tier.xbox-tier.tier-2 { border-left-color: #2d9d2d; background: rgba(45, 157, 45, 0.08); }
+.sw-slot-tier.xbox-tier.tier-3 { border-left-color: #50bb50; background: rgba(80, 187, 80, 0.06); }
 
 .sw-tier-rank {
     font-weight: 700;
@@ -3732,6 +3801,21 @@ body.presentation-mode .presentation-indicator {
 
 .sw-tier-label { font-weight: 600; color: var(--text-primary); }
 .sw-tier-name { color: var(--text-secondary); font-size: 12px; }
+
+.sw-tier-sub {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    font-weight: 400;
+    padding: 1px 8px;
+    background: rgba(255,255,255,0.04);
+    border-radius: var(--radius-sm);
+}
+
+.sw-tier-sub-header {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    font-weight: 400;
+}
 
 .sw-section {
     margin-bottom: 28px;
@@ -3746,7 +3830,7 @@ body.presentation-mode .presentation-indicator {
     border-bottom: 1px solid var(--border-primary);
 }
 
-/* 柱状图 */
+/* --- 柱状图 --- */
 .sw-bar-chart {
     display: flex;
     flex-direction: column;
@@ -3793,7 +3877,128 @@ body.presentation-mode .presentation-indicator {
     white-space: nowrap;
 }
 
-/* 7天网格 */
+.sw-vendor-chart-area {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+}
+
+/* --- 汇总区域 overview --- */
+.sw-overview-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.sw-overview-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sw-overview-table th {
+    padding: 12px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: left;
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-primary);
+}
+
+.sw-overview-table td {
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: middle;
+}
+
+.sw-overview-table tr:hover td {
+    background: var(--bg-tertiary);
+}
+
+.sw-rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-tertiary);
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.sw-rank-badge.top3 {
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    color: #fff;
+}
+
+.sw-game-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.sw-count-highlight {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--accent);
+}
+
+.sw-platform-tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+}
+
+.sw-platform-tag.ps {
+    background: rgba(0, 48, 135, 0.2);
+    color: #4da6ff;
+}
+
+.sw-platform-tag.xbox {
+    background: rgba(16, 124, 16, 0.2);
+    color: #4cca4c;
+}
+
+.sw-slot-list {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.sw-mini-slot {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    background: rgba(99, 102, 241, 0.08);
+    color: var(--text-tertiary);
+    white-space: nowrap;
+}
+
+.sw-mini-bar {
+    width: 80px;
+    height: 6px;
+    background: var(--bg-tertiary);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.sw-mini-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+}
+
+/* --- 7天网格（分列表格版） --- */
 .sw-7day-grid {
     display: flex;
     flex-direction: column;
@@ -3807,13 +4012,23 @@ body.presentation-mode .presentation-indicator {
     overflow: hidden;
 }
 
+.sw-day-ps { border-left: 3px solid #003087; }
+.sw-day-xbox { border-left: 3px solid #107c10; }
+
 .sw-day-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 12px 20px;
-    background: var(--bg-tertiary);
     border-bottom: 1px solid var(--border-primary);
+}
+
+.sw-header-ps {
+    background: linear-gradient(90deg, rgba(0, 48, 135, 0.15), var(--bg-tertiary));
+}
+
+.sw-header-xbox {
+    background: linear-gradient(90deg, rgba(16, 124, 16, 0.15), var(--bg-tertiary));
 }
 
 .sw-day-date {
@@ -3834,66 +4049,140 @@ body.presentation-mode .presentation-indicator {
     padding: 16px 20px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 18px;
 }
 
+/* slot block with platform-specific tier colors */
 .sw-slot-block {
     border-left: 3px solid var(--border-primary);
-    padding-left: 14px;
+    padding-left: 0;
 }
 
-.sw-slot-block.tier-1 { border-left-color: #f59e0b; }
-.sw-slot-block.tier-2 { border-left-color: var(--accent); }
-.sw-slot-block.tier-3 { border-left-color: #22d3ee; }
-.sw-slot-block.tier-4 { border-left-color: #a78bfa; }
+.sw-slot-block.ps-tier-1 { border-left-color: #003087; }
+.sw-slot-block.ps-tier-2 { border-left-color: #0070d1; }
+.sw-slot-block.ps-tier-3 { border-left-color: #00bfff; }
 
-.sw-slot-header {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 8px;
-}
+.sw-slot-block.xbox-tier-1 { border-left-color: #107c10; }
+.sw-slot-block.xbox-tier-2 { border-left-color: #2d9d2d; }
+.sw-slot-block.xbox-tier-3 { border-left-color: #50bb50; }
 
-.sw-slot-header small {
-    font-weight: 400;
-    color: var(--text-tertiary);
-    margin-left: 6px;
-    font-size: 11px;
-}
-
-.sw-slot-positions {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.sw-position {
+.sw-slot-header-bar {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 6px 10px;
-    border-radius: var(--radius-sm);
-    background: var(--bg-primary);
+    padding: 8px 14px;
+    margin-bottom: 0;
+    flex-wrap: wrap;
+}
+
+.sw-slot-header-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.sw-slot-header-name {
+    font-size: 12px;
+    color: var(--text-tertiary);
+}
+
+.sw-slot-header-sub {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+/* 7天分列表格 */
+.sw-7day-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-left: 14px;
     font-size: 12px;
 }
 
-.sw-position.non-game {
-    opacity: 0.55;
-    background: repeating-linear-gradient(
-        -45deg,
-        var(--bg-primary),
-        var(--bg-primary) 4px,
-        var(--bg-tertiary) 4px,
-        var(--bg-tertiary) 8px
-    );
+.sw-7day-table thead th {
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-align: left;
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-primary);
+}
+
+.sw-7day-table thead th.col-rank {
+    width: 50px;
+    text-align: center;
+}
+
+.sw-7day-table thead th.col-region {
+    width: 30%;
+}
+
+.sw-7day-table tbody td {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    vertical-align: top;
+}
+
+.sw-7day-table tbody td.col-rank {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.sw-7day-table tbody tr:hover td {
+    background: rgba(255,255,255,0.02);
+}
+
+.sw-7day-table tbody tr.non-game-row td {
+    opacity: 0.5;
+    font-style: italic;
+}
+
+.sw-cell-game {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 240px;
+}
+
+.sw-cell-vendor {
+    margin-top: 2px;
+    min-height: 16px;
+}
+
+.sw-vendor-chip-sm {
+    display: inline-block;
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: var(--radius-full);
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--accent);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.sw-source-note {
+    display: inline-block;
+    font-size: 9px;
+    padding: 1px 5px;
+    border-radius: var(--radius-sm);
+    background: rgba(255,255,255,0.05);
+    color: var(--text-tertiary);
+    font-weight: 400;
+    margin-left: 4px;
 }
 
 .sw-pos-rank {
-    min-width: 22px;
-    height: 22px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    min-width: 22px;
+    height: 22px;
     background: var(--bg-tertiary);
     border-radius: var(--radius-sm);
     font-weight: 700;
@@ -3901,33 +4190,7 @@ body.presentation-mode .presentation-indicator {
     color: var(--text-secondary);
 }
 
-.sw-pos-regions {
-    flex: 1;
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.sw-region {
-    font-size: 12px;
-    color: var(--text-secondary);
-    white-space: nowrap;
-    max-width: 260px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.sw-vendor-tag {
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: var(--radius-full);
-    background: rgba(99, 102, 241, 0.12);
-    color: var(--accent);
-    font-weight: 600;
-    white-space: nowrap;
-}
-
-/* 最新1天详细 */
+/* --- 最新1天详细 --- */
 .sw-latest-grid {
     display: flex;
     flex-direction: column;
@@ -3941,17 +4204,19 @@ body.presentation-mode .presentation-indicator {
     overflow: hidden;
 }
 
-.sw-latest-slot.tier-1 { border-top: 3px solid #f59e0b; }
-.sw-latest-slot.tier-2 { border-top: 3px solid var(--accent); }
-.sw-latest-slot.tier-3 { border-top: 3px solid #22d3ee; }
-.sw-latest-slot.tier-4 { border-top: 3px solid #a78bfa; }
+.sw-latest-slot.ps-tier-1 { border-top: 3px solid #003087; }
+.sw-latest-slot.ps-tier-2 { border-top: 3px solid #0070d1; }
+.sw-latest-slot.ps-tier-3 { border-top: 3px solid #00bfff; }
+
+.sw-latest-slot.xbox-tier-1 { border-top: 3px solid #107c10; }
+.sw-latest-slot.xbox-tier-2 { border-top: 3px solid #2d9d2d; }
+.sw-latest-slot.xbox-tier-3 { border-top: 3px solid #50bb50; }
 
 .sw-latest-slot-header {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 14px 20px;
-    background: var(--bg-tertiary);
     border-bottom: 1px solid var(--border-primary);
 }
 
@@ -3962,10 +4227,13 @@ body.presentation-mode .presentation-indicator {
     border-radius: var(--radius-full);
 }
 
-.sw-tier-badge.tier-1 { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
-.sw-tier-badge.tier-2 { background: rgba(99, 102, 241, 0.15); color: var(--accent); }
-.sw-tier-badge.tier-3 { background: rgba(34, 211, 238, 0.15); color: #22d3ee; }
-.sw-tier-badge.tier-4 { background: rgba(167, 139, 250, 0.15); color: #a78bfa; }
+.sw-tier-badge.ps-tier-1 { background: rgba(0, 48, 135, 0.2); color: #4da6ff; }
+.sw-tier-badge.ps-tier-2 { background: rgba(0, 112, 209, 0.2); color: #66b8ff; }
+.sw-tier-badge.ps-tier-3 { background: rgba(0, 191, 255, 0.2); color: #00bfff; }
+
+.sw-tier-badge.xbox-tier-1 { background: rgba(16, 124, 16, 0.2); color: #4cca4c; }
+.sw-tier-badge.xbox-tier-2 { background: rgba(45, 157, 45, 0.2); color: #5dd55d; }
+.sw-tier-badge.xbox-tier-3 { background: rgba(80, 187, 80, 0.2); color: #70e070; }
 
 .sw-slot-name {
     font-size: 14px;
@@ -3994,7 +4262,8 @@ body.presentation-mode .presentation-indicator {
     padding: 10px 16px;
     font-size: 13px;
     color: var(--text-secondary);
-    border-bottom: 1px solid var(--border-secondary, rgba(255,255,255,0.04));
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
 }
 
 .sw-latest-table tr:hover td {
@@ -4046,7 +4315,7 @@ body.presentation-mode .presentation-indicator {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     flex-wrap: wrap;
 }
 
@@ -4055,22 +4324,26 @@ body.presentation-mode .presentation-indicator {
     color: var(--text-tertiary);
 }
 
-.sw-vendor-chart-area {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-primary);
-    border-radius: var(--radius-lg);
-    padding: 20px;
+/* ============ STOREWATCH RESPONSIVE ============ */
+@media (max-width: 1024px) {
+    .sw-kpi-4col { grid-template-columns: repeat(2, 1fr); }
+    .sw-7day-table .sw-cell-game { max-width: 160px; }
 }
 
-/* ============ STOREWATCH RESPONSIVE ============ */
 @media (max-width: 768px) {
     .sw-kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .sw-kpi-4col { grid-template-columns: repeat(2, 1fr); }
     .sw-slot-tiers { flex-direction: column; }
-    .sw-pos-regions { flex-direction: column; gap: 2px; }
     .sw-latest-table { font-size: 11px; }
     .sw-latest-table th, .sw-latest-table td { padding: 6px 8px; }
-    .storewatch-platform-switch { width: 100%; }
-    .sw-platform-btn { flex: 1; justify-content: center; }
+    .storewatch-platform-switch { width: 100%; flex-wrap: wrap; }
+    .sw-platform-btn { flex: 1; justify-content: center; padding: 8px 12px; font-size: 12px; }
+    .sw-7day-table { font-size: 11px; }
+    .sw-7day-table thead th, .sw-7day-table tbody td { padding: 4px 6px; }
+    .sw-cell-game { max-width: 120px; font-size: 11px; }
+    .sw-overview-table { font-size: 11px; }
+    .sw-overview-table th, .sw-overview-table td { padding: 8px 10px; }
+    .sw-data-source-note { font-size: 11px; }
 }
 
 /* ============ FADE IN ANIMATION ============ */
