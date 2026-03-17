@@ -4177,7 +4177,7 @@ function renderOverviewSection(statsPS5, statsXbox) {
             </div>
             <div class="sw2-kpi-item">
                 <div class="sw2-kpi-num">${weeklyStats.totalPositions}</div>
-                <div class="sw2-kpi-desc">近7天(${dateRangeLabel})<br>总资源位</div>
+                <div class="sw2-kpi-desc">近7天<br>总资源位</div>
             </div>
             <div class="sw2-kpi-item sw2-kpi-highlight">
                 <div class="sw2-kpi-num">${dateRangeLabel}</div>
@@ -4188,7 +4188,7 @@ function renderOverviewSection(statsPS5, statsXbox) {
         <!-- Top 10 曝光游戏 -->
         <div class="sw2-panel">
             <div class="sw2-panel-header">
-                <h3>🔥 近7天(${dateRangeLabel}) Top 10 曝光游戏<span class="sw2-panel-sub">${dateRangeFull} · 双平台合计 · 三区域累计</span></h3>
+                <h3>🔥 近7天 Top 10 曝光游戏<span class="sw2-panel-sub">${dateRangeFull} · 双平台合计 · 三区域累计</span></h3>
             </div>
             <table class="sw2-exec-table">
                 <thead>
@@ -4259,54 +4259,20 @@ function renderPlatformSection(platform, stats) {
     const slotPriority = storewatchSlotPriority[platform] || [];
     const cls = platform === 'PS5' ? 'ps' : 'xbox';
 
-    // ====== 近7天：基于日期范围筛选（与 getCombinedWeeklyStats 逻辑统一） ======
-    const latestDate = data.length > 0 ? data[0].date : null;
-    let dateFrom7 = null;
-    if (latestDate) {
-        const d = new Date(latestDate + 'T00:00:00');
-        d.setDate(d.getDate() - 6); // 包含当天共7天
-        dateFrom7 = d.toISOString().slice(0, 10);
-    }
-    const recent7 = dateFrom7
-        ? data.filter(day => day.date >= dateFrom7 && day.date <= latestDate)
-        : data.slice(0, 7); // fallback
-    const fmtShort = (d) => d ? `${parseInt(d.slice(5,7))}/${parseInt(d.slice(8,10))}` : '-';
-    const r7From = recent7.length > 0 ? recent7[recent7.length - 1].date : null;
-    const r7To   = recent7.length > 0 ? recent7[0].date : null;
-    const r7Label = r7From && r7To ? `${fmtShort(r7From)}~${fmtShort(r7To)}` : '';
-
-    // ====== 近7天 KPI 统计 ======
-    let r7TotalSlots = 0, r7NonGame = 0;
-    const r7VendorCount = {};
-    recent7.forEach(day => {
-        Object.values(day.slots).forEach(slot => {
-            slot.positions.forEach(pos => {
-                r7TotalSlots++;
-                if (pos.isNonGame) { r7NonGame++; return; }
-                const vendor = pos.vendor || storewatchVendorMap[pos.us] || storewatchVendorMap[pos.jp] || storewatchVendorMap[pos.hk];
-                if (vendor) r7VendorCount[vendor] = (r7VendorCount[vendor] || 0) + 1;
-            });
-        });
-    });
-    const r7GameSlots = r7TotalSlots - r7NonGame;
-    const r7TopVendors = Object.entries(r7VendorCount)
-        .sort((a, b) => b[1] - a[1])
-        .map(([name, count]) => ({ name, count, pct: r7GameSlots > 0 ? ((count / r7GameSlots) * 100).toFixed(1) : '0' }));
-
     return `
-        <!-- 平台 KPI（近7天数据） -->
+        <!-- 平台 KPI -->
         <div class="sw2-kpi-strip sw2-kpi-${cls}">
             <div class="sw2-kpi-item">
-                <div class="sw2-kpi-num">${recent7.length}<span style="font-size:0.5em;opacity:0.7">/${stats.totalDays}</span></div>
-                <div class="sw2-kpi-desc">近7天(${r7Label})<br>有数据天数</div>
+                <div class="sw2-kpi-num">${stats.totalDays}</div>
+                <div class="sw2-kpi-desc">监控<br>天数</div>
             </div>
             <div class="sw2-kpi-item">
-                <div class="sw2-kpi-num">${r7TopVendors[0]?.name || '-'}</div>
-                <div class="sw2-kpi-desc">近7天(${r7Label})<br>占位最多厂商</div>
+                <div class="sw2-kpi-num">${stats.topVendors[0]?.name || '-'}</div>
+                <div class="sw2-kpi-desc">占位最多<br>厂商</div>
             </div>
             <div class="sw2-kpi-item">
-                <div class="sw2-kpi-num">${r7TopVendors[0]?.pct || 0}%</div>
-                <div class="sw2-kpi-desc">近7天(${r7Label})<br>头部占比</div>
+                <div class="sw2-kpi-num">${stats.topVendors[0]?.pct || 0}%</div>
+                <div class="sw2-kpi-desc">头部<br>占比</div>
             </div>
             <div class="sw2-kpi-item">
                 <div class="sw2-kpi-num">${stats.latestDate}</div>
@@ -4342,9 +4308,9 @@ function renderPlatformSection(platform, stats) {
         <!-- 近7天资源位详情 -->
         <div class="sw2-panel">
             <div class="sw2-panel-header">
-                <h3>📋 近7天资源位详情${r7Label ? `<span class="sw2-panel-sub">${r7From} ~ ${r7To}（${recent7.length}天数据）</span>` : ''}</h3>
+                <h3>📋 近7天资源位详情</h3>
             </div>
-            ${renderSevenDayDetail(recent7, slotPriority, platform)}
+            ${renderSevenDayDetail(data.slice(0, 7), slotPriority, platform)}
         </div>
 
         <!-- 最新1天 -->
@@ -4386,7 +4352,7 @@ function renderVendorBarChart(topVendors, platform) {
 // ============ 7天详情渲染 ============
 
 function renderSevenDayDetail(days, slotPriority, platform) {
-    if (!days || days.length === 0) return '<div class="sw2-empty">暂无近期数据</div>';
+    if (!days || days.length === 0) return '<div class="sw2-empty">暂无近7天数据</div>';
     const cls = platform === 'PS5' ? 'ps' : 'xbox';
 
     return `<div class="sw2-days-stack">
