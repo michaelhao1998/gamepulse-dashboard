@@ -3962,9 +3962,37 @@ function getCombinedWeeklyStats(days = 7) {
     const vendorSlotCoverage = {};
     let totalPositions = 0;
 
+    // 找到所有平台的最新日期，作为基准
+    let latestDateStr = null;
     ['PS5', 'Xbox'].forEach(platform => {
-        const data = (storewatchData[platform] || []).slice(0, days);
-        data.forEach(day => {
+        const data = storewatchData[platform] || [];
+        if (data.length > 0 && data[0].date) {
+            if (!latestDateStr || data[0].date > latestDateStr) {
+                latestDateStr = data[0].date;
+            }
+        }
+    });
+
+    // 计算日期范围：最新日期往回推 days 天
+    let dateFrom = null;
+    let dateTo = latestDateStr;
+    if (latestDateStr) {
+        const latestDate = new Date(latestDateStr + 'T00:00:00');
+        const fromDate = new Date(latestDate);
+        fromDate.setDate(fromDate.getDate() - (days - 1)); // 包含最新日期当天，所以 -6 天
+        dateFrom = fromDate.toISOString().slice(0, 10);
+    }
+
+    let actualDates = new Set(); // 实际包含的日期
+
+    ['PS5', 'Xbox'].forEach(platform => {
+        const data = storewatchData[platform] || [];
+        // 按日期范围筛选，而非 slice
+        const filtered = dateFrom
+            ? data.filter(day => day.date >= dateFrom && day.date <= dateTo)
+            : data.slice(0, days); // fallback
+        filtered.forEach(day => {
+            actualDates.add(day.date);
             Object.entries(day.slots).forEach(([slotName, slotData]) => {
                 slotData.positions.forEach(pos => {
                     if (pos.isNonGame) return;
@@ -4013,7 +4041,20 @@ function getCombinedWeeklyStats(days = 7) {
             slots: [...data.slots],
         }));
 
-    return { topGames, vendorCoverage, totalPositions };
+    // 返回日期范围信息，供渲染时使用
+    const sortedDates = [...actualDates].sort();
+    return {
+        topGames,
+        vendorCoverage,
+        totalPositions,
+        dateRange: {
+            from: dateFrom,
+            to: dateTo,
+            actualFrom: sortedDates[0] || dateFrom,
+            actualTo: sortedDates[sortedDates.length - 1] || dateTo,
+            actualDayCount: actualDates.size,
+        },
+    };
 }
 
 function getStorewatchStats(platform) {
@@ -4117,6 +4158,12 @@ function renderOverviewSection(statsPS5, statsXbox) {
     const ps5Days = (storewatchData.PS5 || []).length;
     const xboxDays = (storewatchData.Xbox || []).length;
 
+    // 格式化日期范围显示（MM/DD）
+    const dr = weeklyStats.dateRange;
+    const fmtShort = (d) => d ? `${parseInt(d.slice(5,7))}/${parseInt(d.slice(8,10))}` : '-';
+    const dateRangeLabel = `${fmtShort(dr.actualFrom)}~${fmtShort(dr.actualTo)}`;
+    const dateRangeFull = `${dr.actualFrom} ~ ${dr.actualTo}（${dr.actualDayCount}天数据）`;
+
     return `
         <!-- 汇总 KPI 横条 -->
         <div class="sw2-kpi-strip">
@@ -4130,18 +4177,18 @@ function renderOverviewSection(statsPS5, statsXbox) {
             </div>
             <div class="sw2-kpi-item">
                 <div class="sw2-kpi-num">${weeklyStats.totalPositions}</div>
-                <div class="sw2-kpi-desc">近一周<br>总资源位</div>
+                <div class="sw2-kpi-desc">近7天(${dateRangeLabel})<br>总资源位</div>
             </div>
             <div class="sw2-kpi-item sw2-kpi-highlight">
-                <div class="sw2-kpi-num">${statsPS5.latestDate}</div>
-                <div class="sw2-kpi-desc">最新数据<br>日期</div>
+                <div class="sw2-kpi-num">${dateRangeLabel}</div>
+                <div class="sw2-kpi-desc">统计区间<br>${dr.actualDayCount}天数据</div>
             </div>
         </div>
 
         <!-- Top 10 曝光游戏 -->
         <div class="sw2-panel">
             <div class="sw2-panel-header">
-                <h3>🔥 近一周 Top 10 曝光游戏<span class="sw2-panel-sub">双平台合计 · 三区域累计</span></h3>
+                <h3>🔥 近7天(${dateRangeLabel}) Top 10 曝光游戏<span class="sw2-panel-sub">${dateRangeFull} · 双平台合计 · 三区域累计</span></h3>
             </div>
             <table class="sw2-exec-table">
                 <thead>
@@ -4177,7 +4224,7 @@ function renderOverviewSection(statsPS5, statsXbox) {
         <!-- 发行商资源位覆盖 -->
         <div class="sw2-panel">
             <div class="sw2-panel-header">
-                <h3>🏢 发行商资源位覆盖分析<span class="sw2-panel-sub">近一周 · 跨平台统计</span></h3>
+                <h3>🏢 发行商资源位覆盖分析<span class="sw2-panel-sub">${dateRangeFull} · 跨平台统计</span></h3>
             </div>
             <table class="sw2-exec-table">
                 <thead>
@@ -4212,20 +4259,54 @@ function renderPlatformSection(platform, stats) {
     const slotPriority = storewatchSlotPriority[platform] || [];
     const cls = platform === 'PS5' ? 'ps' : 'xbox';
 
+    // ====== 近7天：基于日期范围筛选（与 getCombinedWeeklyStats 逻辑统一） ======
+    const latestDate = data.length > 0 ? data[0].date : null;
+    let dateFrom7 = null;
+    if (latestDate) {
+        const d = new Date(latestDate + 'T00:00:00');
+        d.setDate(d.getDate() - 6); // 包含当天共7天
+        dateFrom7 = d.toISOString().slice(0, 10);
+    }
+    const recent7 = dateFrom7
+        ? data.filter(day => day.date >= dateFrom7 && day.date <= latestDate)
+        : data.slice(0, 7); // fallback
+    const fmtShort = (d) => d ? `${parseInt(d.slice(5,7))}/${parseInt(d.slice(8,10))}` : '-';
+    const r7From = recent7.length > 0 ? recent7[recent7.length - 1].date : null;
+    const r7To   = recent7.length > 0 ? recent7[0].date : null;
+    const r7Label = r7From && r7To ? `${fmtShort(r7From)}~${fmtShort(r7To)}` : '';
+
+    // ====== 近7天 KPI 统计 ======
+    let r7TotalSlots = 0, r7NonGame = 0;
+    const r7VendorCount = {};
+    recent7.forEach(day => {
+        Object.values(day.slots).forEach(slot => {
+            slot.positions.forEach(pos => {
+                r7TotalSlots++;
+                if (pos.isNonGame) { r7NonGame++; return; }
+                const vendor = pos.vendor || storewatchVendorMap[pos.us] || storewatchVendorMap[pos.jp] || storewatchVendorMap[pos.hk];
+                if (vendor) r7VendorCount[vendor] = (r7VendorCount[vendor] || 0) + 1;
+            });
+        });
+    });
+    const r7GameSlots = r7TotalSlots - r7NonGame;
+    const r7TopVendors = Object.entries(r7VendorCount)
+        .sort((a, b) => b[1] - a[1])
+        .map(([name, count]) => ({ name, count, pct: r7GameSlots > 0 ? ((count / r7GameSlots) * 100).toFixed(1) : '0' }));
+
     return `
-        <!-- 平台 KPI -->
+        <!-- 平台 KPI（近7天数据） -->
         <div class="sw2-kpi-strip sw2-kpi-${cls}">
             <div class="sw2-kpi-item">
-                <div class="sw2-kpi-num">${stats.totalDays}</div>
-                <div class="sw2-kpi-desc">监控<br>天数</div>
+                <div class="sw2-kpi-num">${recent7.length}<span style="font-size:0.5em;opacity:0.7">/${stats.totalDays}</span></div>
+                <div class="sw2-kpi-desc">近7天(${r7Label})<br>有数据天数</div>
             </div>
             <div class="sw2-kpi-item">
-                <div class="sw2-kpi-num">${stats.topVendors[0]?.name || '-'}</div>
-                <div class="sw2-kpi-desc">占位最多<br>厂商</div>
+                <div class="sw2-kpi-num">${r7TopVendors[0]?.name || '-'}</div>
+                <div class="sw2-kpi-desc">近7天(${r7Label})<br>占位最多厂商</div>
             </div>
             <div class="sw2-kpi-item">
-                <div class="sw2-kpi-num">${stats.topVendors[0]?.pct || 0}%</div>
-                <div class="sw2-kpi-desc">头部<br>占比</div>
+                <div class="sw2-kpi-num">${r7TopVendors[0]?.pct || 0}%</div>
+                <div class="sw2-kpi-desc">近7天(${r7Label})<br>头部占比</div>
             </div>
             <div class="sw2-kpi-item">
                 <div class="sw2-kpi-num">${stats.latestDate}</div>
@@ -4261,9 +4342,9 @@ function renderPlatformSection(platform, stats) {
         <!-- 近7天资源位详情 -->
         <div class="sw2-panel">
             <div class="sw2-panel-header">
-                <h3>📋 近7天资源位详情</h3>
+                <h3>📋 近7天资源位详情${r7Label ? `<span class="sw2-panel-sub">${r7From} ~ ${r7To}（${recent7.length}天数据）</span>` : ''}</h3>
             </div>
-            ${renderSevenDayDetail(data.slice(0, 7), slotPriority, platform)}
+            ${renderSevenDayDetail(recent7, slotPriority, platform)}
         </div>
 
         <!-- 最新1天 -->
@@ -4305,7 +4386,7 @@ function renderVendorBarChart(topVendors, platform) {
 // ============ 7天详情渲染 ============
 
 function renderSevenDayDetail(days, slotPriority, platform) {
-    if (!days || days.length === 0) return '<div class="sw2-empty">暂无近7天数据</div>';
+    if (!days || days.length === 0) return '<div class="sw2-empty">暂无近期数据</div>';
     const cls = platform === 'PS5' ? 'ps' : 'xbox';
 
     return `<div class="sw2-days-stack">
