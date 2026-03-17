@@ -85,6 +85,30 @@ body {
 [data-theme="light"] .m-topbar { background: rgba(255,255,255,0.92); }
 
 .m-topbar-left { display: flex; align-items: center; gap: 8px; }
+
+/* 移动端 → PC版切换按钮（左上角） */
+.m-gp-switch-btn {
+    display: inline-flex; align-items: center; gap: 3px;
+    padding: 4px 10px 4px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--accent-primary);
+    background: rgba(99,102,241,0.1);
+    color: var(--accent-primary);
+    font-size: 0.72rem; font-weight: 700;
+    text-decoration: none; cursor: pointer;
+    white-space: nowrap; flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+.m-gp-switch-btn:active {
+    background: rgba(99,102,241,0.25);
+    transform: scale(0.95);
+}
+.m-gp-switch-btn svg { opacity: 0.85; }
+[data-theme="light"] .m-gp-switch-btn {
+    background: rgba(99,102,241,0.06);
+    border-color: #818cf8; color: #4f46e5;
+}
+
 .m-logo { display: flex; align-items: center; gap: 8px; }
 .m-logo-text { font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .m-topbar-right { display: flex; align-items: center; gap: 8px; }
@@ -92,6 +116,7 @@ body {
     width: 36px; height: 36px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);
     background: var(--bg-card); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer;
 }
+/* 保留旧类供兼容但不再使用 */
 .m-switch-btn {
     display: flex; align-items: center; gap: 4px; padding: 6px 12px; border-radius: var(--radius-sm);
     border: 1px solid var(--accent-primary); background: rgba(99,102,241,0.1); color: var(--accent-primary);
