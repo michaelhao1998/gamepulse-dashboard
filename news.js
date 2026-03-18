@@ -1,8 +1,9 @@
 // ============================================
 // 行业热点新闻数据模块
-// [AUTO-GENERATED] 由 Claw Agent 自动更新，请勿手动编辑
-// 最后更新: 2026-03-16T20:00:00Z
+// [AUTO-GENERATED] 由 News Agent v3.0 自动更新，请勿手动编辑
+// 最后更新: 2026-03-18T14:00:00Z
 // 更新者: news-agent
+// 数据来源: 腾讯文档 LMLdoimBsILX (Tier 0) + web_search (Tier 1-3)
 // ============================================
 
 const newsSources = [
@@ -172,535 +173,414 @@ const newsSources = [
 const newsData = [
     {
         "id": 1,
-        "title": "Nintendo Switch 2 正式公布：8英寸屏幕、磁吸Joy-Con、向下兼容",
-        "summary": "任天堂正式揭晓 Switch 2 硬件详情：采用更大的8英寸LCD屏幕、NVIDIA T239定制芯片、磁吸式Joy-Con手柄、支持Switch 1游戏向下兼容。预计2025年6月发售，首发阵容包含《马里奥卡丁车世界》。",
-        "source": "NintendoNews",
-        "sourceUrl": "https://mynintendonews.com/",
-        "category": "platform",
-        "importance": "high",
-        "date": "2026-03-05",
-        "tags": [
-            "Nintendo",
-            "Switch 2",
-            "硬件"
+        "title": "Xbox Game Pass 3月下半月新增12款游戏：含《如龙》《极乐迪斯科》等",
+        "summary": "微软公布3月下旬第二波Game Pass新增游戏共12款，亮点包括《Like a Dragon: Infinite Wealth》《Disco Elysium》《Resident Evil 7》《Final Fantasy 4》等重磅作品，跨越PC、主机及云游戏平台。阵容覆盖RPG、冒险、恐怖等多品类。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/news/xbox-reveals-the-rest-of-marchs-game-pass-titles-including-disco-elysium-resi-7-absolum-and-final-fantasy-4/",
+        "sourceUrls": [
+            {
+                "name": "VGC",
+                "url": "https://www.videogameschronicle.com/news/xbox-reveals-the-rest-of-marchs-game-pass-titles-including-disco-elysium-resi-7-absolum-and-final-fantasy-4/"
+            },
+            {
+                "name": "EuroGamer",
+                "url": "https://www.eurogamer.net/"
+            }
         ],
-        "sentiment": "positive"
-    },
-    {
-        "id": 2,
-        "title": "Xbox 宣布2026年将有30+款首日入库 Game Pass 的游戏",
-        "summary": "Xbox 在春季发布会上确认2026年将有超过30款游戏首日登陆Game Pass，包括《极限竞速：地平线6》《战争机器：E-Day》等第一方大作，以及多款第三方独立游戏。",
-        "source": "Xbox Wire",
-        "sourceUrl": "https://news.xbox.com/en-us/",
         "category": "platform",
-        "importance": "high",
-        "date": "2026-03-03",
+        "importance": "medium",
+        "date": "2026-03-18",
         "tags": [
             "Xbox",
             "Game Pass",
-            "XGP"
+            "如龙",
+            "极乐迪斯科"
         ],
-        "sentiment": "positive"
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 2,
+        "title": "Take-Two CEO明确反对AI主导游戏创作：\"想靠AI做出GTA6级爆款简直可笑\"",
+        "summary": "Take-Two/Rockstar母公司CEO Strauss Zelnick在多场采访中强调，生成式AI（包括Google Project Genie等）无法替代人类创意制作顶级IP，AI无法做到\"按键生成爆款并推向全球市场\"。他同时指出AI可提升办公室效率，但无法取代创意团队。这一表态在GDC 2026 AI讨论热潮中具有标志性意义。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/news/take-two-ceo-says-its-laughable-to-say-ai-like-google-project-genie-can-create-hit-games-at-the-press-of-a-button/",
+        "sourceUrls": [
+            {
+                "name": "VGC",
+                "url": "https://www.videogameschronicle.com/news/take-two-ceo-says-its-laughable-to-say-ai-like-google-project-genie-can-create-hit-games-at-the-press-of-a-button/"
+            },
+            {
+                "name": "EuroGamer",
+                "url": "https://www.eurogamer.net/"
+            },
+            {
+                "name": "3DM",
+                "url": "https://www.3dmgame.com/"
+            }
+        ],
+        "category": "market",
+        "importance": "medium",
+        "date": "2026-03-18",
+        "tags": [
+            "Take-Two",
+            "AI",
+            "GTA6",
+            "GDC"
+        ],
+        "sentiment": "neutral",
+        "tdocMarking": "none"
     },
     {
         "id": 3,
-        "title": "PlayStation Stars 会员体系大幅升级，引入游戏折扣与抢先体验权限",
-        "summary": "索尼宣布对PlayStation Stars忠诚度计划进行重大升级，新增\"Platinum Tier\"等级，提供PS Store折扣、新游抢先体验48小时等独占权益。",
-        "source": "PlayStation Blog",
-        "sourceUrl": "https://blog.playstation.com/",
-        "category": "platform",
-        "importance": "medium",
-        "date": "2026-03-01",
-        "tags": [
-            "PlayStation",
-            "PS Stars",
-            "订阅"
+        "title": "《上古卷轴6》引擎升级至Creation Engine 3，Todd Howard：\"距发售仍很遥远\"",
+        "summary": "Bethesda游戏总监Todd Howard接受采访披露《上古卷轴6》已采用最新Creation Engine 3，开发稳定性大幅提升。他坦言后悔2018年过早公布，再次确认游戏距发售\"非常遥远\"，建议玩家\"假装我们没有宣布过\"。",
+        "source": "EuroGamer",
+        "sourceUrl": "https://www.ithome.com/0/930/053.htm",
+        "sourceUrls": [
+            {
+                "name": "IT之家",
+                "url": "https://www.ithome.com/0/930/053.htm"
+            },
+            {
+                "name": "EuroGamer",
+                "url": "https://www.eurogamer.net/"
+            },
+            {
+                "name": "Gamingbolt",
+                "url": "https://gamingbolt.com/"
+            }
         ],
-        "sentiment": "positive"
+        "category": "game",
+        "importance": "medium",
+        "date": "2026-03-18",
+        "tags": [
+            "上古卷轴6",
+            "Bethesda",
+            "Todd Howard"
+        ],
+        "sentiment": "neutral",
+        "tdocMarking": "none"
     },
     {
         "id": 4,
-        "title": "Steam 2月销售数据：独立游戏收入占比首次突破35%",
-        "summary": "根据SteamDB和Gamalytic统计数据，2026年2月Steam平台独立游戏收入占比达35.2%，创历史新高。",
-        "source": "SteamDB",
-        "sourceUrl": "https://steamdb.info/",
-        "category": "market",
-        "importance": "medium",
-        "date": "2026-03-04",
-        "tags": [
-            "Steam",
-            "独立游戏",
-            "市场数据"
+        "title": "NVIDIA在GTC 2026展示DLSS 5，黄仁勋称\"图形领域GPT时刻\"引发巨大争议",
+        "summary": "NVIDIA CEO黄仁勋在GTC 2026主题演讲中展示DLSS 5，该技术利用AI对游戏画面进行\"光照与材质的照片级真实感重建\"，宣布秋季推出。Digital Foundry盛赞\"见过最震撼的演示\"，但技术演示引发大规模争议——玩家和开发者普遍批评DLSS 5将角色脸部\"网红化/滤镜化\"。黄仁勋反驳批评者\"完全错了\"。多家工作室发梗图嘲讽。",
+        "source": "VGC",
+        "sourceUrl": "https://www.ithome.com/0/929/681.htm",
+        "sourceUrls": [
+            {
+                "name": "IT之家(发布)",
+                "url": "https://www.ithome.com/0/929/681.htm"
+            },
+            {
+                "name": "VGC(批评)",
+                "url": "https://www.videogameschronicle.com/"
+            },
+            {
+                "name": "新浪财经",
+                "url": "https://finance.sina.com.cn/tech/roll/2026-03-18/doc-inhrknav7593836.shtml"
+            }
         ],
-        "sentiment": "positive"
+        "category": "hardware",
+        "importance": "high",
+        "date": "2026-03-17",
+        "tags": [
+            "NVIDIA",
+            "DLSS 5",
+            "GTC",
+            "AI",
+            "争议"
+        ],
+        "sentiment": "neutral",
+        "tdocMarking": "none"
     },
     {
         "id": 5,
-        "title": "Epic Games Store 宣布2026年开放第三方支付，抽成降至12%",
-        "summary": "Epic Games Store 正式宣布在2026年Q2面向开发者开放第三方支付选项，同时确认平台抽成维持在12%不变。",
-        "source": "GamesIndustry",
-        "sourceUrl": "https://www.gamesindustry.biz/",
-        "category": "platform",
-        "importance": "high",
-        "date": "2026-02-28",
-        "tags": [
-            "Epic",
-            "EGS",
-            "分成"
+        "title": "《星空》确认4月7日登陆PS5，同步推出免费更新和DLC；Steam国区永降至209元",
+        "summary": "Bethesda正式官宣《星空》4月7日登陆PS5，支持DualSense并为PS5 Pro提供4K/30帧画质模式和60帧性能模式。同步推出免费大更新\"自由航线\"与售价10美元的\"Terran Armada\" DLC。Todd Howard表示游戏有\"长期计划\"。Steam国区价格同步永降至209元。",
+        "source": "VGC",
+        "sourceUrl": "https://www.ithome.com/0/930/051.htm",
+        "sourceUrls": [
+            {
+                "name": "IT之家",
+                "url": "https://www.ithome.com/0/930/051.htm"
+            },
+            {
+                "name": "VGC",
+                "url": "https://www.videogameschronicle.com/"
+            },
+            {
+                "name": "EuroGamer",
+                "url": "https://www.eurogamer.net/"
+            },
+            {
+                "name": "3DM",
+                "url": "https://www.3dmgame.com/"
+            }
         ],
-        "sentiment": "neutral"
+        "category": "game",
+        "importance": "high",
+        "date": "2026-03-17",
+        "tags": [
+            "星空",
+            "PS5",
+            "Bethesda",
+            "微软"
+        ],
+        "sentiment": "positive",
+        "tdocMarking": "none"
     },
     {
         "id": 6,
-        "title": "《GTA6》正式定档2026年5月26日，Rockstar确认延期一年",
-        "summary": "Rockstar Games正式宣布《GTA6》将于2026年5月26日发售，较原计划延期约一年。官方表示需要额外时间打磨质量以达到玩家期待的水准。发行商Take-Two Interactive表示全力支持这一决定，并预计该财年收入仍将创新高。",
-        "source": "IGN",
-        "sourceUrl": "https://www.rockstargames.com/newswire",
+        "title": "《死亡搁浅2》PC版3月19日发售，小岛秀夫亲自详解PC与PS5新功能",
+        "summary": "小岛秀夫在PlayStation Blog详细介绍PC版新内容：新增\"走向荒野\"难度、真人过场动画、Boss战可重复游玩，解锁帧率、支持超宽屏及DualSense手柄；PS5版同步免费更新。此外PC版发售前已遭BT泄露（113GB未加密文件）。",
+        "source": "PlayStation Blog",
+        "sourceUrl": "https://blog.playstation.com/2026/03/17/death-stranding-2-new-pc-ps5-features-detailed-live-march-19/",
+        "sourceUrls": [
+            {
+                "name": "PlayStation Blog",
+                "url": "https://blog.playstation.com/2026/03/17/death-stranding-2-new-pc-ps5-features-detailed-live-march-19/"
+            },
+            {
+                "name": "VGC",
+                "url": "https://www.videogameschronicle.com/"
+            },
+            {
+                "name": "IT之家",
+                "url": "https://www.ithome.com/"
+            }
+        ],
         "category": "game",
         "importance": "high",
-        "date": "2026-03-06",
+        "date": "2026-03-17",
         "tags": [
-            "GTA6",
-            "R星",
-            "延期",
-            "Take-Two"
+            "死亡搁浅2",
+            "小岛秀夫",
+            "PC",
+            "PlayStation"
         ],
-        "sentiment": "neutral"
+        "sentiment": "positive",
+        "tdocMarking": "none"
     },
     {
         "id": 7,
-        "title": "《黑神话：钟馗》项目正式确认，游戏科学启动全球预热",
-        "summary": "游戏科学工作室通过官方社交媒体正式确认《黑神话》系列第二款作品为《黑神话：钟馗》，以中国民间传说\"钟馗捉鬼\"为主题。",
-        "source": "机核",
-        "sourceUrl": "https://www.gcores.com/news",
-        "category": "game",
-        "importance": "high",
-        "date": "2026-03-02",
-        "tags": [
-            "黑神话",
-            "游戏科学",
-            "国产3A"
+        "title": "沙特主权基金再购5% Capcom股份，合计持股超10%",
+        "summary": "沙特阿拉伯主权财富基金（PIF）旗下EGDC投资机构再度收购约5% Capcom股份，结合2022年PIF已持有的5%，沙特在Capcom的合计持股已超过10%。沙特资本近年持续在全球游戏行业大规模布局，此次进一步强化对《生化危机》《街头霸王》等IP母公司的影响力。",
+        "source": "EuroGamer",
+        "sourceUrl": "https://www.eurogamer.net/saudi-arabia-capcom-resident-evil-street-fighter-shares",
+        "sourceUrls": [
+            {
+                "name": "EuroGamer",
+                "url": "https://www.eurogamer.net/saudi-arabia-capcom-resident-evil-street-fighter-shares"
+            },
+            {
+                "name": "VGC",
+                "url": "https://www.videogameschronicle.com/"
+            }
         ],
-        "sentiment": "positive"
+        "category": "policy",
+        "importance": "high",
+        "date": "2026-03-17",
+        "tags": [
+            "沙特",
+            "Capcom",
+            "投资",
+            "并购"
+        ],
+        "sentiment": "neutral",
+        "tdocMarking": "none"
     },
     {
         "id": 8,
-        "title": "《怪物猎人物语3》开发者访谈：融合回合制与动作的新战斗系统",
-        "summary": "卡普空在接受Fami通采访时详细解析了《怪物猎人物语3：命运双龙》的创新战斗机制。",
-        "source": "Fami通",
-        "sourceUrl": "https://www.famitsu.com/",
-        "category": "game",
-        "importance": "medium",
-        "date": "2026-03-07",
-        "tags": [
-            "怪物猎人",
-            "卡普空",
-            "ARPG"
+        "title": "Switch 2系统更新：掌机模式可以1080p Docked画质运行Switch 1游戏",
+        "summary": "任天堂推送Switch 2系统更新，实现掌机模式下运行部分Switch 1向下兼容游戏时以Docked模式渲染（1080p画质），而非原生掌机720p，显著增强向下兼容游戏的画质表现。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/news/switch-2-finally-lets-you-play-switch-1-games-in-docked-mode-while-playing-on-handheld/",
+        "sourceUrls": [
+            {
+                "name": "VGC",
+                "url": "https://www.videogameschronicle.com/news/switch-2-finally-lets-you-play-switch-1-games-in-docked-mode-while-playing-on-handheld/"
+            },
+            {
+                "name": "IGN中国",
+                "url": "https://www.ign.com/"
+            }
         ],
-        "sentiment": "positive"
+        "category": "platform",
+        "importance": "medium",
+        "date": "2026-03-17",
+        "tags": [
+            "Switch 2",
+            "任天堂",
+            "向下兼容"
+        ],
+        "sentiment": "positive",
+        "tdocMarking": "none"
     },
     {
         "id": 9,
-        "title": "《宝可梦：风/浪》确定Switch 2独占，首批概念图公开",
-        "summary": "宝可梦公司在Nintendo Direct中展示了《宝可梦：风/浪》的首批概念图和实机片段。本作确定为Switch 2独占首发。",
-        "source": "NintendoNews",
-        "sourceUrl": "https://mynintendonews.com/",
-        "category": "game",
-        "importance": "high",
-        "date": "2026-02-25",
+        "title": "PlayStation Portal新增1080p高画质串流模式",
+        "summary": "索尼PS Remote Play串流设备PlayStation Portal本周推送系统更新，新增1080p高码率串流的\"High Quality\"模式，提升远程游玩画质体验。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/news/playstation-portal-is-getting-a-new-1080p-high-quality-mode-this-week/",
+        "category": "platform",
+        "importance": "low",
+        "date": "2026-03-17",
         "tags": [
-            "宝可梦",
-            "Switch 2",
-            "任天堂"
+            "PlayStation",
+            "Portal",
+            "串流"
         ],
-        "sentiment": "positive"
+        "sentiment": "positive",
+        "tdocMarking": "none"
     },
     {
         "id": 10,
-        "title": "PS5 Pro 增强补丁已覆盖500+游戏：4K/120fps成为新标准",
-        "summary": "索尼公布PS5 Pro增强游戏列表已超过500款，4K/60fps成为基准线，部分游戏已支持4K/120fps模式。",
-        "source": "EuroGamer",
-        "sourceUrl": "https://www.eurogamer.net/latest",
-        "category": "hardware",
-        "importance": "medium",
-        "date": "2026-03-05",
+        "title": "《乐高蝙蝠侠：黑暗骑士之遗》反向跳票，提前至5月22日发售",
+        "summary": "原定5月30日发售的《乐高蝙蝠侠：黑暗骑士之遗》官宣提前1周至5月23日发售（豪华版可5月22日提前游玩），登陆PS5、XSX|S、Switch 2及PC平台。",
+        "source": "游戏之家",
+        "sourceUrl": "https://www.ithome.com/0/929/967.htm",
+        "category": "game",
+        "importance": "low",
+        "date": "2026-03-17",
         "tags": [
-            "PS5 Pro",
-            "硬件",
-            "性能"
+            "乐高",
+            "蝙蝠侠",
+            "反向跳票"
         ],
-        "sentiment": "positive"
+        "sentiment": "positive",
+        "tdocMarking": "none"
     },
     {
         "id": 11,
-        "title": "Steam Deck 2 传闻：Valve 正在测试OLED+AMD Z2 Extreme芯片",
-        "summary": "据供应链消息，Valve正在测试搭载AMD Z2 Extreme芯片和OLED屏幕的新一代Steam Deck。",
-        "source": "VGC",
-        "sourceUrl": "https://www.videogameschronicle.com/category/news/",
-        "category": "hardware",
+        "title": "Xbox主机将于年内迎来Copilot AI助手",
+        "summary": "微软宣布Xbox游戏AI助手Copilot将于年内登陆主机平台，旨在通过实时画面分析和个性化推荐提升玩家体验，覆盖新手与资深玩家的不同需求。这是微软将AI深度整合到游戏生态的最新举措。",
+        "source": "机核",
+        "sourceUrl": "https://www.gcores.com/articles/211928",
+        "category": "platform",
         "importance": "medium",
-        "date": "2026-02-27",
+        "date": "2026-03-16",
         "tags": [
-            "Steam Deck",
-            "Valve",
-            "掌机"
+            "Xbox",
+            "Copilot",
+            "AI",
+            "微软"
         ],
-        "sentiment": "neutral"
+        "sentiment": "positive",
+        "tdocMarking": "none"
     },
     {
         "id": 12,
-        "title": "NVIDIA GeForce RTX 5060 正式发布：$299 起步的 DLSS 4 新标杆",
-        "summary": "NVIDIA发布GeForce RTX 5060显卡，售价$299起，搭载完整DLSS 4支持。",
+        "title": "《生化危机：安魂曲》全球销量突破600万，系列历史最快",
+        "summary": "卡普空宣布《生化危机：安魂曲》全球销量突破600万份，成为系列历史上最快达成这一销量的作品。游戏发售5天内销量达500万份，不到一个月突破600万大关。卡普空计划推出额外游戏内容，并将在系列30周年之际举办多项庆祝活动。",
         "source": "3DM",
-        "sourceUrl": "https://www.3dmgame.com/",
-        "category": "hardware",
-        "importance": "medium",
-        "date": "2026-03-08",
-        "tags": [
-            "NVIDIA",
-            "GPU",
-            "硬件"
-        ],
-        "sentiment": "positive"
-    },
-    {
-        "id": 13,
-        "title": "欧盟数字市场法案新规：游戏平台必须开放跨平台存档转移",
-        "summary": "欧盟数字市场法案(DMA)最新修正案要求所有\"守门人\"游戏平台必须在2027年前支持游戏存档和成就的跨平台转移功能。",
-        "source": "GamesIndustry",
-        "sourceUrl": "https://www.gamesindustry.biz/",
-        "category": "policy",
-        "importance": "high",
-        "date": "2026-03-04",
-        "tags": [
-            "欧盟",
-            "DMA",
-            "监管"
-        ],
-        "sentiment": "neutral"
-    },
-    {
-        "id": 14,
-        "title": "微软完成动视暴雪整合：重组后Xbox Game Studios拥有33家工作室",
-        "summary": "微软宣布动视暴雪整合工作已全部完成。重组后的Xbox Game Studios旗下共拥有33家游戏工作室。",
-        "source": "Xbox Wire",
-        "sourceUrl": "https://news.xbox.com/en-us/",
-        "category": "policy",
-        "importance": "high",
-        "date": "2026-02-20",
-        "tags": [
-            "微软",
-            "动视暴雪",
-            "并购"
-        ],
-        "sentiment": "neutral"
-    },
-    {
-        "id": 15,
-        "title": "Newzoo 报告：2026年PC & Console游戏市场规模将达$420亿",
-        "summary": "Newzoo发布2026年全球PC与主机游戏市场年度预测报告，预计总市场规模将达$420亿（同比+6.2%）。",
-        "source": "Newzoo",
-        "sourceUrl": "https://newzoo.com/resources",
-        "category": "market",
-        "importance": "high",
-        "date": "2026-02-15",
-        "tags": [
-            "Newzoo",
-            "市场数据",
-            "订阅"
-        ],
-        "sentiment": "positive"
-    },
-    {
-        "id": 16,
-        "title": "育碧宣布战略重组：3款游戏取消，聚焦\"更少但更好\"策略",
-        "summary": "育碧在最新的投资者电话会议上宣布取消3款未公布项目的开发，年发行数量从15款缩减至8-10款。",
-        "source": "GamesIndustry",
-        "sourceUrl": "https://www.gamesindustry.biz/",
-        "category": "policy",
-        "importance": "medium",
-        "date": "2026-03-06",
-        "tags": [
-            "育碧",
-            "重组",
-            "战略"
-        ],
-        "sentiment": "negative"
-    },
-    {
-        "id": 17,
-        "title": "GDC 2026行业报告：裁员影响持续，生成式AI成最重要技术趋势",
-        "summary": "GDC官方发布《2026年游戏行业现状报告》，调查显示裁员浪潮对行业的深远影响仍在持续，生成式AI已成为年度最重要的技术趋势，开发者工会化趋势持续升温。报告还分析了当前及未来的游戏平台走向。",
-        "source": "GameDeveloper",
-        "sourceUrl": "https://gdconf.com/news/article-tags/gdc",
-        "category": "market",
-        "importance": "high",
-        "date": "2026-03-10",
-        "tags": [
-            "GDC",
-            "裁员",
-            "生成式AI",
-            "行业报告"
-        ],
-        "sentiment": "neutral"
-    },
-    {
-        "id": 18,
-        "title": "《杀戮尖塔2》Steam抢先体验正式上线，首周表现强劲",
-        "summary": "独立卡牌Roguelike游戏《Slay the Spire 2》于2026年3月5日在Steam正式进入抢先体验阶段。作为初代神作的续作，游戏支持简中在内的14种语言，由Mega Crit开发发行。PC Gamer将其列入2026年3月最佳PC游戏之一。",
-        "source": "SteamDB",
-        "sourceUrl": "https://store.steampowered.com/app/2868840/Slay_the_Spire_2/",
-        "category": "game",
-        "importance": "medium",
-        "date": "2026-03-05",
-        "tags": [
-            "杀戮尖塔2",
-            "独立游戏",
-            "Steam",
-            "Roguelike"
-        ],
-        "sentiment": "positive"
-    },
-    {
-        "id": 19,
-        "title": "《仁王3》发售两周销量破百万，创系列最快销售纪录",
-        "summary": "光荣特库摩与Team Ninja宣布，《仁王3》在发售两周内全球销量突破100万份，成为仁王系列销售速度最快的作品。仁王系列累计总销量已超过1000万份。官方发布了赞誉预告片以庆祝这一里程碑。",
-        "source": "EuroGamer",
-        "sourceUrl": "https://www.eurogamer.net/nioh-3-million-sales-fastest-selling",
-        "category": "game",
-        "importance": "medium",
-        "date": "2026-02-20",
-        "tags": [
-            "仁王3",
-            "Team Ninja",
-            "光荣特库摩",
-            "销量"
-        ],
-        "sentiment": "positive"
-    },
-    {
-        "id": 20,
-        "title": "三星在GDC 2026展示裸眼3D游戏显示器Odyssey 3D",
-        "summary": "三星在GDC 2026上展示了Odyssey 3D裸眼3D游戏显示器，配备4K QLED面板、165Hz刷新率、1ms响应时间，支持AMD FreeSync Premium。通过双摄像头眼球追踪实现无需眼镜的3D游戏体验，提供27英寸和37英寸两种尺寸，预计年内上市。",
-        "source": "3DM",
-        "sourceUrl": "https://news.samsung.com/us/samsung-showcases-glasses-free-3d-hdr10-gaming-acclaimed-game-titles-gdc-2026/",
-        "category": "hardware",
-        "importance": "medium",
-        "date": "2026-03-10",
-        "tags": [
-            "三星",
-            "裸眼3D",
-            "游戏显示器",
-            "GDC"
-        ],
-        "sentiment": "positive"
-    },
-    {
-        "id": 21,
-        "title": "Minecraft Live定档3月21日，Xbox Wire预告重大更新",
-        "summary": "Mojang Studios宣布下一场Minecraft Live将于2026年3月21日美东时间下午1点举办。Xbox Wire同步发布预告，暗示将公布重大游戏更新内容。这是2025年9月以来的首场Minecraft Live活动。",
-        "source": "Xbox Wire",
-        "sourceUrl": "https://news.xbox.com/",
-        "category": "platform",
-        "importance": "medium",
-        "date": "2026-03-11",
-        "tags": [
-            "Minecraft",
-            "Xbox",
-            "Mojang",
-            "游戏活动"
-        ],
-        "sentiment": "positive"
-    },
-    {
-        "id": 22,
-        "title": "Bethesda三款大作登陆Switch 2：辐射4、上古卷轴4重制版、夺宝奇兵",
-        "summary": "Bethesda确认《辐射4周年版》《上古卷轴IV：湮没重制版》《夺宝奇兵：大圆环》三款游戏登陆Nintendo Switch 2平台。《辐射4》已于2月24日正式发售并支持60fps模式，标志着微软第一方内容加速拥抱任天堂平台。",
-        "source": "NintendoNews",
-        "sourceUrl": "https://mynintendonews.com/2026/02/24/fallout-4-anniversary-edition-now-available-on-nintendo-switch-2-features-60fps-mode/",
-        "category": "platform",
-        "importance": "high",
-        "date": "2026-02-24",
-        "tags": [
-            "Bethesda",
-            "Switch 2",
-            "辐射4",
-            "上古卷轴",
-            "微软"
-        ],
-        "sentiment": "positive"
-    },
-    {
-        "id": 32,
-        "title": "微软公布下一代Xbox主机Project Helix，alpha版预计2027年",
-        "summary": "微软在GDC 2026期间首次公开下一代Xbox主机代号\"Project Helix\"的详细信息。据The Verge报道，Xbox硬件负责人Jason Ronald透露该主机将采用定制化架构，目前尚处于早期开发阶段，alpha版本预计2027年才能完成。这标志着微软正式开启了次世代主机竞争的新篇章。",
-        "source": "VGC",
-        "sourceUrl": "https://www.theverge.com/games/893119/xbox-project-helix-jason-ronald-gdc-2026",
-        "category": "platform",
-        "importance": "high",
-        "date": "2026-03-13",
-        "tags": [
-            "Xbox",
-            "Project Helix",
-            "次世代",
-            "微软"
-        ],
-        "sentiment": "positive"
-    },
-    {
-        "id": 33,
-        "title": "《寂静岭2重制版》全球销量突破500万份，Konami启动促销",
-        "summary": "Konami宣布由Bloober Team开发的《寂静岭2重制版》全球销量已突破500万份。为庆祝这一里程碑，Konami在PlayStation Store启动春季促销活动，《寂静岭》系列多款作品参与折扣。这一成绩证明了经典恐怖IP在现代市场的强大号召力。",
-        "source": "EuroGamer",
-        "sourceUrl": "https://www.eurogamer.net/silent-hill-2-remake-passes-5m-copies-sold-sale",
-        "category": "game",
-        "importance": "medium",
-        "date": "2026-03-12",
-        "tags": [
-            "寂静岭2",
-            "Konami",
-            "Bloober Team",
-            "销量"
-        ],
-        "sentiment": "positive"
-    },
-    {
-        "id": 34,
-        "title": "任天堂Indie World展示会公布18款独立游戏登陆Switch/Switch 2",
-        "summary": "任天堂3月3日举办线上Indie World展示会，共宣布18款新登陆和即将登陆Switch平台的独立游戏，包括多款Switch 2独占作品：《夜勤人2：无尽宝库》《午夜漫步》《熔炉密林Rotwood》等。展示会展现了任天堂持续扶持独立开发者的平台策略。",
-        "source": "NintendoNews",
-        "sourceUrl": "https://www.nintendo.com/indie-world/",
-        "category": "platform",
-        "importance": "medium",
-        "date": "2026-03-10",
-        "tags": [
-            "任天堂",
-            "Indie World",
-            "独立游戏",
-            "Switch 2"
-        ],
-        "sentiment": "positive"
-    },
-    {
-        "id": 35,
-        "title": "《碧蓝幻想Relink：无尽黄昏》定档7月9日，登陆Switch 2/PS5/Steam",
-        "summary": "Cygames在任天堂合作伙伴直面会上公布ARPG《碧蓝幻想Relink：无尽黄昏》将于2026年7月9日全球同步发售，登陆Switch 2、PS5、PS4和Steam。新作追加召唤系统、专精技能、单人模式等新内容，支持最多四人跨平台联机。原版全球销量已突破300万份。",
-        "source": "Fami通",
-        "sourceUrl": "https://www.3dmgame.com/news/28299/",
-        "category": "game",
-        "importance": "medium",
-        "date": "2026-03-10",
-        "tags": [
-            "碧蓝幻想",
-            "Cygames",
-            "Switch 2",
-            "ARPG"
-        ],
-        "sentiment": "positive"
-    },
-    {
-        "id": 36,
-        "title": "《红色沙漠》Steam愿望单突破300万，3月20日发售在即",
-        "summary": "Pearl Abyss开放世界动作冒险游戏《红色沙漠》Steam愿望单数量突破300万，玩家期待度持续攀升。游戏确认3月20日全球发售，登陆PC和PS5/Mac平台，主打雇佣兵团冒险叙事与深度动作战斗系统，据Eurogamer报道其战斗维度的细腻程度备受关注。",
-        "source": "EuroGamer",
-        "sourceUrl": "https://www.eurogamer.net/crimson-desert-passes-3-million-wishlists-as-excitement-around-the-single-player-rpg-builds",
-        "category": "game",
-        "importance": "medium",
-        "date": "2026-03-14",
-        "tags": [
-            "红色沙漠",
-            "Pearl Abyss",
-            "Steam",
-            "开放世界"
-        ],
-        "sentiment": "positive"
-    },
-    {
-        "id": 37,
-        "title": "《CALX》定档6月4日登陆PC，稍后登陆PS5/Xbox/Switch",
-        "summary": "在Future Games Show春季展示会上，意大利工作室True Colors与法国发行商Dear Villagers宣布氛围感3D动作冒险游戏《CALX》将于2026年6月4日在PC平台发售，并计划于2026年晚些时候登陆PS5、Xbox和Switch主机平台。游戏试玩版现已上线Steam。",
-        "source": "3DM",
-        "sourceUrl": "https://www.3dmgame.com/news/202603/3939683.html",
-        "category": "game",
-        "importance": "low",
-        "date": "2026-03-13",
-        "tags": [
-            "CALX",
-            "独立游戏",
-            "Future Games Show"
-        ],
-        "sentiment": "neutral"
-    },
-    {
-        "id": 24,
-        "title": "GDCA 2026提名揭晓：《Clair Obscur: Expedition 33》8项领跑",
-        "summary": "第26届游戏开发者选择奖(GDCA)公布提名名单，《Clair Obscur: Expedition 33》以8项提名领跑，包括年度游戏。独立游戏节(IGF)方面《Baby Steps》以5项提名居首。颁奖典礼将于GDC 2026期间在旧金山举行。",
-        "source": "GameDeveloper",
-        "sourceUrl": "https://gdconf.com/news",
-        "category": "market",
-        "importance": "medium",
-        "date": "2026-03-09",
-        "tags": [
-            "GDCA",
-            "游戏奖项",
-            "GDC",
-            "独立游戏"
-        ],
-        "sentiment": "positive"
-    },
-    {
-        "id": 25,
-        "title": "《生化危机：安魂曲》Switch 2首发，卡普空State of Play公布",
-        "summary": "卡普空在PlayStation State of Play上首次公布《生化危机：安魂曲》（Resident Evil Requiem），游戏于2026年2月27日在Nintendo Switch 2平台首发。这是生化危机系列的全新作品，NintendoSoup等多家媒体确认了首发信息。",
-        "source": "Fami通",
-        "sourceUrl": "https://biohaze.com/",
+        "sourceUrl": "https://www.3dmgame.com/news/202603/3939829.html",
         "category": "game",
         "importance": "high",
-        "date": "2026-02-27",
+        "date": "2026-03-16",
         "tags": [
             "生化危机",
             "卡普空",
-            "Switch 2",
-            "新作"
+            "销量",
+            "Switch 2"
         ],
-        "sentiment": "positive"
+        "sentiment": "positive",
+        "tdocMarking": "none"
     },
     {
-        "id": 26,
-        "title": "GDC 2026 GDCA颁奖：《折言》获玩家选择奖，日本独立游戏创历史",
-        "summary": "在3月13日于旧金山举办的GDC 2026 Game Developers Choice Awards上，日本互动视觉小说《折言》(and Roger)荣获\"玩家选择奖\"(Audience Award)，成为首个在GDCA获奖的日本独立游戏作品，创造历史性壮举。游戏累计销量已突破10万份，同时获得英国BAFTA提名。",
-        "source": "GameDeveloper",
-        "sourceUrl": "https://gdconf.com/news",
+        "id": 13,
+        "title": "Warner Bros. Montréal遭裁员，多个部门员工证实失业",
+        "summary": "数名华纳蒙特利尔开发者在社交媒体宣布被裁员，涉及多个部门，但公司尚未正式确认。该工作室以《蝙蝠侠：阿卡姆起源》《哥谭骑士》等作品著称，正在进行的项目情况尚不明朗。",
+        "source": "EuroGamer",
+        "sourceUrl": "https://www.eurogamer.net/warner-bros-montreal-devs-report-layoffs",
+        "sourceUrls": [
+            {
+                "name": "EuroGamer",
+                "url": "https://www.eurogamer.net/warner-bros-montreal-devs-report-layoffs"
+            },
+            {
+                "name": "GamesIndustry",
+                "url": "https://www.gamesindustry.biz/"
+            }
+        ],
+        "category": "policy",
+        "importance": "medium",
+        "date": "2026-03-16",
+        "tags": [
+            "Warner Bros",
+            "裁员",
+            "工作室"
+        ],
+        "sentiment": "negative",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 14,
+        "title": "多款Steam上架游戏暗藏恶意软件，FBI介入调查",
+        "summary": "FBI正在调查一名涉嫌在Steam平台发布多款含恶意软件游戏的黑客，呼吁受影响玩家协助调查。涉事游戏包括《BlockBlasters》等7款，均被怀疑嵌入恶意程序，此前类似事件已导致不明数量玩家设备感染。",
+        "source": "游戏之家",
+        "sourceUrl": "https://www.ithome.com/0/929/439.htm",
+        "category": "platform",
+        "importance": "medium",
+        "date": "2026-03-16",
+        "tags": [
+            "Steam",
+            "恶意软件",
+            "FBI",
+            "安全"
+        ],
+        "sentiment": "negative",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 15,
+        "title": "Newzoo报告：PC与主机市场定价策略分化，PC青睐低价爆款、主机依赖3A大作",
+        "summary": "市场研究机构Newzoo报告显示，PC与主机游戏市场呈现不同增长趋势：PC平台玩家偏好低价游戏（约30美元），销量显著增长且社交媒体助推独立游戏爆红；主机平台仍以50美元以上3A游戏为主，收入占比达80%，依赖大IP和年度体育类作品。",
+        "source": "Newzoo",
+        "sourceUrl": "https://www.ithome.com/0/929/354.htm",
         "category": "market",
         "importance": "medium",
-        "date": "2026-03-13",
+        "date": "2026-03-16",
         "tags": [
-            "GDC",
-            "GDCA",
-            "独立游戏",
-            "游戏奖项"
+            "Newzoo",
+            "市场数据",
+            "PC",
+            "主机"
         ],
-        "sentiment": "positive"
+        "sentiment": "neutral",
+        "tdocMarking": "none"
     },
     {
-        "id": 27,
-        "title": "《红色沙漠》发布发售预告片，Pearl Abyss全球发售在即",
-        "summary": "Pearl Abyss正式发布《红色沙漠》(Crimson Desert)官方发售预告片，确认游戏将于2026年3月20日全球发售。这款开放世界动作冒险游戏经历多次延期后终于定档，登陆PC和PS5平台，被评价为兼具《街头霸王》格斗深度的动作系统。",
-        "source": "IGN",
-        "sourceUrl": "https://www.ign.com/",
+        "id": 16,
+        "title": "《失落星船：马拉松》成Bungie评分最低作品，Metacritic仅72分",
+        "summary": "Bungie新作《失落星船：马拉松》评测解禁，Metacritic综合评分72分，成为该工作室历史评分最低作品。游戏因射击手感和艺术风格获赞，但UI设计、商业化元素和玩法缺乏新意受到批评，媒体和玩家评价呈现两极分化。此前该作Steam在线人数已跌出前50。",
+        "source": "游戏之家",
+        "sourceUrl": "https://www.ithome.com/0/929/276.htm",
+        "sourceUrls": [
+            {
+                "name": "IT之家",
+                "url": "https://www.ithome.com/0/929/276.htm"
+            },
+            {
+                "name": "机核",
+                "url": "https://www.gcores.com/articles/211813"
+            }
+        ],
         "category": "game",
         "importance": "medium",
-        "date": "2026-03-14",
+        "date": "2026-03-15",
         "tags": [
-            "红色沙漠",
-            "Pearl Abyss",
-            "开放世界",
-            "新作"
+            "马拉松",
+            "Bungie",
+            "索尼",
+            "评分"
         ],
-        "sentiment": "positive"
+        "sentiment": "negative",
+        "tdocMarking": "none"
     },
     {
-        "id": 28,
+        "id": 17,
         "title": "《极限竞速：地平线6》IGN First独家曝光：东京城市规模史无前例",
         "summary": "IGN First独家报道了《极限竞速：地平线6》的东京城市地图详情。Playground Games设计总监透露，东京城市规模之大甚至需要独立开发团队。游戏将于2026年5月19日登陆Xbox/PC，首日加入Game Pass Ultimate，稍后登陆PS5，支持Xbox Play Anywhere。",
         "source": "Xbox Wire",
@@ -717,7 +597,141 @@ const newsData = [
         "sentiment": "positive"
     },
     {
-        "id": 29,
+        "id": 18,
+        "title": "《八方旅人》系列全球销量突破700万份",
+        "summary": "Square Enix宣布《八方旅人》系列全球销量突破700万份（含数字版与实体版），并发布新纪念插画。系列最新作《八方旅人0》已登陆Switch和Switch 2平台。",
+        "source": "NintendoNews",
+        "sourceUrl": "https://mynintendonews.com/2026/03/15/octopath-traveler-series-has-shifted-over-7-million-copies-worldwide/",
+        "category": "game",
+        "importance": "low",
+        "date": "2026-03-15",
+        "tags": [
+            "八方旅人",
+            "Square Enix",
+            "Switch 2"
+        ],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 19,
+        "title": "索尼PS6与微软Xbox Helix规格曝光对比：均采用台积电3nm + AMD定制芯片",
+        "summary": "索尼PlayStation 6和微软下一代Xbox（代号Project Helix）核心硬件规格对比显示，两者均采用台积电3nm制程工艺和AMD定制芯片。PS6传闻规格：AMD Orion芯片、54个RDNA 5计算单元、30GB GDDR7内存；Helix传闻比XSX多30%计算单元且速度快65%，预计售价$999-$1200。",
+        "source": "游戏之家",
+        "sourceUrl": "https://www.ithome.com/0/929/007.htm",
+        "category": "hardware",
+        "importance": "high",
+        "date": "2026-03-14",
+        "tags": [
+            "PS6",
+            "Xbox",
+            "Project Helix",
+            "次世代"
+        ],
+        "sentiment": "neutral",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 20,
+        "title": "NVIDIA高管：AI可使未来GPU游戏画质较GTX 10系列提升100万倍",
+        "summary": "英伟达开发者与性能技术副总裁John Spitzer在GDC 2026上表示，未来游戏GPU的路径追踪性能将比Pascal架构提升100万倍，主要依靠AI与神经渲染技术。英伟达将研发重心转向硬件加速神经渲染，预计在2027-2028年间发布Rubin架构GPU实现这一目标。",
+        "source": "游戏之家",
+        "sourceUrl": "https://www.ithome.com/0/929/029.htm",
+        "category": "hardware",
+        "importance": "medium",
+        "date": "2026-03-14",
+        "tags": [
+            "NVIDIA",
+            "GPU",
+            "AI",
+            "GDC"
+        ],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 21,
+        "title": "《红色沙漠》Steam愿望单突破300万，3月20日发售在即",
+        "summary": "Pearl Abyss开放世界动作冒险游戏《红色沙漠》Steam愿望单数量突破300万，玩家期待度持续攀升。游戏确认3月20日全球发售，登陆PC和PS5/Mac平台，主打雇佣兵团冒险叙事与深度动作战斗系统。",
+        "source": "EuroGamer",
+        "sourceUrl": "https://www.eurogamer.net/crimson-desert-passes-3-million-wishlists-as-excitement-around-the-single-player-rpg-builds",
+        "category": "game",
+        "importance": "medium",
+        "date": "2026-03-14",
+        "tags": [
+            "红色沙漠",
+            "Pearl Abyss",
+            "Steam",
+            "开放世界"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 22,
+        "title": "《杀戮尖塔2》首周销量破300万份，好评率95%",
+        "summary": "《杀戮尖塔2》自3月6日Steam抢先体验以来销量突破300万份，玩家爬塔次数超2500万次。游戏新增大量内容并引入\"替代章节\"机制，支持最多4人在线合作，Steam国区定价88元，好评率达95%。这一成绩刷新了独立卡牌Roguelike品类的销售纪录。",
+        "source": "SteamDB",
+        "sourceUrl": "https://www.ithome.com/0/929/058.htm",
+        "sourceUrls": [
+            {
+                "name": "IT之家",
+                "url": "https://www.ithome.com/0/929/058.htm"
+            },
+            {
+                "name": "SteamDB",
+                "url": "https://store.steampowered.com/app/2868840/Slay_the_Spire_2/"
+            }
+        ],
+        "category": "game",
+        "importance": "medium",
+        "date": "2026-03-14",
+        "tags": [
+            "杀戮尖塔2",
+            "独立游戏",
+            "Steam",
+            "Roguelike"
+        ],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 23,
+        "title": "Unity引擎将原生适配SteamOS和Linux系统",
+        "summary": "Unity官方在GDC 2026宣布原生适配Steam平台及SteamOS、Linux系统，为开发者提供更便捷的游戏发布环境。此举减少了对Wine、Proton等兼容层的依赖，被视为Linux游戏生态发展的重要信号，有利于Steam Machine和Steam Deck生态。",
+        "source": "游戏之家",
+        "sourceUrl": "https://www.ithome.com/0/929/108.htm",
+        "category": "market",
+        "importance": "medium",
+        "date": "2026-03-14",
+        "tags": [
+            "Unity",
+            "SteamOS",
+            "Linux",
+            "GDC"
+        ],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 24,
+        "title": "任天堂关税诉讼暂停，最高法院已裁定关税非法",
+        "summary": "任天堂针对美国政府的关税诉讼案已自动暂停，等待国际贸易法院提交至最高法院的关税案件结果。最高法院已于2月裁定关税非法，受影响公司可能从4月开始获得退款，但任天堂尚未明确表示是否将退款转给消费者。",
+        "source": "NintendoNews",
+        "sourceUrl": "https://mynintendonews.com/2026/03/13/us-nintendos-lawsuit-against-government-automatically-paused/",
+        "category": "policy",
+        "importance": "medium",
+        "date": "2026-03-14",
+        "tags": [
+            "任天堂",
+            "关税",
+            "美国",
+            "政策"
+        ],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 25,
         "title": "《和平精英》亮相GDC 2026展示AI+游戏前沿成果",
         "summary": "腾讯光子工作室群携《和平精英》在GDC 2026大会上展示了\"大模型+AI Bot\"架构，分享了AI在游戏中的前沿应用成果。策划副总监薛冰的演讲获得全球科技和游戏行业的高度肯定，展示了中国游戏厂商在AI应用领域的领先地位。",
         "source": "GamesIndustry",
@@ -734,9 +748,98 @@ const newsData = [
         "sentiment": "positive"
     },
     {
+        "id": 26,
+        "title": "CD Projekt Red确认不再为《赛博朋克2077》开发新DLC",
+        "summary": "CD Projekt Red确认不再为《赛博朋克2077》开发新的DLC或扩展内容，未来工作重心将转向该系列新作（代号Project Orion）。《赛博朋克2077》截至目前累计销量已超3000万份。",
+        "source": "NintendoNews",
+        "sourceUrl": "https://mynintendonews.com/2026/03/13/cd-projekt-red-rules-out-new-dlc-for-cyberpunk-2077/",
+        "category": "game",
+        "importance": "medium",
+        "date": "2026-03-13",
+        "tags": [
+            "CDPR",
+            "赛博朋克2077",
+            "DLC"
+        ],
+        "sentiment": "neutral",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 27,
+        "title": "微软公布下一代Xbox主机Project Helix，alpha版预计2027年",
+        "summary": "微软在GDC 2026期间首次公开下一代Xbox主机代号\"Project Helix\"的详细信息。Xbox次世代副总裁Jason Ronald透露该主机将采用AMD下一代超分辨率、帧生成、光线追踪技术，alpha版本预计2027年提供给游戏开发者。Ronald还指出\"玩家以主机/PC/手游定义自己的时代已不复存在\"，支撑了Helix跨平台兼容的战略逻辑。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/news/microsoft-reveals-next-gen-console-details-and-promises-an-order-of-magnitude-increase-in-power/",
+        "sourceUrls": [
+            {
+                "name": "VGC",
+                "url": "https://www.videogameschronicle.com/news/microsoft-reveals-next-gen-console-details-and-promises-an-order-of-magnitude-increase-in-power/"
+            },
+            {
+                "name": "EuroGamer",
+                "url": "https://www.eurogamer.net/"
+            },
+            {
+                "name": "Gamingbolt",
+                "url": "https://gamingbolt.com/"
+            },
+            {
+                "name": "3DM",
+                "url": "https://www.3dmgame.com/news/202603/3939538.html"
+            }
+        ],
+        "category": "platform",
+        "importance": "high",
+        "date": "2026-03-13",
+        "tags": [
+            "Xbox",
+            "Project Helix",
+            "次世代",
+            "微软"
+        ],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 28,
+        "title": "Newzoo报告：Roblox/Minecraft玩家与传统AAA游戏玩家几乎无重叠",
+        "summary": "GDC期间Newzoo咨询总监Ben Porter分享研究发现：Roblox与Minecraft玩家大量玩头部直播服务游戏（与Fortnite重合率55%/46%），但购买《怪物猎人：荒野》《刺客信条》等传统AAA游戏的可能性仅为平均玩家的0.4倍。这一低龄/免费玩家群体的增长，引发行业对AAA市场长期受众的深层焦虑。",
+        "source": "GamesIndustry",
+        "sourceUrl": "https://www.gamesindustry.biz/roblox-and-minecraft-players-are-less-likely-to-play-traditional-aaa-video-games",
+        "category": "market",
+        "importance": "high",
+        "date": "2026-03-13",
+        "tags": [
+            "Newzoo",
+            "Roblox",
+            "Minecraft",
+            "AAA",
+            "市场分析"
+        ],
+        "sentiment": "neutral",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 29,
+        "title": "GDC 2026 GDCA颁奖：《折言》获玩家选择奖，日本独立游戏创历史",
+        "summary": "在3月13日于旧金山举办的GDC 2026 GDCA颁奖典礼上，日本互动视觉小说《折言》荣获\"玩家选择奖\"，成为首个在GDCA获奖的日本独立游戏作品，创造历史。游戏累计销量已突破10万份，同时获得英国BAFTA提名。",
+        "source": "GameDeveloper",
+        "sourceUrl": "https://gdconf.com/news",
+        "category": "market",
+        "importance": "medium",
+        "date": "2026-03-13",
+        "tags": [
+            "GDC",
+            "GDCA",
+            "独立游戏",
+            "游戏奖项"
+        ],
+        "sentiment": "positive"
+    },
+    {
         "id": 30,
         "title": "《无主之地4》首个故事DLC\"Mad Ellie\"3月26日上线",
-        "summary": "2K和Gearbox Software宣布《无主之地4》首个故事包DLC\"Mad Ellie and the Vault of the Damned\"将于3月26日发售，登陆PS5和Xbox Series X/S。无主之地4自发售以来获得广泛好评（IGN称\"系列最佳\"），本次DLC是后续内容计划的首弹。",
+        "summary": "2K和Gearbox Software宣布《无主之地4》首个故事包DLC\"Mad Ellie and the Vault of the Damned\"将于3月26日发售，登陆PS5和Xbox Series X/S。无主之地4自发售以来获广泛好评，本次DLC是后续内容计划的首弹。",
         "source": "3DM",
         "sourceUrl": "https://www.3dmgame.com/",
         "category": "game",
@@ -752,8 +855,278 @@ const newsData = [
     },
     {
         "id": 31,
-        "title": "马里奥40周年庆典：任天堂MAR10 Day 2026 & 超级马里奥Galaxy电影定档",
-        "summary": "任天堂隆重庆祝超级马里奥兄弟40周年。MAR10 Day 2026活动公布了多项庆祝计划，包括：超级马里奥Galaxy电影定档2026年4月1日上映（3月9日Direct公布预告）；多款Switch 2新作展示；以及系列纪念活动和周边商品。马里奥IP持续展现强大的跨媒体变现能力。",
+        "title": "《CALX》定档6月4日登陆PC，稍后登陆PS5/Xbox/Switch",
+        "summary": "在Future Games Show春季展示会上，意大利工作室True Colors与法国发行商Dear Villagers宣布氛围感3D动作冒险游戏《CALX》将于2026年6月4日在PC平台发售，并计划稍后登陆PS5、Xbox和Switch主机平台。游戏试玩版现已上线Steam。",
+        "source": "3DM",
+        "sourceUrl": "https://www.3dmgame.com/news/202603/3939683.html",
+        "category": "game",
+        "importance": "low",
+        "date": "2026-03-13",
+        "tags": [
+            "CALX",
+            "独立游戏",
+            "Future Games Show"
+        ],
+        "sentiment": "neutral"
+    },
+    {
+        "id": 32,
+        "title": "PS6、PS6掌机与Project Helix均传仍按计划瞄准2027年假日季发售",
+        "summary": "据业内知情人士KeplerL2发帖，索尼PS6（含PS6掌机版本）与微软Project Helix目前均未受全球内存短缺影响，仍计划于2027年假日季发售。PS6传闻规格：AMD Orion芯片（280mm²，台积电3nm）、54个RDNA 5计算单元、8核Zen 6c + 2核Zen 6低功耗核心、30GB GDDR7内存。",
+        "source": "Gamingbolt",
+        "sourceUrl": "https://gamingbolt.com/ps6-ps6-handheld-and-project-helix-still-on-track-for-holiday-2027-launch-rumor",
+        "category": "hardware",
+        "importance": "high",
+        "date": "2026-03-12",
+        "tags": [
+            "PS6",
+            "Project Helix",
+            "次世代",
+            "2027"
+        ],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 33,
+        "title": "Newzoo预测：PC游戏收入将于2028年超越主机，市场开启疫情后首次实质扩张",
+        "summary": "Newzoo最新报告预测，PC游戏收入CAGR为6.6%（主机4.4%），将于2028年超越主机，届时PC+主机市场总规模将达$1037亿。2025年两者合计收入同比增长7%至$883亿。PC侧增长驱动力为中高端买断制新游，$30-$50价位段增长最快；主机侧微交易收入略降。东亚Steam玩家群体快速扩张是PC增长的重要引擎。",
+        "source": "GamesIndustry",
+        "sourceUrl": "https://www.gamesindustry.biz/pc-will-overtake-console-revenue-by-2028-says-newzoo",
+        "category": "market",
+        "importance": "high",
+        "date": "2026-03-12",
+        "tags": [
+            "Newzoo",
+            "PC",
+            "主机",
+            "市场预测"
+        ],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 34,
+        "title": "PEGI宣布含开箱游戏今夏起强制评级PEGI 16，NFT游戏直接PEGI 18",
+        "summary": "欧洲游戏评级机构PEGI宣布自2026年6月起实施新评级规则：\"付费随机物品（开箱/loot box）\"将使游戏获评最低PEGI 16，不得向15岁以下未成年人销售；NFT/区块链类游戏直接获评PEGI 18；含不受限制联机聊天的游戏自动获评PEGI 18。新规仅适用于6月后新提交游戏。此举预计将对EA Sports FC等系列的未来作品评级产生直接冲击。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/news/all-games-with-loot-boxes-in-them-will-be-rated-minimum-pegi-16-starting-this-summer/",
+        "sourceUrls": [
+            {
+                "name": "VGC",
+                "url": "https://www.videogameschronicle.com/news/all-games-with-loot-boxes-in-them-will-be-rated-minimum-pegi-16-starting-this-summer/"
+            },
+            {
+                "name": "EuroGamer",
+                "url": "https://www.eurogamer.net/"
+            }
+        ],
+        "category": "policy",
+        "importance": "high",
+        "date": "2026-03-12",
+        "tags": [
+            "PEGI",
+            "开箱",
+            "NFT",
+            "评级",
+            "监管"
+        ],
+        "sentiment": "neutral",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 35,
+        "title": "2026年BAFTA游戏奖提名揭晓：《光与影：33号远征队》12项领跑",
+        "summary": "2026年BAFTA游戏大奖提名出炉：《光与影：33号远征队》以12项提名领跑，囊括\"最佳游戏\"；其次为《Dispatch》（9项）、《Ghost of Yōtei》（8项）、《Death Stranding 2》（7项，但未进入最佳游戏决选）。最终候选六强还包括Arc Raiders和Blue Prince。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/news/bafta-games-awards-2026-nominations-clair-obscur-leads-with-12-death-stranding-2-misses-out-on-best-game-nom/",
+        "category": "market",
+        "importance": "medium",
+        "date": "2026-03-12",
+        "tags": [
+            "BAFTA",
+            "游戏奖项",
+            "33号远征队"
+        ],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 36,
+        "title": "《寂静岭2重制版》全球销量突破500万份，Konami启动半价促销",
+        "summary": "Konami宣布《寂静岭2》重制版截至2026年1月31日累计销量突破500万份（含PC、PS5、XSX数字购买、实体销售及订阅服务下载）。为庆祝里程碑，PlayStation Store开启春季特卖，《寂静岭2》豪华版半价至$39.99，促销截止至3月25日。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/news/konami-marks-5-million-sales-of-silent-hill-2-remake-by-selling-it-and-silent-hill-f-for-half-price-on-ps5/",
+        "category": "game",
+        "importance": "medium",
+        "date": "2026-03-12",
+        "tags": [
+            "寂静岭2",
+            "Konami",
+            "销量",
+            "促销"
+        ],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 37,
+        "title": "《堡垒之夜》原创模式\"拯救世界\"将于4月16日免费开放",
+        "summary": "Epic Games宣布《Fortnite》早年付费合作模式\"Save the World\"将于2026年4月16日向全平台（包括Switch 2）免费开放，此举被解读为Fortnite玩家参与度下滑背景下Epic的应急举措，同期还调整了V-Bucks虚拟货币定价。",
+        "source": "EuroGamer",
+        "sourceUrl": "https://www.eurogamer.net/fortnite-save-the-world-mode-goes-free-to-play-april-2026",
+        "category": "game",
+        "importance": "medium",
+        "date": "2026-03-12",
+        "tags": [
+            "Fortnite",
+            "Epic",
+            "免费",
+            "直播服务"
+        ],
+        "sentiment": "neutral",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 38,
+        "title": "谷歌升级PC版Play Games：一次购买，PC/安卓双端畅玩",
+        "summary": "谷歌在GDC 2026上宣布升级Win10/Win11版本Google Play Games，引入更多付费游戏并推出\"跨端购买\"功能，旨在解决当前游戏库以免费游戏为主、难以吸引核心玩家的问题。",
+        "source": "游戏之家",
+        "sourceUrl": "https://www.ithome.com/0/928/299.htm",
+        "category": "platform",
+        "importance": "low",
+        "date": "2026-03-12",
+        "tags": [
+            "谷歌",
+            "Play Games",
+            "GDC",
+            "跨平台"
+        ],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 39,
+        "title": "Valve公布Steam Machine验证程序：1080p/30fps基准线",
+        "summary": "Valve在GDC 2026大会上公布了Steam Machine的验证程序细节，要求游戏在1080p分辨率下以30fps运行才能获得认证。已通过Steam Deck验证的游戏将自动获得认证。Valve还在改进SteamOS反作弊支持，Steam Machines性能为便携前作6倍，行业分析师预测售价可能高达$1000。",
+        "source": "IGN",
+        "sourceUrl": "https://www.ign.com/articles/1080p-at-30fps-valve-steam-machines-verified-program",
+        "category": "platform",
+        "importance": "medium",
+        "date": "2026-03-11",
+        "tags": [
+            "Valve",
+            "Steam Machine",
+            "SteamOS",
+            "GDC"
+        ],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 40,
+        "title": "Minecraft Live定档3月21日，Xbox Wire预告重大更新",
+        "summary": "Mojang Studios宣布下一场Minecraft Live将于2026年3月21日美东时间下午1点举办。Xbox Wire同步发布预告，暗示将公布重大游戏更新内容。这是2025年9月以来的首场Minecraft Live活动。",
+        "source": "Xbox Wire",
+        "sourceUrl": "https://news.xbox.com/",
+        "category": "platform",
+        "importance": "medium",
+        "date": "2026-03-11",
+        "tags": [
+            "Minecraft",
+            "Xbox",
+            "Mojang",
+            "游戏活动"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 41,
+        "title": "Phil Spencer退休结束38年微软生涯，Asha Sharma接任游戏CEO",
+        "summary": "微软CEO纳德拉在全员信中正式宣布微软游戏CEO Phil Spencer决定退休，结束38年微软职业生涯。Spencer于2025年秋季向纳德拉表达退休意愿，将继续担任顾问直至2026年夏季。Xbox总裁Sarah Bond意外同步辞职。微软CoreAI产品总裁Asha Sharma将接任游戏新CEO。这一管理层巨变标志着Xbox进入AI驱动的新时代。",
+        "source": "IGN",
+        "sourceUrl": "https://zerocounts.net/",
+        "sourceUrls": [
+            {
+                "name": "IGN",
+                "url": "https://zerocounts.net/"
+            },
+            {
+                "name": "IT之家",
+                "url": "https://so.html5.qq.com/page/real/search_news?docid=70000021_2736998e6f148352"
+            },
+            {
+                "name": "Xbox Wire",
+                "url": "https://news.xbox.com/"
+            }
+        ],
+        "category": "policy",
+        "importance": "high",
+        "date": "2026-03-11",
+        "tags": [
+            "Phil Spencer",
+            "Xbox",
+            "微软",
+            "管理层变动"
+        ],
+        "sentiment": "neutral",
+        "tdocMarking": "orange"
+    },
+    {
+        "id": 42,
+        "title": "GDC 2026行业报告：裁员影响持续，生成式AI成最重要技术趋势",
+        "summary": "GDC官方发布《2026年游戏行业现状报告》，调查显示裁员浪潮对行业的深远影响仍在持续，生成式AI已成为年度最重要的技术趋势，开发者工会化趋势持续升温。报告还分析了当前及未来的游戏平台走向。",
+        "source": "GameDeveloper",
+        "sourceUrl": "https://gdconf.com/news/article-tags/gdc",
+        "category": "market",
+        "importance": "high",
+        "date": "2026-03-10",
+        "tags": [
+            "GDC",
+            "裁员",
+            "生成式AI",
+            "行业报告"
+        ],
+        "sentiment": "neutral"
+    },
+    {
+        "id": 43,
+        "title": "三星在GDC 2026展示裸眼3D游戏显示器Odyssey 3D",
+        "summary": "三星在GDC 2026上展示了Odyssey 3D裸眼3D游戏显示器，配备4K QLED面板、165Hz刷新率、1ms响应时间，支持AMD FreeSync Premium。通过双摄像头眼球追踪实现无需眼镜的3D游戏体验，提供27英寸和37英寸两种尺寸，预计年内上市。",
+        "source": "3DM",
+        "sourceUrl": "https://news.samsung.com/us/samsung-showcases-glasses-free-3d-hdr10-gaming-acclaimed-game-titles-gdc-2026/",
+        "category": "hardware",
+        "importance": "medium",
+        "date": "2026-03-10",
+        "tags": [
+            "三星",
+            "裸眼3D",
+            "游戏显示器",
+            "GDC"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 44,
+        "title": "任天堂Indie World展示会公布18款独立游戏登陆Switch/Switch 2",
+        "summary": "任天堂3月3日举办线上Indie World展示会，共宣布18款新登陆和即将登陆Switch平台的独立游戏，包括多款Switch 2独占作品。展示会展现了任天堂持续扶持独立开发者的平台策略。",
+        "source": "NintendoNews",
+        "sourceUrl": "https://www.nintendo.com/indie-world/",
+        "category": "platform",
+        "importance": "medium",
+        "date": "2026-03-10",
+        "tags": [
+            "任天堂",
+            "Indie World",
+            "独立游戏",
+            "Switch 2"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 45,
+        "title": "马里奥40周年庆典：超级马里奥Galaxy电影定档",
+        "summary": "任天堂隆重庆祝超级马里奥兄弟40周年。MAR10 Day 2026活动公布多项庆祝计划，包括超级马里奥Galaxy电影定档2026年4月1日上映、多款Switch 2新作展示以及系列纪念活动和周边商品。马里奥IP持续展现强大的跨媒体变现能力。",
         "source": "NintendoNews",
         "sourceUrl": "https://mynintendonews.com/",
         "category": "platform",
@@ -765,6 +1138,349 @@ const newsData = [
             "MAR10",
             "电影",
             "Switch 2"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 46,
+        "title": "《碧蓝幻想Relink：无尽黄昏》定档7月9日，登陆Switch 2/PS5/Steam",
+        "summary": "Cygames在任天堂合作伙伴直面会上公布ARPG《碧蓝幻想Relink：无尽黄昏》将于2026年7月9日全球同步发售，登陆Switch 2、PS5、PS4和Steam。新作追加召唤系统、专精技能、单人模式等新内容，支持最多四人跨平台联机。",
+        "source": "Fami通",
+        "sourceUrl": "https://www.3dmgame.com/news/28299/",
+        "category": "game",
+        "importance": "medium",
+        "date": "2026-03-10",
+        "tags": [
+            "碧蓝幻想",
+            "Cygames",
+            "Switch 2",
+            "ARPG"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 47,
+        "title": "GDCA 2026提名揭晓：《Clair Obscur: Expedition 33》8项领跑",
+        "summary": "第26届游戏开发者选择奖(GDCA)公布提名名单，《Clair Obscur: Expedition 33》以8项提名领跑，包括年度游戏。独立游戏节(IGF)方面《Baby Steps》以5项提名居首。颁奖典礼在GDC 2026期间于旧金山举行。",
+        "source": "GameDeveloper",
+        "sourceUrl": "https://gdconf.com/news",
+        "category": "market",
+        "importance": "medium",
+        "date": "2026-03-09",
+        "tags": [
+            "GDCA",
+            "游戏奖项",
+            "GDC",
+            "独立游戏"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 48,
+        "title": "NVIDIA GeForce RTX 5060 正式发布：$299 起步的 DLSS 4 新标杆",
+        "summary": "NVIDIA发布GeForce RTX 5060显卡，售价$299起，搭载完整DLSS 4支持。这是面向主流玩家的重要产品节点。",
+        "source": "3DM",
+        "sourceUrl": "https://www.3dmgame.com/",
+        "category": "hardware",
+        "importance": "medium",
+        "date": "2026-03-08",
+        "tags": [
+            "NVIDIA",
+            "GPU",
+            "硬件"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 49,
+        "title": "《怪物猎人物语3》开发者访谈：融合回合制与动作的新战斗系统",
+        "summary": "卡普空在接受Fami通采访时详细解析了《怪物猎人物语3：命运双龙》的创新战斗机制。",
+        "source": "Fami通",
+        "sourceUrl": "https://www.famitsu.com/",
+        "category": "game",
+        "importance": "medium",
+        "date": "2026-03-07",
+        "tags": [
+            "怪物猎人",
+            "卡普空",
+            "ARPG"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 50,
+        "title": "《GTA6》正式定档2026年5月26日，Rockstar确认延期一年",
+        "summary": "Rockstar Games正式宣布《GTA6》将于2026年5月26日发售，较原计划延期约一年。官方表示需要额外时间打磨质量以达到玩家期待的水准。发行商Take-Two Interactive表示全力支持这一决定。",
+        "source": "IGN",
+        "sourceUrl": "https://www.rockstargames.com/newswire",
+        "category": "game",
+        "importance": "high",
+        "date": "2026-03-06",
+        "tags": [
+            "GTA6",
+            "R星",
+            "延期",
+            "Take-Two"
+        ],
+        "sentiment": "neutral"
+    },
+    {
+        "id": 51,
+        "title": "育碧宣布战略重组：3款游戏取消，聚焦\"更少但更好\"策略",
+        "summary": "育碧在最新的投资者电话会议上宣布取消3款未公布项目的开发，年发行数量从15款缩减至8-10款。",
+        "source": "GamesIndustry",
+        "sourceUrl": "https://www.gamesindustry.biz/",
+        "category": "policy",
+        "importance": "medium",
+        "date": "2026-03-06",
+        "tags": [
+            "育碧",
+            "重组",
+            "战略"
+        ],
+        "sentiment": "negative"
+    },
+    {
+        "id": 52,
+        "title": "Nintendo Switch 2 正式公布：8英寸屏幕、磁吸Joy-Con、向下兼容",
+        "summary": "任天堂正式揭晓Switch 2硬件详情：采用更大的8英寸LCD屏幕、NVIDIA T239定制芯片、磁吸式Joy-Con手柄、支持Switch 1游戏向下兼容。预计2025年6月发售，首发阵容包含《马里奥卡丁车世界》。",
+        "source": "NintendoNews",
+        "sourceUrl": "https://mynintendonews.com/",
+        "category": "platform",
+        "importance": "high",
+        "date": "2026-03-05",
+        "tags": [
+            "Nintendo",
+            "Switch 2",
+            "硬件"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 53,
+        "title": "PS5 Pro 增强补丁已覆盖500+游戏：4K/120fps成为新标准",
+        "summary": "索尼公布PS5 Pro增强游戏列表已超过500款，4K/60fps成为基准线，部分游戏已支持4K/120fps模式。",
+        "source": "EuroGamer",
+        "sourceUrl": "https://www.eurogamer.net/latest",
+        "category": "hardware",
+        "importance": "medium",
+        "date": "2026-03-05",
+        "tags": [
+            "PS5 Pro",
+            "硬件",
+            "性能"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 54,
+        "title": "Steam 2月销售数据：独立游戏收入占比首次突破35%",
+        "summary": "根据SteamDB和Gamalytic统计数据，2026年2月Steam平台独立游戏收入占比达35.2%，创历史新高。",
+        "source": "SteamDB",
+        "sourceUrl": "https://steamdb.info/",
+        "category": "market",
+        "importance": "medium",
+        "date": "2026-03-04",
+        "tags": [
+            "Steam",
+            "独立游戏",
+            "市场数据"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 55,
+        "title": "欧盟数字市场法案新规：游戏平台必须开放跨平台存档转移",
+        "summary": "欧盟数字市场法案(DMA)最新修正案要求所有\"守门人\"游戏平台必须在2027年前支持游戏存档和成就的跨平台转移功能。",
+        "source": "GamesIndustry",
+        "sourceUrl": "https://www.gamesindustry.biz/",
+        "category": "policy",
+        "importance": "high",
+        "date": "2026-03-04",
+        "tags": [
+            "欧盟",
+            "DMA",
+            "监管"
+        ],
+        "sentiment": "neutral"
+    },
+    {
+        "id": 56,
+        "title": "Xbox 宣布2026年将有30+款首日入库 Game Pass 的游戏",
+        "summary": "Xbox在春季发布会上确认2026年将有超过30款游戏首日登陆Game Pass，包括《极限竞速：地平线6》《战争机器：E-Day》等第一方大作，以及多款第三方独立游戏。",
+        "source": "Xbox Wire",
+        "sourceUrl": "https://news.xbox.com/en-us/",
+        "category": "platform",
+        "importance": "high",
+        "date": "2026-03-03",
+        "tags": [
+            "Xbox",
+            "Game Pass",
+            "XGP"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 57,
+        "title": "《黑神话：钟馗》项目正式确认，游戏科学启动全球预热",
+        "summary": "游戏科学工作室通过官方社交媒体正式确认《黑神话》系列第二款作品为《黑神话：钟馗》，以中国民间传说\"钟馗捉鬼\"为主题。",
+        "source": "机核",
+        "sourceUrl": "https://www.gcores.com/news",
+        "category": "game",
+        "importance": "high",
+        "date": "2026-03-02",
+        "tags": [
+            "黑神话",
+            "游戏科学",
+            "国产3A"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 58,
+        "title": "PlayStation Stars 会员体系大幅升级，引入游戏折扣与抢先体验权限",
+        "summary": "索尼宣布对PlayStation Stars忠诚度计划进行重大升级，新增\"Platinum Tier\"等级，提供PS Store折扣、新游抢先体验48小时等独占权益。",
+        "source": "PlayStation Blog",
+        "sourceUrl": "https://blog.playstation.com/",
+        "category": "platform",
+        "importance": "medium",
+        "date": "2026-03-01",
+        "tags": [
+            "PlayStation",
+            "PS Stars",
+            "订阅"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 59,
+        "title": "Epic Games Store 宣布2026年开放第三方支付，抽成维持12%",
+        "summary": "Epic Games Store正式宣布在2026年Q2面向开发者开放第三方支付选项，同时确认平台抽成维持在12%不变。",
+        "source": "GamesIndustry",
+        "sourceUrl": "https://www.gamesindustry.biz/",
+        "category": "platform",
+        "importance": "high",
+        "date": "2026-02-28",
+        "tags": [
+            "Epic",
+            "EGS",
+            "分成"
+        ],
+        "sentiment": "neutral"
+    },
+    {
+        "id": 60,
+        "title": "Steam Deck 2 传闻：Valve 正在测试OLED+AMD Z2 Extreme芯片",
+        "summary": "据供应链消息，Valve正在测试搭载AMD Z2 Extreme芯片和OLED屏幕的新一代Steam Deck。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/category/news/",
+        "category": "hardware",
+        "importance": "medium",
+        "date": "2026-02-27",
+        "tags": [
+            "Steam Deck",
+            "Valve",
+            "掌机"
+        ],
+        "sentiment": "neutral"
+    },
+    {
+        "id": 61,
+        "title": "《生化危机：安魂曲》Switch 2首发，卡普空State of Play公布",
+        "summary": "卡普空在PlayStation State of Play上首次公布《生化危机：安魂曲》，游戏于2026年2月27日在Nintendo Switch 2平台首发。这是生化危机系列的全新作品。",
+        "source": "Fami通",
+        "sourceUrl": "https://biohaze.com/",
+        "category": "game",
+        "importance": "high",
+        "date": "2026-02-27",
+        "tags": [
+            "生化危机",
+            "卡普空",
+            "Switch 2",
+            "新作"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 62,
+        "title": "《宝可梦：风/浪》确定Switch 2独占，首批概念图公开",
+        "summary": "宝可梦公司在Nintendo Direct中展示了《宝可梦：风/浪》的首批概念图和实机片段。本作确定为Switch 2独占首发。",
+        "source": "NintendoNews",
+        "sourceUrl": "https://mynintendonews.com/",
+        "category": "game",
+        "importance": "high",
+        "date": "2026-02-25",
+        "tags": [
+            "宝可梦",
+            "Switch 2",
+            "任天堂"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 63,
+        "title": "Bethesda三款大作登陆Switch 2：辐射4、上古卷轴4重制版、夺宝奇兵",
+        "summary": "Bethesda确认《辐射4周年版》《上古卷轴IV：湮没重制版》《夺宝奇兵：大圆环》三款游戏登陆Switch 2。《辐射4》已于2月24日正式发售并支持60fps模式，标志着微软第一方内容加速拥抱任天堂平台。",
+        "source": "NintendoNews",
+        "sourceUrl": "https://mynintendonews.com/2026/02/24/fallout-4-anniversary-edition-now-available-on-nintendo-switch-2-features-60fps-mode/",
+        "category": "platform",
+        "importance": "high",
+        "date": "2026-02-24",
+        "tags": [
+            "Bethesda",
+            "Switch 2",
+            "辐射4",
+            "上古卷轴",
+            "微软"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 64,
+        "title": "《仁王3》发售两周销量破百万，创系列最快销售纪录",
+        "summary": "光荣特库摩与Team Ninja宣布，《仁王3》在发售两周内全球销量突破100万份，成为仁王系列销售速度最快的作品。仁王系列累计总销量已超过1000万份。",
+        "source": "EuroGamer",
+        "sourceUrl": "https://www.eurogamer.net/nioh-3-million-sales-fastest-selling",
+        "category": "game",
+        "importance": "medium",
+        "date": "2026-02-20",
+        "tags": [
+            "仁王3",
+            "Team Ninja",
+            "光荣特库摩",
+            "销量"
+        ],
+        "sentiment": "positive"
+    },
+    {
+        "id": 65,
+        "title": "微软完成动视暴雪整合：重组后Xbox Game Studios拥有33家工作室",
+        "summary": "微软宣布动视暴雪整合工作已全部完成。重组后的Xbox Game Studios旗下共拥有33家游戏工作室。",
+        "source": "Xbox Wire",
+        "sourceUrl": "https://news.xbox.com/en-us/",
+        "category": "policy",
+        "importance": "high",
+        "date": "2026-02-20",
+        "tags": [
+            "微软",
+            "动视暴雪",
+            "并购"
+        ],
+        "sentiment": "neutral"
+    },
+    {
+        "id": 66,
+        "title": "Newzoo 报告：2026年PC & Console游戏市场规模将达$420亿",
+        "summary": "Newzoo发布2026年全球PC与主机游戏市场年度预测报告，预计总市场规模将达$420亿（同比+6.2%）。",
+        "source": "Newzoo",
+        "sourceUrl": "https://newzoo.com/resources",
+        "category": "market",
+        "importance": "high",
+        "date": "2026-02-15",
+        "tags": [
+            "Newzoo",
+            "市场数据",
+            "订阅"
         ],
         "sentiment": "positive"
     }
