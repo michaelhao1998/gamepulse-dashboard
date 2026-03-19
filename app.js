@@ -1796,6 +1796,31 @@ function renderEarningsGrowthChart(companies) {
     });
 }
 
+// 图表公司名称 → earningsCompanies.id 映射（处理简称/带后缀的情况）
+function findCompanyIdByChartName(chartName) {
+    if (!chartName || typeof earningsCompanies === 'undefined') return null;
+    const nameMap = {
+        '腾讯': 'tencent', '索尼(G&NS)': 'sony', '索尼': 'sony',
+        '微软(MPC)': 'microsoft', '微软(Gaming)': 'microsoft', '微软': 'microsoft',
+        '任天堂': 'nintendo', 'EA': 'ea', '网易': 'netease',
+        'Take-Two': 'take-two', 'Roblox': 'roblox', '育碧': 'ubisoft',
+        'Nexon': 'nexon', 'Krafton': 'krafton', 'Embracer': 'embracer',
+        'Unity': 'unity', '卡普空': 'capcom', '卡普空(DC)': 'capcom',
+        '万代南梦宫': 'bandai-namco', '万代南梦宫(DE)': 'bandai-namco',
+        'Square Enix': 'square-enix', 'Square Enix(DE)': 'square-enix',
+        '科乐美': 'konami', '科乐美(DE)': 'konami',
+        '世嘉萨米': 'sega', '世嘉萨米(EC)': 'sega'
+    };
+    // 精确匹配
+    if (nameMap[chartName]) return nameMap[chartName];
+    // 模糊匹配：遍历 earningsCompanies 查找
+    const match = earningsCompanies.find(c =>
+        chartName.includes(c.name) || chartName.includes(c.nameEn) ||
+        c.name.includes(chartName) || c.nameEn.includes(chartName)
+    );
+    return match ? match.id : null;
+}
+
 function renderEarningsRevenueCompareChart() {
     const container = document.getElementById('earningsRevenueCompareChart');
     if (!container) return;
@@ -1818,7 +1843,8 @@ function renderEarningsRevenueCompareChart() {
         const gradeTag = `<span style="display:inline-block;font-size:0.6rem;padding:1px 4px;border-radius:3px;background:${gradeColor}22;color:${gradeColor};margin-left:4px;font-weight:600;">${gradeLabels[grade] || grade}</span>`;
         const yoyStr = d.yoy !== null && d.yoy !== undefined ? `<span style="color:${d.yoy >= 0 ? '#10b981' : '#ef4444'};font-size:0.7rem;margin-left:3px;">${d.yoy >= 0 ? '+' : ''}${d.yoy}%</span>` : '';
         const periodStr = d.period ? `<span style="font-size:0.65rem;color:var(--text-muted);margin-left:3px;">${d.period}</span>` : '';
-        html += `<div class="earnings-bar-row clickable" title="${d.note || ''}" data-period="${d.period || ''}" data-grade="${grade}" data-caveat="${d.caveat || ''}">
+        const companyId = findCompanyIdByChartName(d.name);
+        html += `<div class="earnings-bar-row clickable" title="${d.note || ''}" data-period="${d.period || ''}" data-grade="${grade}" data-caveat="${d.caveat || ''}" data-company-id="${companyId || ''}" style="cursor:${companyId ? 'pointer' : 'default'};">
             <div class="earnings-bar-name">${d.name}${gradeTag}</div>
             <div class="earnings-bar-track-wrapper">
                 <div class="earnings-bar-fill" style="width:${width}%;background:${d.color};"></div>
@@ -1833,8 +1859,14 @@ function renderEarningsRevenueCompareChart() {
     html += '</div>';
     container.innerHTML = html;
 
-    // Hover tooltip for revenue compare — V7: 增加period/grade/caveat信息
+    // Click + Hover for revenue compare bars
     container.querySelectorAll('.earnings-bar-row.clickable').forEach(row => {
+        // V11: 点击跳转到对应公司卡片
+        const companyId = row.dataset.companyId;
+        if (companyId) {
+            row.addEventListener('click', () => scrollToCompanyCard(companyId));
+        }
+
         row.addEventListener('mouseenter', (e) => {
             const note = row.getAttribute('title');
             const period = row.dataset.period || '';
@@ -1845,7 +1877,7 @@ function renderEarningsRevenueCompareChart() {
                 tipHtml += `<div style="font-size:0.78rem;color:var(--text-secondary);">${note}</div>`;
                 if (period) tipHtml += `<div style="font-size:0.72rem;color:var(--text-muted);margin-top:2px;">📅 ${period}</div>`;
                 if (caveat) tipHtml += `<div style="font-size:0.72rem;color:var(--accent-warning);margin-top:2px;">⚠ ${caveat}</div>`;
-                tipHtml += `<div class="earnings-tooltip-source">统一单季度USD等值对比</div>`;
+                tipHtml += `<div class="earnings-tooltip-source">统一单季度USD等值对比 · 点击查看详情</div>`;
                 showEarningsTooltip(e, tipHtml);
                 row.removeAttribute('title');
                 row.dataset.note = note;
@@ -1882,7 +1914,8 @@ function renderEarningsFullYearChart() {
         const gradeColor = gradeColors[grade] || '#6b7280';
         const gradeTag = `<span style="display:inline-block;font-size:0.6rem;padding:1px 4px;border-radius:3px;background:${gradeColor}22;color:${gradeColor};margin-left:4px;font-weight:600;">${gradeLabels[grade] || grade}</span>`;
         const yoyStr = d.yoy !== null && d.yoy !== undefined ? `<span style="color:${d.yoy >= 0 ? '#10b981' : '#ef4444'};font-size:0.7rem;margin-left:3px;">${d.yoy >= 0 ? '+' : ''}${d.yoy}%</span>` : '';
-        html += `<div class="earnings-bar-row clickable" title="${d.note || ''}" data-period="${d.period || ''}" data-grade="${grade}" data-caveat="${d.caveat || ''}" data-breakdown="${d.breakdown || ''}">
+        const companyId = findCompanyIdByChartName(d.name);
+        html += `<div class="earnings-bar-row clickable" title="${d.note || ''}" data-period="${d.period || ''}" data-grade="${grade}" data-caveat="${d.caveat || ''}" data-breakdown="${d.breakdown || ''}" data-company-id="${companyId || ''}" style="cursor:${companyId ? 'pointer' : 'default'};">
             <div class="earnings-bar-name">${d.name}${gradeTag}</div>
             <div class="earnings-bar-track-wrapper">
                 <div class="earnings-bar-fill" style="width:${width}%;background:${d.color};"></div>
@@ -1893,8 +1926,14 @@ function renderEarningsFullYearChart() {
     html += '</div>';
     container.innerHTML = html;
 
-    // Hover tooltip
+    // Click + Hover tooltip for full year bars
     container.querySelectorAll('.earnings-bar-row.clickable').forEach(row => {
+        // V11: 点击跳转到对应公司卡片
+        const companyId = row.dataset.companyId;
+        if (companyId) {
+            row.addEventListener('click', () => scrollToCompanyCard(companyId));
+        }
+
         row.addEventListener('mouseenter', (e) => {
             const note = row.getAttribute('title');
             const period = row.dataset.period || '';
@@ -1906,7 +1945,7 @@ function renderEarningsFullYearChart() {
                 if (period) tipHtml += `<div style="font-size:0.72rem;color:var(--text-muted);margin-top:2px;">📅 ${period}</div>`;
                 if (breakdown) tipHtml += `<div style="font-size:0.72rem;color:var(--accent-primary);margin-top:2px;">📊 ${breakdown}</div>`;
                 if (caveat) tipHtml += `<div style="font-size:0.72rem;color:var(--accent-warning);margin-top:2px;">⚠ ${caveat}</div>`;
-                tipHtml += `<div class="earnings-tooltip-source">全年/年化USD等值对比</div>`;
+                tipHtml += `<div class="earnings-tooltip-source">全年/年化USD等值对比 · 点击查看详情</div>`;
                 showEarningsTooltip(e, tipHtml);
                 row.removeAttribute('title');
                 row.dataset.note = note;

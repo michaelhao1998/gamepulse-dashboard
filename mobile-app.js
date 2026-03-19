@@ -1040,6 +1040,48 @@ function mBuildDualModuleHtml(c) {
             </div>`;
 }
 
+// 图表公司名称 → earningsCompanies.name 映射（用于移动端滚动跳转）
+function mFindCompanyNameByChartName(chartName) {
+    if (!chartName || typeof earningsCompanies === 'undefined') return null;
+    const nameMap = {
+        '腾讯': '腾讯控股', '索尼(G&NS)': '索尼集团', '索尼': '索尼集团',
+        '微软(MPC)': '微软', '微软(Gaming)': '微软',
+        '任天堂': '任天堂', 'EA': '艺电', '网易': '网易',
+        'Take-Two': 'Take-Two Interactive', 'Roblox': 'Roblox', '育碧': '育碧',
+        'Nexon': 'Nexon', 'Krafton': 'Krafton', 'Embracer': 'Embracer Group',
+        'Unity': 'Unity', '卡普空': '卡普空', '卡普空(DC)': '卡普空',
+        '万代南梦宫': '万代南梦宫', '万代南梦宫(DE)': '万代南梦宫',
+        'Square Enix': 'Square Enix', 'Square Enix(DE)': 'Square Enix',
+        '科乐美': '科乐美', '科乐美(DE)': '科乐美',
+        '世嘉萨米': '世嘉萨米', '世嘉萨米(EC)': '世嘉萨米'
+    };
+    if (nameMap[chartName]) return nameMap[chartName];
+    const match = earningsCompanies.find(c =>
+        chartName.includes(c.name) || chartName.includes(c.nameEn) ||
+        c.name.includes(chartName) || c.nameEn.includes(chartName)
+    );
+    return match ? match.name : null;
+}
+
+// 移动端滚动到对应公司卡片
+function mScrollToCompanyCard(encodedName) {
+    const card = document.querySelector(`.m-company-card[data-company="${encodedName}"]`);
+    if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // 高亮闪烁
+        card.style.boxShadow = '0 0 0 2px rgba(99,102,241,0.6)';
+        card.style.borderColor = 'var(--accent-primary)';
+        // 自动展开
+        if (!card.classList.contains('expanded')) {
+            card.classList.add('expanded');
+        }
+        setTimeout(() => {
+            card.style.boxShadow = '';
+            card.style.borderColor = '';
+        }, 2000);
+    }
+}
+
 function mUpdateEarningsTab() {
     const companies = typeof earningsCompanies !== 'undefined' ? earningsCompanies : [];
     const searchVal = (document.getElementById('mEarningsSearch')?.value || '').toLowerCase();
@@ -1256,7 +1298,8 @@ function mRenderEarningsCharts(companies) {
             const gc = gradeColors[grade] || '#6b7280';
             const gradeTag = `<span style="font-size:0.55rem;padding:0 3px;border-radius:2px;background:${gc}22;color:${gc};margin-left:2px;">${gradeLabels[grade]}</span>`;
             const yoyStr = d.yoy !== null && d.yoy !== undefined ? ` <span style="color:${d.yoy >= 0 ? '#10b981' : '#ef4444'};font-size:0.65rem;">${d.yoy >= 0 ? '+' : ''}${d.yoy}%</span>` : '';
-            return `<div class="m-earnings-bar-row" title="${d.period || ''}">
+            const companyName = mFindCompanyNameByChartName(d.name);
+            return `<div class="m-earnings-bar-row" title="${d.period || ''}" data-target-company="${companyName ? encodeURIComponent(companyName) : ''}" style="cursor:${companyName ? 'pointer' : 'default'};">
                 <div class="m-earnings-bar-name">${d.name || d.company}${gradeTag}</div>
                 <div class="m-earnings-bar-track"><div class="m-earnings-bar-fill" style="width:${w}%;background:${d.color || '#6366f1'};"></div></div>
                 <div class="m-earnings-bar-value" style="color:var(--text-primary);">${revLabel}${yoyStr}</div>
@@ -1266,6 +1309,14 @@ function mRenderEarningsCharts(companies) {
             html += `<div style="font-size:0.65rem;color:var(--text-muted);padding:6px 0;border-top:1px dashed var(--border-color);margin-top:6px;">⚠ ${nullCount}家公司数据暂缺已排除</div>`;
         }
         revEl.innerHTML = html;
+
+        // 绑定点击跳转
+        revEl.querySelectorAll('.m-earnings-bar-row[data-target-company]').forEach(row => {
+            const targetCompany = row.dataset.targetCompany;
+            if (targetCompany) {
+                row.addEventListener('click', () => mScrollToCompanyCard(targetCompany));
+            }
+        });
     }
 
     // V7: 全年/年化收入对比
@@ -1284,13 +1335,22 @@ function mRenderEarningsCharts(companies) {
             const gc = gradeColors2[grade] || '#6b7280';
             const gradeTag = `<span style="font-size:0.55rem;padding:0 3px;border-radius:2px;background:${gc}22;color:${gc};margin-left:2px;">${gradeLabels2[grade]}</span>`;
             const yoyStr = d.yoy !== null && d.yoy !== undefined ? ` <span style="color:${d.yoy >= 0 ? '#10b981' : '#ef4444'};font-size:0.65rem;">${d.yoy >= 0 ? '+' : ''}${d.yoy}%</span>` : '';
-            return `<div class="m-earnings-bar-row" title="${d.period || ''}">
+            const companyName = mFindCompanyNameByChartName(d.name);
+            return `<div class="m-earnings-bar-row" title="${d.period || ''}" data-target-company="${companyName ? encodeURIComponent(companyName) : ''}" style="cursor:${companyName ? 'pointer' : 'default'};">
                 <div class="m-earnings-bar-name">${d.name || d.company}${gradeTag}</div>
                 <div class="m-earnings-bar-track"><div class="m-earnings-bar-fill" style="width:${w}%;background:${d.color || '#6366f1'};"></div></div>
                 <div class="m-earnings-bar-value" style="color:var(--text-primary);">${revLabel}${yoyStr}</div>
             </div>`;
         }).join('');
         fyEl.innerHTML = fyHtml;
+
+        // 绑定点击跳转
+        fyEl.querySelectorAll('.m-earnings-bar-row[data-target-company]').forEach(row => {
+            const targetCompany = row.dataset.targetCompany;
+            if (targetCompany) {
+                row.addEventListener('click', () => mScrollToCompanyCard(targetCompany));
+            }
+        });
     }
 }
 
