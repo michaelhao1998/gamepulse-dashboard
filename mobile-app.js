@@ -959,6 +959,87 @@ function _eProfitLabel(c) {
     return display;
 }
 
+// V7: 移动端双模块（单季度+全年）HTML — 仅当公司有latestQuarter和fullYear时显示
+function mBuildDualModuleHtml(c) {
+    if (!c.latestQuarter || !c.fullYear) return '';
+
+    const lq = c.latestQuarter;
+    const fy = c.fullYear;
+
+    // 单季度数据
+    const qRev = lq.revenue?.value;
+    const qRevYoy = lq.revenue?.yoy;
+    const qRevUsd = lq.revenue?.usdEquiv || '';
+    const qPeriod = lq.period || '';
+
+    // 全年数据
+    const fyRev = fy.revenue?.value;
+    const fyRevYoy = fy.revenue?.yoy;
+    const fyRevUsd = fy.revenue?.usdEquiv || '';
+    const fyPeriod = fy.period || '';
+
+    // 国内/国际拆分（单季度）
+    let qBreakdown = '';
+    if (lq.gameMetrics?.domesticGames && lq.gameMetrics?.internationalGames) {
+        const dg = lq.gameMetrics.domesticGames;
+        const ig = lq.gameMetrics.internationalGames;
+        qBreakdown = `<div style="font-size:0.65rem;color:var(--text-muted);margin-top:3px;">
+            国内¥${dg.value}${dg.unit || '亿'}${dg.yoy != null ? `<span style="color:${dg.yoy >= 0 ? '#10b981' : '#ef4444'};margin-left:2px;">${dg.yoy >= 0 ? '+' : ''}${dg.yoy}%</span>` : ''}
+            | 国际¥${ig.value}${ig.unit || '亿'}${ig.yoy != null ? `<span style="color:${ig.yoy >= 0 ? '#10b981' : '#ef4444'};margin-left:2px;">${ig.yoy >= 0 ? '+' : ''}${ig.yoy}%</span>` : ''}
+        </div>`;
+    }
+
+    // 国内/国际拆分（全年）
+    let fyBreakdown = '';
+    if (fy.gameBreakdown?.domestic && fy.gameBreakdown?.international) {
+        const dg = fy.gameBreakdown.domestic;
+        const ig = fy.gameBreakdown.international;
+        fyBreakdown = `<div style="font-size:0.65rem;color:var(--text-muted);margin-top:3px;">
+            国内¥${dg.value}${dg.unit || '亿'}${dg.yoy != null ? `<span style="color:${dg.yoy >= 0 ? '#10b981' : '#ef4444'};margin-left:2px;">${dg.yoy >= 0 ? '+' : ''}${dg.yoy}%</span>` : ''}
+            | 国际¥${ig.value}${ig.unit || '亿'}${ig.yoy != null ? `<span style="color:${ig.yoy >= 0 ? '#10b981' : '#ef4444'};margin-left:2px;">${ig.yoy >= 0 ? '+' : ''}${ig.yoy}%</span>` : ''}
+        </div>`;
+    }
+
+    const mYoyBadge = (yoy) => {
+        if (yoy === null || yoy === undefined) return '';
+        return `<span style="display:inline-block;font-size:0.62rem;padding:1px 5px;border-radius:8px;background:${yoy >= 0 ? 'rgba(16,185,129,0.12)' : 'rgba(239,68,68,0.12)'};color:${yoy >= 0 ? '#10b981' : '#ef4444'};margin-left:4px;font-weight:600;">${yoy >= 0 ? '+' : ''}${yoy}%</span>`;
+    };
+
+    const unitLabel = c.financials?.revenue?.unit?.split('(')[0] || '';
+
+    return `
+            <div style="margin:8px 0;padding:8px 10px;background:var(--bg-secondary);border-radius:10px;border:1px solid var(--border-color);">
+                <div style="display:flex;align-items:center;gap:4px;margin-bottom:6px;">
+                    <span style="font-size:0.7rem;font-weight:700;color:var(--text-primary);">📊 双模块</span>
+                    <span style="font-size:0.55rem;padding:1px 4px;border-radius:3px;background:rgba(99,102,241,0.1);color:#6366f1;">V7</span>
+                </div>
+                <!-- 单季度 -->
+                <div style="padding:6px 8px;background:var(--bg-primary);border-radius:8px;border-left:3px solid #10b981;margin-bottom:6px;">
+                    <div style="font-size:0.62rem;color:var(--text-muted);margin-bottom:2px;">
+                        📅 ${qPeriod} <span style="background:rgba(16,185,129,0.12);color:#10b981;padding:0 3px;border-radius:3px;font-size:0.55rem;font-weight:600;">单季度</span>
+                    </div>
+                    <div style="font-size:0.76rem;font-weight:700;color:var(--text-primary);">
+                        ${qRev !== null ? (qRev >= 10000 ? (qRev / 10000).toFixed(1) + '万' : qRev.toLocaleString()) : 'N/A'} ${unitLabel}
+                        ${qRevUsd ? `<span style="color:#10b981;font-size:0.66rem;font-weight:500;">${qRevUsd}</span>` : ''}
+                        ${mYoyBadge(qRevYoy)}
+                    </div>
+                    ${qBreakdown}
+                </div>
+                <!-- 全年 -->
+                <div style="padding:6px 8px;background:var(--bg-primary);border-radius:8px;border-left:3px solid #8b5cf6;">
+                    <div style="font-size:0.62rem;color:var(--text-muted);margin-bottom:2px;">
+                        📅 ${fyPeriod} <span style="background:rgba(139,92,246,0.12);color:#8b5cf6;padding:0 3px;border-radius:3px;font-size:0.55rem;font-weight:600;">全年</span>
+                    </div>
+                    <div style="font-size:0.76rem;font-weight:700;color:var(--text-primary);">
+                        ${fyRev !== null ? (fyRev >= 10000 ? (fyRev / 10000).toFixed(1) + '万' : fyRev.toLocaleString()) : 'N/A'} ${unitLabel}
+                        ${fyRevUsd ? `<span style="color:#8b5cf6;font-size:0.66rem;font-weight:500;">${fyRevUsd}</span>` : ''}
+                        ${mYoyBadge(fyRevYoy)}
+                    </div>
+                    ${fyBreakdown}
+                </div>
+            </div>`;
+}
+
 function mUpdateEarningsTab() {
     const companies = typeof earningsCompanies !== 'undefined' ? earningsCompanies : [];
     const searchVal = (document.getElementById('mEarningsSearch')?.value || '').toLowerCase();
@@ -1096,6 +1177,7 @@ function mUpdateEarningsTab() {
                     <div class="m-fin-value">${c.filingDate || '--'} · ${c.filingType || ''}</div>
                 </div>
             </div>
+            ${mBuildDualModuleHtml(c)}
             ${keyProds.length ? `<div class="m-company-products">${keyProds.map(p => `<span class="m-product-tag">${p}</span>`).join('')}</div>` : ''}
             <div class="m-company-detail">
                 ${metricsHtml ? `<div class="m-detail-section"><h5>🎮 关键运营指标</h5><div class="m-metrics-grid">${metricsHtml}</div></div>` : ''}
