@@ -1,7 +1,7 @@
 // ============================================
 // 行业热点新闻数据模块
 // [AUTO-GENERATED] 由 News Agent v4.0 自动更新，请勿手动编辑
-// 最后更新: 2026-03-18T18:00:00Z
+// 最后更新: 2026-03-19T18:30:00Z
 // 更新者: news-agent
 // 数据来源: 腾讯文档 LMLdoimBsILX (Tier 0) + web_search (Tier 1-3)
 // 重要性方案: v4.0 — 统一重点新闻标记（featured），基于腾讯文档863行历史标记学习
@@ -172,6 +172,242 @@ const newsSources = [
 ];
 
 const newsData = [
+    {
+        "id": 67,
+        "title": "《死亡搁浅2：冥滩之上》PC版3月19日正式发售，首日Steam在线火爆",
+        "summary": "小岛秀夫新作《死亡搁浅2：冥滩之上》PC版于2026年3月19日全球解锁，由Nixxes Software负责移植。PC版新增\"走向荒野\"难度、真人过场动画、Boss战重复游玩功能，支持超宽屏和DualSense。发售前113GB未加密文件遭BT泄露，但未影响首日销售热度。PS5版同步推送免费内容更新。",
+        "source": "PlayStation Blog",
+        "sourceUrl": "https://blog.playstation.com/2026/03/17/death-stranding-2-new-pc-ps5-features-detailed-live-march-19/",
+        "sourceUrls": [
+            {"name": "PlayStation Blog", "url": "https://blog.playstation.com/2026/03/17/death-stranding-2-new-pc-ps5-features-detailed-live-march-19/"},
+            {"name": "3DM", "url": "https://www.3dmgame.com/games/deathstranding2/"},
+            {"name": "Fragster", "url": "https://www.fragster.com/"}
+        ],
+        "category": "game",
+        "importance": "medium",
+        "date": "2026-03-19",
+        "tags": ["死亡搁浅2", "小岛秀夫", "PC", "Nixxes"],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 68,
+        "title": "《红色沙漠》3月20日全球发售在即，Steam愿望单突破300万",
+        "summary": "Pearl Abyss开放世界动作冒险游戏《红色沙漠》确认3月20日全球发售，登陆PC和PS5平台。Steam愿望单已突破300万，玩家期待度持续攀升。游戏主打雇佣兵团冒险叙事与深度动作战斗，被视为2026年Q1最重要的新IP之一。豪华版和典藏版同步发售。",
+        "source": "EuroGamer",
+        "sourceUrl": "https://www.eurogamer.net/crimson-desert-passes-3-million-wishlists-as-excitement-around-the-single-player-rpg-builds",
+        "sourceUrls": [
+            {"name": "EuroGamer", "url": "https://www.eurogamer.net/crimson-desert-passes-3-million-wishlists-as-excitement-around-the-single-player-rpg-builds"},
+            {"name": "红色沙漠官网", "url": "https://crimsondesert.pearlabyss.com/"}
+        ],
+        "category": "game",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-19",
+        "tags": ["红色沙漠", "Pearl Abyss", "开放世界", "新IP"],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 69,
+        "title": "索尼战略转向：彭博社曝PS5单机大作不再移植PC，回归主机独占",
+        "summary": "彭博社记者Jason Schreier报道，索尼互动娱乐未来将停止把旗下重磅单机PS5作品移植至PC平台。报道指出，在线类游戏如《马拉松》《漫威斗魂》仍会登陆PC，但《羊蹄山之魂》《沙罗周期》等单机作品将保持PS5独占。索尼内部认为PC版销量不佳且可能损害主机品牌价值。此举与微软、任天堂的跨平台开放策略形成鲜明对比，引发全球游戏社区激烈讨论。",
+        "source": "GamesIndustry",
+        "sourceUrl": "https://www.gamesindustry.biz/",
+        "sourceUrls": [
+            {"name": "彭博社(Jason Schreier)", "url": "https://www.bloomberg.com/"},
+            {"name": "IT之家", "url": "https://www.ithome.com/tags/%e7%b4%a2%e5%b0%bc/"},
+            {"name": "GameRes", "url": "https://www.gameres.com/916991.html"}
+        ],
+        "category": "platform",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-19",
+        "tags": ["索尼", "PS5", "PC移植", "独占", "彭博社"],
+        "sentiment": "neutral",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 70,
+        "title": "Valve重申Steam Machine和Steam Frame将于2026年发售，此前博客引发延期疑虑",
+        "summary": "Valve在\"Steam Year in Review 2025\"博客中使用了\"hope to ship in 2026\"措辞，引发Steam Machine和Steam Frame可能延期的担忧。此前Valve提及全球内存短缺和供应链问题可能影响硬件出货。Valve随后编辑博客移除不确定性表述，重申两款硬件将在2026年按计划发售。Steam Machine此前在GDC 2026已公布1080p/30fps认证标准。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/news/valve-insists-it-will-release-steam-machine-and-steam-frame-in-2026-after-blog-said-it-hoped-to/",
+        "sourceUrls": [
+            {"name": "VGC", "url": "https://www.videogameschronicle.com/news/valve-insists-it-will-release-steam-machine-and-steam-frame-in-2026-after-blog-said-it-hoped-to/"},
+            {"name": "GameRes", "url": "https://www.gameres.com/916991.html"}
+        ],
+        "category": "hardware",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-19",
+        "tags": ["Valve", "Steam Machine", "Steam Frame", "内存短缺"],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 71,
+        "title": "Nexon全年收入达31亿美元（+6.5%），Arc Raiders累计销量1400万",
+        "summary": "Nexon公布2025全年财报，总收入达31亿美元，同比增长6.5%，主要受《Arc Raiders》持续成功驱动。《Arc Raiders》累计销量已达1400万份，贡献约277亿韩元收入，月活跃用户约600万。该作还创下PC平台近100万同时在线玩家的纪录。Nexon Q4收入同比增长55%，超出市场预期。",
+        "source": "GamesIndustry",
+        "sourceUrl": "https://www.gamesindustry.biz/nexon-revenue-rises-65-to-31bn-in-2025-driven-by-ongoing-success-of-arc-raiders",
+        "sourceUrls": [
+            {"name": "GamesIndustry", "url": "https://www.gamesindustry.biz/nexon-revenue-rises-65-to-31bn-in-2025-driven-by-ongoing-success-of-arc-raiders"},
+            {"name": "EuroGamer", "url": "https://www.eurogamer.net/arc-raiders-had-nearly-1000000-concurrent-players-last-month-and-thats-on-pc-alone"}
+        ],
+        "category": "market",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-18",
+        "tags": ["Nexon", "Arc Raiders", "财报", "销量"],
+        "sentiment": "positive",
+        "tdocMarking": "blue"
+    },
+    {
+        "id": 72,
+        "title": "纽约州消费者起诉Valve：指控CS2开箱构成非法赌博",
+        "summary": "美国纽约州消费者通过Hagens Berman律师事务所对Valve Corporation发起集体诉讼，指控其在《反恐精英2》等游戏中的付费开箱/战利品箱（loot box）机制构成非法赌博企业。原告认为Valve通过随机付费道具系统诱导玩家反复消费，违反纽约州赌博法。此案呼应了欧洲PEGI开箱评级新规趋势。",
+        "source": "VGC",
+        "sourceUrl": "https://hbsslaw.com/",
+        "sourceUrls": [
+            {"name": "Hagens Berman", "url": "https://hbsslaw.com/"},
+            {"name": "VGC", "url": "https://www.videogameschronicle.com/"}
+        ],
+        "category": "policy",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-18",
+        "tags": ["Valve", "开箱", "赌博", "诉讼", "监管"],
+        "sentiment": "negative",
+        "tdocMarking": "orange"
+    },
+    {
+        "id": 73,
+        "title": "Asha Sharma正式上任Xbox新CEO，发布三大核心承诺应对玩家质疑",
+        "summary": "微软CoreAI产品总裁Asha Sharma正式接替退休的Phil Spencer成为Xbox部门新CEO。面对玩家对其缺乏游戏行业背景的质疑，Sharma在上任首日发布三大核心承诺：优先保障游戏质量并赋能工作室、投资核心IP、支持Game Pass生态。Phil Spencer将继续担任顾问至2026年夏季。此次管理层交接标志着Xbox正式进入AI驱动的新时代。",
+        "source": "IGN",
+        "sourceUrl": "https://zerocounts.net/",
+        "sourceUrls": [
+            {"name": "IGN/Zero Counts", "url": "https://zerocounts.net/"},
+            {"name": "微博(二柄APP)", "url": "https://weibo.com/erbingapp"}
+        ],
+        "category": "policy",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-18",
+        "tags": ["Xbox", "Asha Sharma", "微软", "管理层变动"],
+        "sentiment": "neutral",
+        "tdocMarking": "bold"
+    },
+    {
+        "id": 74,
+        "title": "本周新游发售：《红色沙漠》《死亡搁浅2 PC》《MLB The Show 26》等齐聚",
+        "summary": "2026年3月16-22日成为Q1最密集的新游发售周。重点作品包括：3月19日《死亡搁浅2》PC版、3月20日《红色沙漠》（PC/PS5）、《MLB The Show 26》等。多款3A级新作同周发售形成罕见竞争态势。",
+        "source": "IGN",
+        "sourceUrl": "https://www.fragster.com/",
+        "sourceUrls": [
+            {"name": "Fragster", "url": "https://www.fragster.com/"},
+            {"name": "游民星空", "url": "https://ku.gamersky.com/release/pc_202603/"}
+        ],
+        "category": "game",
+        "importance": "medium",
+        "date": "2026-03-18",
+        "tags": ["新游发售", "红色沙漠", "死亡搁浅2", "发售日历"],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 75,
+        "title": "Fortnite玩家抗议V-Bucks定价调整，威胁跳过下赛季Battle Pass",
+        "summary": "Epic Games宣布调整Fortnite虚拟货币V-Bucks的定价方案后，大量玩家在社交媒体上表达不满，部分玩家声称将跳过下赛季Battle Pass并取消订阅。此前Fortnite已宣布4月16日免费开放\"Save the World\"模式以提振玩家活跃度。IGN报道称这一定价争议可能进一步影响Fortnite的玩家留存率。",
+        "source": "IGN",
+        "sourceUrl": "https://pc.ign.com/",
+        "sourceUrls": [
+            {"name": "IGN", "url": "https://pc.ign.com/"},
+            {"name": "Fortnite官方", "url": "https://www.fortnite.com/battle-pass"}
+        ],
+        "category": "platform",
+        "importance": "medium",
+        "date": "2026-03-17",
+        "tags": ["Fortnite", "V-Bucks", "Epic", "玩家抗议"],
+        "sentiment": "negative",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 76,
+        "title": "PS Plus三月二三档阵容公布：《战锤40K：星际战士2》《女神异闻录5R》等",
+        "summary": "索尼互动娱乐公布3月PS Plus Extra和Premium档位新增游戏阵容，3月17日起正式上线。亮点作品包括《战锤40K：星际战士2》和《女神异闻录5：皇家版》等热门大作。PS Plus持续丰富游戏库以保持订阅服务吸引力。",
+        "source": "PlayStation Blog",
+        "sourceUrl": "https://blog.playstation.com/",
+        "sourceUrls": [
+            {"name": "搜狐转载", "url": "https://www.sohu.com/a/995499452_122598898"},
+            {"name": "PlayStation Blog", "url": "https://blog.playstation.com/"}
+        ],
+        "category": "platform",
+        "importance": "medium",
+        "date": "2026-03-17",
+        "tags": ["PlayStation", "PS Plus", "战锤40K", "订阅服务"],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 77,
+        "title": "日本主机游戏市场2025年暴涨138.8%，Switch 2功不可没",
+        "summary": "日本主机游戏市场2025年总收入达4181.3亿日元，同比暴涨138.8%。其中硬件销售同比增长149.3%，实体软件销售也大幅增长。任天堂Switch 2的发售是市场增长的核心驱动力。需注意该数据不含数字销售和DLC收入，实际市场规模可能更大。",
+        "source": "NintendoNews",
+        "sourceUrl": "https://mynintendonews.com/2026/01/20/japan-console-market-grew-by-138-8-in-2025-thanks-to-nintendo-switch-2/",
+        "category": "market",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-17",
+        "tags": ["日本", "主机市场", "Switch 2", "任天堂"],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 78,
+        "title": "Minecraft Live定档3月21日，Mojang预告重大游戏更新及电影新内容",
+        "summary": "Mojang Studios宣布Minecraft Live 2026将于3月21日美东时间下午1点举行，将公布全新游戏内容更新。此次直播还将首次展示即将上映的《我的世界》真人电影的独家片段。Xbox Wire同步预告暗示重大更新。这是继2025年9月以来的首场Minecraft Live活动。",
+        "source": "Xbox Wire",
+        "sourceUrl": "https://www.minecraft.net/en-us",
+        "sourceUrls": [
+            {"name": "Minecraft官方", "url": "https://www.minecraft.net/en-us"},
+            {"name": "Gamedod", "url": "https://gamedod.com/"}
+        ],
+        "category": "platform",
+        "importance": "medium",
+        "date": "2026-03-16",
+        "tags": ["Minecraft", "Mojang", "Xbox", "游戏活动"],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 79,
+        "title": "2026春季游戏平台新变局：微软Project Helix、索尼回归独占、Valve硬件认证三线并进",
+        "summary": "GameRes深度分析指出，2026年春季PC与主机游戏市场迎来三大变局：微软在GDC 2026公布Project Helix下一代Xbox，定位\"客厅PC\"可同时运行Xbox与PC游戏；索尼通过彭博社释放\"PS5单机大作不再移植PC\"信号回归独占；Valve在GDC官宣Steam Machine和Steam Frame的内容认证计划。三方策略分化前所未有，将深刻重塑未来的平台竞争格局。",
+        "source": "GameRes",
+        "sourceUrl": "https://www.gameres.com/916991.html",
+        "category": "market",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-15",
+        "tags": ["微软", "索尼", "Valve", "平台竞争", "战略分析"],
+        "sentiment": "neutral",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 80,
+        "title": "Switch 2研究机构预测面临涨价压力：关税、内存成本上升",
+        "summary": "VGC报道，研究机构预测Nintendo Switch 2在2026年面临涨价压力，主要原因包括关税政策变化、全球内存成本上涨以及其他经济环境因素。任天堂此前确认将专注于Switch 2的开发。Switch 2售价策略将直接影响其市场渗透率和与PS5 Pro的竞争态势。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/news/nintendo-switch-2-faces-a-price-increase-in-2026-research-firm-predicts/",
+        "category": "hardware",
+        "importance": "medium",
+        "date": "2026-03-14",
+        "tags": ["Switch 2", "任天堂", "涨价", "内存成本"],
+        "sentiment": "negative",
+        "tdocMarking": "none"
+    },
     {
         "id": 1,
         "title": "Xbox Game Pass 3月下半月新增12款游戏：含《如龙》《极乐迪斯科》等",
@@ -1064,23 +1300,6 @@ const newsData = [
         ],
         "sentiment": "positive",
         "tdocMarking": "none"
-    },
-    {
-        "id": 40,
-        "title": "Minecraft Live定档3月21日，Xbox Wire预告重大更新",
-        "summary": "Mojang Studios宣布下一场Minecraft Live将于2026年3月21日美东时间下午1点举办。Xbox Wire同步发布预告，暗示将公布重大游戏更新内容。这是2025年9月以来的首场Minecraft Live活动。",
-        "source": "Xbox Wire",
-        "sourceUrl": "https://news.xbox.com/",
-        "category": "platform",
-        "importance": "medium",
-        "date": "2026-03-11",
-        "tags": [
-            "Minecraft",
-            "Xbox",
-            "Mojang",
-            "游戏活动"
-        ],
-        "sentiment": "positive"
     },
     {
         "id": 41,
