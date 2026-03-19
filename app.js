@@ -2302,6 +2302,24 @@ function renderEarningsCompanyGrid(companies) {
             </div>`;
         }
 
+        // V12: 构建 Hero Strip 财务摘要条
+        const heroMarginClass = marginVal === null ? 'margin-na' : marginClass;
+        const heroMarginText = marginVal !== null ? marginVal.toFixed(1) + '%' : 'N/A';
+        const heroRevValue = c.financials.revenue.value !== null
+            ? c.financials.revenue.value.toLocaleString() + ' ' + c.financials.revenue.unit
+            : '未单独披露';
+        const heroRevUsd = c.financials.revenue.usdEquiv && c.currency !== 'USD'
+            ? `<span class="hero-usd">${c.financials.revenue.usdEquiv}</span>` : '';
+        const heroRevYoy = c.financials.revenue.yoy !== null
+            ? `<span class="earnings-yoy ${c.financials.revenue.yoy >= 0 ? 'positive' : 'negative'}" style="font-size:0.68rem;">${c.financials.revenue.yoy > 0 ? '↑+' : '↓'}${Math.abs(c.financials.revenue.yoy).toFixed(1)}%</span>` : '';
+        const heroOpValue = c.financials.operatingProfit.value !== null
+            ? c.financials.operatingProfit.value.toLocaleString() + ' ' + c.financials.operatingProfit.unit
+            : '未单独披露';
+        const heroOpUsd = c.financials.operatingProfit.usdEquiv && c.currency !== 'USD'
+            ? `<span class="hero-usd">${c.financials.operatingProfit.usdEquiv}</span>` : '';
+        const segPctHtml = c.financials.segmentRevenuePct && c.financials.segmentRevenuePct.value
+            ? `<div class="hero-sub">📊 ${c.financials.segmentRevenuePct.label}: ${c.financials.segmentRevenuePct.value}%</div>` : '';
+
         html += `<div class="earnings-company-card" data-company-id="${c.id}">
             <div class="earnings-card-top">
                 <div class="earnings-card-header">
@@ -2317,31 +2335,34 @@ function renderEarningsCompanyGrid(companies) {
                         IR
                     </a>
                 </div>
-                <div class="earnings-card-segment">${c.segment}</div>
-                <div class="earnings-card-period">${c.fiscalPeriod} · ${c.filingType} ${currencyBadge}</div>
+                <div class="earnings-card-meta-row">
+                    <span class="earnings-card-segment">${c.segment}</span>
+                    <span class="earnings-card-period">${c.fiscalPeriod} · ${c.filingType} ${currencyBadge}</span>
+                </div>
+            </div>
+            <div class="earnings-hero-strip">
+                <div class="earnings-hero-cell">
+                    <span class="hero-label">💰 ${c.financials.revenue.label || '游戏营收'}</span>
+                    <div class="hero-value">${heroRevValue}${heroRevUsd}</div>
+                    <div class="hero-sub">${heroRevYoy} ${exchangeRateNote}</div>
+                </div>
+                <div class="earnings-hero-cell">
+                    <span class="hero-label">💎 ${c.financials.operatingProfit.label || '营业利润'}</span>
+                    <div class="hero-value ${c.financials.operatingProfit.value !== null && c.financials.operatingProfit.value < 0 ? 'negative' : ''}">${heroOpValue}${heroOpUsd}</div>
+                    ${segPctHtml}
+                </div>
+                <div class="earnings-hero-cell hero-margin">
+                    <span class="hero-label">利润率</span>
+                    <div class="margin-ring ${heroMarginClass}">${heroMarginText}</div>
+                </div>
             </div>
             ${dualModuleHtml}
-            <div class="earnings-card-financials">
-                <div class="earnings-financial-row clickable-fin" data-fin-type="revenue" data-company-id="${c.id}">
-                    <span class="fin-label">${c.financials.revenue.label}</span>
-                    <span class="fin-value">${c.financials.revenue.value !== null ? c.financials.revenue.value.toLocaleString() + ' ' + c.financials.revenue.unit : '未单独披露'} ${revUsdHtml}</span>
-                    ${yoyLabel}
-                </div>
-                <div class="earnings-financial-row clickable-fin" data-fin-type="profit" data-company-id="${c.id}">
-                    <span class="fin-label">${c.financials.operatingProfit.label}</span>
-                    <span class="fin-value ${c.financials.operatingProfit.value !== null && c.financials.operatingProfit.value < 0 ? 'negative' : ''}">${c.financials.operatingProfit.value !== null ? c.financials.operatingProfit.value.toLocaleString() + ' ' + c.financials.operatingProfit.unit : '未单独披露'} ${opUsdHtml}</span>
-                </div>
-                <div class="earnings-financial-row highlight">
-                    <span class="fin-label">营业利润率</span>
-                    <span class="fin-margin ${marginClass}">${marginVal !== null ? marginVal.toFixed(1) + '%' : 'N/A'}</span>
-                </div>
-                ${exchangeRateNote}
-            </div>
             ${companyOverallHtml}
             <div class="earnings-card-metrics">
                 ${metricsHtml}
             </div>
             <div class="earnings-card-products">
+                <span class="earnings-products-label">🎮 产品线</span>
                 ${c.keyProducts.map(p => `<span class="earnings-product-tag">${p}</span>`).join('')}
             </div>
             ${sourcesHtml}
@@ -2399,15 +2420,18 @@ function renderEarningsCompanyGrid(companies) {
         });
     });
 
-    // 绑定财务行点击 — 显示tooltip with source
-    container.querySelectorAll('.clickable-fin').forEach(row => {
-        row.addEventListener('click', (e) => {
-            const companyId = row.dataset.companyId;
-            const finType = row.dataset.finType;
+    // V12: Hero Strip 财务单元格点击 tooltip
+    container.querySelectorAll('.earnings-hero-cell:not(.hero-margin)').forEach(cell => {
+        cell.style.cursor = 'pointer';
+        cell.addEventListener('click', (e) => {
+            const card = cell.closest('.earnings-company-card');
+            if (!card) return;
+            const companyId = card.dataset.companyId;
             const company = earningsCompanies.find(c => c.id === companyId);
             if (!company) return;
-
-            const fin = finType === 'revenue' ? company.financials.revenue : company.financials.operatingProfit;
+            // 判断是营收还是利润单元格
+            const isRevenue = cell.querySelector('.hero-label')?.textContent?.includes('营收') || cell === cell.parentElement.children[0];
+            const fin = isRevenue ? company.financials.revenue : company.financials.operatingProfit;
             let tipHtml = `<div class="earnings-tooltip-title">${company.logo} ${company.name} — ${fin.label}</div>`;
             tipHtml += `<div class="earnings-tooltip-row"><span class="earnings-tooltip-label">数值:</span><span class="earnings-tooltip-value">${fin.value !== null ? fin.value.toLocaleString() + ' ' + fin.unit : '未披露'}</span></div>`;
             if (fin.usdEquiv) {
@@ -2423,8 +2447,6 @@ function renderEarningsCompanyGrid(companies) {
                 tipHtml += `<div class="earnings-tooltip-source">💱 汇率: 1 USD ≈ ${earningsExchangeRates[company.currency].rate} ${company.currency} (${earningsExchangeRates[company.currency].source})</div>`;
             }
             showEarningsTooltip(e, tipHtml);
-
-            // Auto-hide after 4 seconds
             setTimeout(hideEarningsTooltip, 4000);
         });
     });

@@ -1191,42 +1191,30 @@ function mUpdateEarningsTab() {
                 <span class="m-company-region">${regionFlag}</span>
             </div>
             <div class="m-company-period">${c.fiscalPeriod || ''}</div>
-            <div class="m-company-financials">
-                <div class="m-fin-row">
-                    <div class="m-fin-label">💰 游戏营收</div>
-                    <div class="m-fin-value">${revenueLabel}</div>
+            <div class="m-hero-strip">
+                <div class="m-hero-cell">
+                    <div class="m-hero-label">💰 营收</div>
+                    <div class="m-hero-value">${revenueLabel}</div>
+                    <div class="m-hero-yoy"><span class="m-fin-yoy ${growth >= 0 ? 'positive' : 'negative'}">${growth >= 0 ? '+' : ''}${growth.toFixed(1)}%</span></div>
                 </div>
-                <div class="m-fin-row">
-                    <div class="m-fin-label">📈 营收增速</div>
-                    <div class="m-fin-value">
-                        <span class="m-fin-yoy ${growth >= 0 ? 'positive' : 'negative'}">${growth >= 0 ? '+' : ''}${growth.toFixed(1)}% ${growth >= 0 ? '↑' : '↓'}</span>
-                    </div>
-                </div>
-                ${margin !== 0 ? `<div class="m-fin-row">
-                    <div class="m-fin-label">🎯 营业利润率</div>
-                    <div class="m-fin-value"><span class="m-margin-badge m-margin-${marginCls}">${margin.toFixed(1)}%</span></div>
+                ${profitLabel ? `<div class="m-hero-cell">
+                    <div class="m-hero-label">💎 利润</div>
+                    <div class="m-hero-value">${profitLabel}</div>
                 </div>` : ''}
-                ${profitLabel ? `<div class="m-fin-row">
-                    <div class="m-fin-label">💎 营业利润</div>
-                    <div class="m-fin-value">${profitLabel}</div>
-                </div>` : ''}
-                ${segPct ? `<div class="m-fin-row">
-                    <div class="m-fin-label">📊 游戏占比</div>
-                    <div class="m-fin-value">${segPct}%</div>
-                </div>` : ''}
-                <div class="m-fin-row">
-                    <div class="m-fin-label">📅 财报日期</div>
-                    <div class="m-fin-value">${c.filingDate || '--'} · ${c.filingType || ''}</div>
+                <div class="m-hero-cell m-hero-margin">
+                    <div class="m-hero-label">利润率</div>
+                    <div class="m-margin-ring m-margin-${marginCls}">${margin !== 0 ? margin.toFixed(1) + '%' : 'N/A'}</div>
                 </div>
             </div>
+            ${segPct ? `<div class="m-seg-pct">📊 游戏占比 ${segPct}% · ${c.filingDate || '--'} · ${c.filingType || ''}</div>` : `<div class="m-seg-pct">📅 ${c.filingDate || '--'} · ${c.filingType || ''}</div>`}
             ${mBuildDualModuleHtml(c)}
-            ${keyProds.length ? `<div class="m-company-products">${keyProds.map(p => `<span class="m-product-tag">${p}</span>`).join('')}</div>` : ''}
+            ${keyProds.length ? `<div class="m-company-products"><span class="m-products-label">🎮</span>${keyProds.map(p => `<span class="m-product-tag">${p}</span>`).join('')}</div>` : ''}
             <div class="m-company-detail">
                 ${metricsHtml ? `<div class="m-detail-section"><h5>🎮 关键运营指标</h5><div class="m-metrics-grid">${metricsHtml}</div></div>` : ''}
-                ${c.analysis?.performance ? `<div class="m-detail-section"><h5>📝 业绩分析</h5><p>${c.analysis.performance}</p></div>` : ''}
-                ${c.analysis?.strategy ? `<div class="m-detail-section"><h5>🎯 战略方向</h5><p>${c.analysis.strategy}</p></div>` : ''}
-                ${c.analysis?.outlook ? `<div class="m-detail-section"><h5>🔮 前瞻展望</h5><p>${c.analysis.outlook}</p></div>` : ''}
-                ${c.analysis?.newProducts ? `<div class="m-detail-section"><h5>🆕 新品管线</h5><p>${c.analysis.newProducts}</p></div>` : ''}
+                ${c.analysis?.performance ? `<div class="m-detail-section m-detail-perf"><h5>📊 业绩分析</h5><p>${c.analysis.performance}</p></div>` : ''}
+                ${c.analysis?.strategy ? `<div class="m-detail-section m-detail-strat"><h5>🎯 战略方向</h5><p>${c.analysis.strategy}</p></div>` : ''}
+                ${c.analysis?.outlook ? `<div class="m-detail-section m-detail-outlook"><h5>🔮 前瞻展望</h5><p>${c.analysis.outlook}</p></div>` : ''}
+                ${c.analysis?.newProducts ? `<div class="m-detail-section m-detail-new"><h5>🆕 新品管线</h5><p>${c.analysis.newProducts}</p></div>` : ''}
                 ${c.dataSources?.length ? `<div class="m-detail-section"><h5>📋 数据来源</h5>${c.dataSources.map(s => `<a href="${s.url}" target="_blank" class="m-source-link">${s.name} (${s.date})</a>`).join('')}</div>` : ''}
             </div>
         </div>`;

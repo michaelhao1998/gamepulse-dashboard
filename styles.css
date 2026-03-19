@@ -2787,6 +2787,7 @@ tr.row-released td:first-child {
     border-radius: var(--radius-lg);
     overflow: hidden;
     transition: var(--transition);
+    position: relative;
 }
 
 .earnings-company-card:hover {
@@ -2794,27 +2795,29 @@ tr.row-released td:first-child {
     border-color: rgba(99, 102, 241, 0.3);
 }
 
+/* V12: 卡片顶部区域 — 增强身份识别 */
 .earnings-card-top {
-    padding: 16px 20px 12px;
+    padding: 18px 20px 14px;
+    position: relative;
 }
 
 .earnings-card-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .earnings-card-identity {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .earnings-card-logo {
-    font-size: 1.5rem;
-    width: 40px;
-    height: 40px;
+    font-size: 1.6rem;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2825,7 +2828,7 @@ tr.row-released td:first-child {
 }
 
 .earnings-card-name {
-    font-size: 1rem;
+    font-size: 1.02rem;
     font-weight: 700;
     color: var(--text-primary);
     line-height: 1.3;
@@ -2859,23 +2862,113 @@ tr.row-released td:first-child {
     background: rgba(99, 102, 241, 0.08);
 }
 
+/* V12: 业务板块和报告期标签栏 */
+.earnings-card-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
 .earnings-card-segment {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 600;
     color: var(--accent-primary);
     background: rgba(99, 102, 241, 0.08);
     padding: 3px 10px;
     border-radius: 4px;
     display: inline-block;
-    margin-bottom: 4px;
 }
 
 .earnings-card-period {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     color: var(--text-muted);
+    background: var(--bg-input);
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-block;
 }
 
-/* Financials Section */
+/* V12: 核心财务摘要条（Hero Strip） */
+.earnings-hero-strip {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
+    background: linear-gradient(135deg, rgba(99,102,241,0.04) 0%, rgba(16,185,129,0.03) 100%);
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+}
+.earnings-hero-cell {
+    flex: 1;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    position: relative;
+}
+.earnings-hero-cell:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: var(--border-light);
+}
+.earnings-hero-cell.hero-margin {
+    flex: 0 0 auto;
+    min-width: 100px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+}
+.hero-label {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+.hero-value {
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.2;
+}
+.hero-value .hero-usd {
+    font-size: 0.72rem;
+    color: var(--teal);
+    font-weight: 600;
+    margin-left: 4px;
+}
+.hero-sub {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+/* 利润率圆形指示器 */
+.margin-ring {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.88rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    border: 3px solid currentColor;
+}
+.margin-ring.margin-excellent { color: #22c55e; border-color: #22c55e; background: rgba(34,197,94,0.06); }
+.margin-ring.margin-good { color: #3b82f6; border-color: #3b82f6; background: rgba(59,130,246,0.06); }
+.margin-ring.margin-ok { color: #f59e0b; border-color: #f59e0b; background: rgba(245,158,11,0.06); }
+.margin-ring.margin-loss { color: #ef4444; border-color: #ef4444; background: rgba(239,68,68,0.06); }
+.margin-ring.margin-na { color: var(--text-muted); border-color: var(--border-color); background: var(--bg-input); font-size: 0.72rem; }
+
+/* V12: Financials Section — 保留原始结构兼容 */
 .earnings-card-financials {
     padding: 12px 20px;
     border-top: 1px solid var(--border-light);
@@ -2943,7 +3036,7 @@ tr.row-released td:first-child {
 .fin-margin.margin-ok { color: #f59e0b; }
 .fin-margin.margin-loss { color: #ef4444; }
 
-/* Metrics */
+/* V12: 运营指标区 — 增强视觉表达 */
 .earnings-card-metrics {
     padding: 12px 20px;
     display: grid;
@@ -2954,11 +3047,18 @@ tr.row-released td:first-child {
 .earnings-metric {
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    padding: 8px;
+    gap: 3px;
+    padding: 10px 10px 10px 12px;
     background: var(--bg-input);
     border-radius: var(--radius-sm);
     border: 1px solid var(--border-light);
+    border-left: 3px solid rgba(99,102,241,0.4);
+    transition: var(--transition);
+}
+
+.earnings-metric:hover {
+    border-left-color: var(--accent-primary);
+    background: rgba(99,102,241,0.04);
 }
 
 .metric-label {
@@ -2982,26 +3082,40 @@ tr.row-released td:first-child {
 .metric-yoy.positive { color: #22c55e; }
 .metric-yoy.negative { color: #ef4444; }
 
-/* Products */
+/* V12: 产品标签区 — 增加小标题 */
 .earnings-card-products {
     padding: 10px 20px;
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 5px;
+    align-items: center;
+}
+.earnings-products-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-right: 2px;
+    letter-spacing: 0.3px;
 }
 
 .earnings-product-tag {
     display: inline-block;
-    padding: 2px 8px;
-    border-radius: 4px;
+    padding: 3px 9px;
+    border-radius: 12px;
     font-size: 0.68rem;
     font-weight: 600;
     background: var(--bg-input);
     color: var(--text-secondary);
     border: 1px solid var(--border-light);
+    transition: var(--transition);
+}
+.earnings-product-tag:hover {
+    background: rgba(99,102,241,0.06);
+    border-color: rgba(99,102,241,0.3);
+    color: var(--accent-primary);
 }
 
-/* Expand Button */
+/* V12: Expand Button — 更明显的交互提示 */
 .earnings-card-expand {
     display: flex;
     align-items: center;
@@ -3014,10 +3128,16 @@ tr.row-released td:first-child {
     font-weight: 600;
     border-top: 1px solid var(--border-light);
     transition: var(--transition);
+    background: linear-gradient(180deg, transparent 0%, rgba(99,102,241,0.03) 100%);
 }
 
 .earnings-card-expand:hover {
+    background: rgba(99, 102, 241, 0.08);
+}
+
+.earnings-card-expand.expanded {
     background: rgba(99, 102, 241, 0.06);
+    border-bottom: 1px solid var(--border-light);
 }
 
 .earnings-card-expand.expanded svg {
@@ -3028,30 +3148,39 @@ tr.row-released td:first-child {
     transition: transform 0.3s ease;
 }
 
-/* Detail Section */
+/* V12: Detail Section — 增强分析区域的信息层次 */
 .earnings-card-detail {
-    padding: 0 20px 20px;
+    padding: 16px 20px 20px;
     animation: fadeIn 0.3s ease forwards;
+    background: linear-gradient(180deg, rgba(99,102,241,0.02) 0%, transparent 100%);
 }
 
 .earnings-detail-section {
-    margin-bottom: 16px;
-    padding: 14px;
+    margin-bottom: 14px;
+    padding: 14px 16px;
     background: var(--bg-input);
     border-radius: var(--radius-md);
     border: 1px solid var(--border-light);
+    border-left: 3px solid transparent;
+    transition: border-left-color 0.2s ease;
 }
+.earnings-detail-section:nth-child(1) { border-left-color: #3b82f6; }
+.earnings-detail-section:nth-child(2) { border-left-color: #8b5cf6; }
+.earnings-detail-section:nth-child(3) { border-left-color: #f59e0b; }
+.earnings-detail-section:nth-child(4) { border-left-color: #10b981; }
 
 .earnings-detail-section h5 {
     font-size: 0.85rem;
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-light);
 }
 
 .earnings-detail-section p {
     font-size: 0.82rem;
-    line-height: 1.7;
+    line-height: 1.75;
     color: var(--text-secondary);
 }
 
@@ -3059,10 +3188,11 @@ tr.row-released td:first-child {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 14px;
+    padding: 12px 14px;
     background: rgba(99, 102, 241, 0.04);
-    border-radius: var(--radius-sm);
-    border: 1px solid rgba(99, 102, 241, 0.1);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(99, 102, 241, 0.12);
+    margin-top: 4px;
 }
 
 .earnings-filing-info {
@@ -3076,6 +3206,13 @@ tr.row-released td:first-child {
     color: var(--accent-primary);
     text-decoration: none;
     transition: var(--transition);
+    padding: 3px 10px;
+    border: 1px solid rgba(99,102,241,0.2);
+    border-radius: var(--radius-sm);
+}
+.earnings-filing-link:hover {
+    background: rgba(99,102,241,0.08);
+    border-color: var(--accent-primary);
 }
 
 .earnings-filing-link:hover {
