@@ -1620,6 +1620,7 @@ function updateEarningsTab() {
     renderEarningsMarginChart(filtered);
     renderEarningsGrowthChart(filtered);
     renderEarningsRevenueCompareChart();
+    renderEarningsFullYearChart();
 
     // 公司卡片
     renderEarningsCompanyGrid(filtered);
@@ -1760,32 +1761,116 @@ function renderEarningsGrowthChart(companies) {
 function renderEarningsRevenueCompareChart() {
     const container = document.getElementById('earningsRevenueCompareChart');
     if (!container) return;
-    const data = (typeof quarterlyRevenueComparison !== 'undefined') ? quarterlyRevenueComparison : [];
+    const rawData = (typeof quarterlyRevenueComparison !== 'undefined') ? quarterlyRevenueComparison : [];
+    // V7: 只展示revenue不为null的条目（有真实单季度数据的公司）
+    const data = rawData.filter(d => d.revenue !== null && d.revenue > 0);
+    const nullCount = rawData.length - data.length;
     if (data.length === 0) { container.innerHTML = '<p style="color:var(--text-muted);padding:20px;">暂无数据</p>'; return; }
     const sorted = [...data].sort((a, b) => b.revenue - a.revenue);
     const maxVal = Math.max(...sorted.map(d => d.revenue), 1);
+    // dataGrade 颜色映射
+    const gradeColors = { A: '#10b981', B: '#f59e0b', C: '#ef4444', X: '#6b7280' };
+    const gradeLabels = { A: '官方', B: '推算', C: '估算', X: '暂无' };
     let html = '<div class="earnings-bars">';
     sorted.forEach(d => {
-        const width = (d.revenue / maxVal * 80);
+        const width = (d.revenue / maxVal * 75);
         const valStr = d.revenue >= 10000 ? '$' + (d.revenue/1000).toFixed(1) + 'B' : '$' + (d.revenue/1000).toFixed(2) + 'B';
-        html += `<div class="earnings-bar-row clickable" title="${d.note}">
-            <div class="earnings-bar-name">${d.name}</div>
+        const grade = d.dataGrade || 'A';
+        const gradeColor = gradeColors[grade] || '#6b7280';
+        const gradeTag = `<span style="display:inline-block;font-size:0.6rem;padding:1px 4px;border-radius:3px;background:${gradeColor}22;color:${gradeColor};margin-left:4px;font-weight:600;">${gradeLabels[grade] || grade}</span>`;
+        const yoyStr = d.yoy !== null && d.yoy !== undefined ? `<span style="color:${d.yoy >= 0 ? '#10b981' : '#ef4444'};font-size:0.7rem;margin-left:3px;">${d.yoy >= 0 ? '+' : ''}${d.yoy}%</span>` : '';
+        const periodStr = d.period ? `<span style="font-size:0.65rem;color:var(--text-muted);margin-left:3px;">${d.period}</span>` : '';
+        html += `<div class="earnings-bar-row clickable" title="${d.note || ''}" data-period="${d.period || ''}" data-grade="${grade}" data-caveat="${d.caveat || ''}">
+            <div class="earnings-bar-name">${d.name}${gradeTag}</div>
             <div class="earnings-bar-track-wrapper">
                 <div class="earnings-bar-fill" style="width:${width}%;background:${d.color};"></div>
             </div>
-            <div class="earnings-bar-value" style="color:${d.color};">${valStr}</div>
+            <div class="earnings-bar-value" style="color:${d.color};">${valStr}${yoyStr}</div>
+        </div>`;
+    });
+    // 如果有null条目（数据不可靠的公司），显示提示
+    if (nullCount > 0) {
+        html += `<div style="font-size:0.72rem;color:var(--text-muted);padding:8px 0 2px;border-top:1px dashed var(--border-color);margin-top:8px;">⚠ ${nullCount}家公司因数据不可靠/暂无已排除（万代南梦宫、Square Enix、科乐美、世嘉萨米）</div>`;
+    }
+    html += '</div>';
+    container.innerHTML = html;
+
+    // Hover tooltip for revenue compare — V7: 增加period/grade/caveat信息
+    container.querySelectorAll('.earnings-bar-row.clickable').forEach(row => {
+        row.addEventListener('mouseenter', (e) => {
+            const note = row.getAttribute('title');
+            const period = row.dataset.period || '';
+            const grade = row.dataset.grade || '';
+            const caveat = row.dataset.caveat || '';
+            if (note) {
+                let tipHtml = `<div class="earnings-tooltip-title">${row.querySelector('.earnings-bar-name').textContent}</div>`;
+                tipHtml += `<div style="font-size:0.78rem;color:var(--text-secondary);">${note}</div>`;
+                if (period) tipHtml += `<div style="font-size:0.72rem;color:var(--text-muted);margin-top:2px;">📅 ${period}</div>`;
+                if (caveat) tipHtml += `<div style="font-size:0.72rem;color:var(--accent-warning);margin-top:2px;">⚠ ${caveat}</div>`;
+                tipHtml += `<div class="earnings-tooltip-source">统一单季度USD等值对比</div>`;
+                showEarningsTooltip(e, tipHtml);
+                row.removeAttribute('title');
+                row.dataset.note = note;
+            }
+        });
+        row.addEventListener('mousemove', (e) => {
+            const tip = getOrCreateEarningsTooltip();
+            tip.style.left = (e.clientX + 14) + 'px';
+            tip.style.top = (e.clientY - 10) + 'px';
+        });
+        row.addEventListener('mouseleave', (e) => {
+            hideEarningsTooltip();
+            if (row.dataset.note) row.setAttribute('title', row.dataset.note);
+        });
+    });
+}
+
+// V7: 全年/年化游戏收入对比图表
+function renderEarningsFullYearChart() {
+    const container = document.getElementById('earningsFullYearChart');
+    if (!container) return;
+    const rawData = (typeof fullYearRevenueComparison !== 'undefined') ? fullYearRevenueComparison : [];
+    const data = rawData.filter(d => d.revenue !== null && d.revenue > 0);
+    if (data.length === 0) { container.innerHTML = '<p style="color:var(--text-muted);padding:20px;">暂无数据</p>'; return; }
+    const sorted = [...data].sort((a, b) => b.revenue - a.revenue);
+    const maxVal = Math.max(...sorted.map(d => d.revenue), 1);
+    const gradeColors = { A: '#10b981', B: '#f59e0b', C: '#ef4444', X: '#6b7280' };
+    const gradeLabels = { A: '官方', B: '推算/指引', C: '估算', X: '暂无' };
+    let html = '<div class="earnings-bars">';
+    sorted.forEach(d => {
+        const width = (d.revenue / maxVal * 75);
+        const valStr = d.revenue >= 10000 ? '$' + (d.revenue/1000).toFixed(1) + 'B' : '$' + (d.revenue/1000).toFixed(2) + 'B';
+        const grade = d.dataGrade || 'A';
+        const gradeColor = gradeColors[grade] || '#6b7280';
+        const gradeTag = `<span style="display:inline-block;font-size:0.6rem;padding:1px 4px;border-radius:3px;background:${gradeColor}22;color:${gradeColor};margin-left:4px;font-weight:600;">${gradeLabels[grade] || grade}</span>`;
+        const yoyStr = d.yoy !== null && d.yoy !== undefined ? `<span style="color:${d.yoy >= 0 ? '#10b981' : '#ef4444'};font-size:0.7rem;margin-left:3px;">${d.yoy >= 0 ? '+' : ''}${d.yoy}%</span>` : '';
+        html += `<div class="earnings-bar-row clickable" title="${d.note || ''}" data-period="${d.period || ''}" data-grade="${grade}" data-caveat="${d.caveat || ''}" data-breakdown="${d.breakdown || ''}">
+            <div class="earnings-bar-name">${d.name}${gradeTag}</div>
+            <div class="earnings-bar-track-wrapper">
+                <div class="earnings-bar-fill" style="width:${width}%;background:${d.color};"></div>
+            </div>
+            <div class="earnings-bar-value" style="color:${d.color};">${valStr}${yoyStr}</div>
         </div>`;
     });
     html += '</div>';
     container.innerHTML = html;
 
-    // Hover tooltip for revenue compare
+    // Hover tooltip
     container.querySelectorAll('.earnings-bar-row.clickable').forEach(row => {
         row.addEventListener('mouseenter', (e) => {
             const note = row.getAttribute('title');
+            const period = row.dataset.period || '';
+            const caveat = row.dataset.caveat || '';
+            const breakdown = row.dataset.breakdown || '';
             if (note) {
-                showEarningsTooltip(e, `<div class="earnings-tooltip-title">${row.querySelector('.earnings-bar-name').textContent}</div><div style="font-size:0.78rem;color:var(--text-secondary);">${note}</div><div class="earnings-tooltip-source">统一折算美元对比</div>`);
-                row.removeAttribute('title'); // prevent native tooltip
+                let tipHtml = `<div class="earnings-tooltip-title">${row.querySelector('.earnings-bar-name').textContent}</div>`;
+                tipHtml += `<div style="font-size:0.78rem;color:var(--text-secondary);">${note}</div>`;
+                if (period) tipHtml += `<div style="font-size:0.72rem;color:var(--text-muted);margin-top:2px;">📅 ${period}</div>`;
+                if (breakdown) tipHtml += `<div style="font-size:0.72rem;color:var(--accent-primary);margin-top:2px;">📊 ${breakdown}</div>`;
+                if (caveat) tipHtml += `<div style="font-size:0.72rem;color:var(--accent-warning);margin-top:2px;">⚠ ${caveat}</div>`;
+                tipHtml += `<div class="earnings-tooltip-source">全年/年化USD等值对比</div>`;
+                showEarningsTooltip(e, tipHtml);
+                row.removeAttribute('title');
                 row.dataset.note = note;
             }
         });
@@ -1823,6 +1908,91 @@ function scrollToCompanyCard(companyId) {
             }
         }
     }
+}
+
+// V7: 构建双模块（单季度+全年）HTML块 — 仅当公司有latestQuarter和fullYear时显示
+function buildDualModuleHtml(c) {
+    if (!c.latestQuarter || !c.fullYear) return '';
+
+    const lq = c.latestQuarter;
+    const fy = c.fullYear;
+    const rate = earningsExchangeRates[c.currency]?.rate || 1;
+
+    // 单季度数据
+    const qRev = lq.revenue?.value;
+    const qRevLabel = lq.revenue?.label || '单季度游戏收入';
+    const qRevYoy = lq.revenue?.yoy;
+    const qRevUsd = lq.revenue?.usdEquiv || '';
+    const qPeriod = lq.period || '';
+    const qCompanyRev = lq.companyRevenue?.value;
+    const qCompanyLabel = lq.companyRevenue?.label || '';
+
+    // 全年数据
+    const fyRev = fy.revenue?.value;
+    const fyRevLabel = fy.revenue?.label || '全年游戏收入';
+    const fyRevYoy = fy.revenue?.yoy;
+    const fyRevUsd = fy.revenue?.usdEquiv || '';
+    const fyPeriod = fy.period || '';
+    const fyCompanyRev = fy.companyRevenue?.value;
+    const fyCompanyLabel = fy.companyRevenue?.label || '';
+
+    // 国内/国际拆分（如果有）
+    let qBreakdown = '';
+    if (lq.gameMetrics?.domesticGames && lq.gameMetrics?.internationalGames) {
+        const dg = lq.gameMetrics.domesticGames;
+        const ig = lq.gameMetrics.internationalGames;
+        qBreakdown = `<div style="font-size:0.72rem;color:var(--text-muted);margin-top:4px;">
+            国内 ¥${dg.value}${dg.unit || '亿'}<span style="color:${(dg.yoy||0)>=0?'#10b981':'#ef4444'};margin-left:3px;">${dg.yoy!==null&&dg.yoy!==undefined?(dg.yoy>=0?'+':'')+dg.yoy+'%':''}</span>
+            &nbsp;|&nbsp; 国际 ¥${ig.value}${ig.unit || '亿'}<span style="color:${(ig.yoy||0)>=0?'#10b981':'#ef4444'};margin-left:3px;">${ig.yoy!==null&&ig.yoy!==undefined?(ig.yoy>=0?'+':'')+ig.yoy+'%':''}</span>
+        </div>`;
+    }
+
+    let fyBreakdown = '';
+    if (fy.gameBreakdown?.domestic && fy.gameBreakdown?.international) {
+        const dg = fy.gameBreakdown.domestic;
+        const ig = fy.gameBreakdown.international;
+        fyBreakdown = `<div style="font-size:0.72rem;color:var(--text-muted);margin-top:4px;">
+            国内 ¥${dg.value}${dg.unit || '亿'}<span style="color:${(dg.yoy||0)>=0?'#10b981':'#ef4444'};margin-left:3px;">${dg.yoy!==null&&dg.yoy!==undefined?(dg.yoy>=0?'+':'')+dg.yoy+'%':''}</span>
+            &nbsp;|&nbsp; 国际 ¥${ig.value}${ig.unit || '亿'}<span style="color:${(ig.yoy||0)>=0?'#10b981':'#ef4444'};margin-left:3px;">${ig.yoy!==null&&ig.yoy!==undefined?(ig.yoy>=0?'+':'')+ig.yoy+'%':''}</span>
+        </div>`;
+    }
+
+    const yoyBadge = (yoy) => {
+        if (yoy === null || yoy === undefined) return '';
+        return `<span style="display:inline-block;font-size:0.7rem;padding:1px 6px;border-radius:10px;background:${yoy>=0?'rgba(16,185,129,0.12)':'rgba(239,68,68,0.12)'};color:${yoy>=0?'#10b981':'#ef4444'};margin-left:6px;font-weight:600;">${yoy>=0?'+':''}${yoy}%</span>`;
+    };
+
+    return `
+            <div class="earnings-dual-module" style="margin:10px 0;padding:10px 14px;background:var(--bg-secondary);border-radius:10px;border:1px solid var(--border-color);">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+                    <span style="font-size:0.75rem;font-weight:700;color:var(--text-primary);">📊 双模块数据</span>
+                    <span style="font-size:0.62rem;padding:1px 5px;border-radius:3px;background:rgba(99,102,241,0.1);color:#6366f1;">V7</span>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                    <!-- 单季度模块 -->
+                    <div style="padding:8px 10px;background:var(--bg-primary);border-radius:8px;border-left:3px solid #10b981;">
+                        <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:4px;">📅 ${qPeriod} <span style="background:rgba(16,185,129,0.12);color:#10b981;padding:0 4px;border-radius:3px;font-size:0.6rem;font-weight:600;">单季度</span></div>
+                        <div style="font-size:0.82rem;font-weight:700;color:var(--text-primary);">
+                            ${qRev !== null ? (qRev/10000).toFixed(1) + '万' : 'N/A'} ${c.financials.revenue.unit?.split('(')[0] || ''}
+                            ${qRevUsd ? `<span style="color:#10b981;font-size:0.72rem;font-weight:500;">${qRevUsd}</span>` : ''}
+                            ${yoyBadge(qRevYoy)}
+                        </div>
+                        ${qBreakdown}
+                        ${qCompanyRev ? `<div style="font-size:0.68rem;color:var(--text-muted);margin-top:3px;">${qCompanyLabel}</div>` : ''}
+                    </div>
+                    <!-- 全年模块 -->
+                    <div style="padding:8px 10px;background:var(--bg-primary);border-radius:8px;border-left:3px solid #8b5cf6;">
+                        <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:4px;">📅 ${fyPeriod} <span style="background:rgba(139,92,246,0.12);color:#8b5cf6;padding:0 4px;border-radius:3px;font-size:0.6rem;font-weight:600;">全年</span></div>
+                        <div style="font-size:0.82rem;font-weight:700;color:var(--text-primary);">
+                            ${fyRev !== null ? (fyRev/10000).toFixed(1) + '万' : 'N/A'} ${c.financials.revenue.unit?.split('(')[0] || ''}
+                            ${fyRevUsd ? `<span style="color:#8b5cf6;font-size:0.72rem;font-weight:500;">${fyRevUsd}</span>` : ''}
+                            ${yoyBadge(fyRevYoy)}
+                        </div>
+                        ${fyBreakdown}
+                        ${fyCompanyRev ? `<div style="font-size:0.68rem;color:var(--text-muted);margin-top:3px;">${fyCompanyLabel}</div>` : ''}
+                    </div>
+                </div>
+            </div>`;
 }
 
 function renderEarningsCompanyGrid(companies) {
@@ -1936,7 +2106,7 @@ function renderEarningsCompanyGrid(companies) {
                     <span class="fin-margin ${marginClass}">${marginVal !== null ? marginVal.toFixed(1) + '%' : 'N/A'}</span>
                 </div>
                 ${exchangeRateNote}
-            </div>${c.companyOverall ? `
+            </div>${buildDualModuleHtml(c)}${c.companyOverall ? `
             <div class="earnings-card-overall">
                 <div class="earnings-overall-header"><span>📋 公司整体数据参考</span></div>
                 <div class="earnings-overall-rows">

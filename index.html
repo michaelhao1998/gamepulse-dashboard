@@ -760,8 +760,8 @@
                         </div>
                     </div>
 
-                    <!-- 行业对比图表 - 三图同一水平 -->
-                    <div class="earnings-charts-triple" style="margin-top:24px;">
+                    <!-- 行业对比图表 - 2x2 网格布局 -->
+                    <div class="earnings-charts-grid-2x2" style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
                         <div class="chart-card">
                             <div class="chart-header">
                                 <h3>💰 游戏业务营业利润率对比</h3>
@@ -774,12 +774,20 @@
                             </div>
                             <div class="earnings-bar-chart" id="earningsGrowthChart"></div>
                         </div>
+                        <!-- V7 双模块：单季度 vs 全年 -->
                         <div class="chart-card">
                             <div class="chart-header">
-                                <h3>📊 季度游戏板块收入对比 (USD)</h3>
-                                <span class="section-badge">统一折算美元</span>
+                                <h3>📊 最新单季度游戏收入 (USD)</h3>
+                                <span class="section-badge" style="background:rgba(16,185,129,0.12);color:#10b981;">单季度</span>
                             </div>
                             <div class="earnings-bar-chart" id="earningsRevenueCompareChart"></div>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>📊 全年/年化游戏收入 (USD)</h3>
+                                <span class="section-badge" style="background:rgba(139,92,246,0.12);color:#8b5cf6;">全年/年化</span>
+                            </div>
+                            <div class="earnings-bar-chart" id="earningsFullYearChart"></div>
                         </div>
                     </div>
 

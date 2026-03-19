@@ -1157,22 +1157,58 @@ function mRenderEarningsCharts(companies) {
         }).join('');
     }
 
-    // 季度收入对比
+    // 单季度收入对比 (V7: 统一单季度口径)
     const revEl = document.getElementById('mEarningsRevenueCompare');
     if (revEl && typeof quarterlyRevenueComparison !== 'undefined') {
-        const qData = quarterlyRevenueComparison;
+        const qData = quarterlyRevenueComparison.filter(d => d.revenue !== null && d.revenue > 0);
+        const nullCount = quarterlyRevenueComparison.length - qData.length;
         const sorted = [...qData].sort((a, b) => (b.revenue || 0) - (a.revenue || 0));
         const maxRev = sorted[0]?.revenue || 1;
+        const gradeColors = { A: '#10b981', B: '#f59e0b', C: '#ef4444', X: '#6b7280' };
+        const gradeLabels = { A: '官方', B: '推算', C: '估', X: '无' };
 
-        revEl.innerHTML = sorted.map(d => {
+        let html = sorted.map(d => {
             const w = (d.revenue / maxRev * 100).toFixed(1);
             const revLabel = d.revenue >= 1000 ? '$' + (d.revenue / 1000).toFixed(1) + 'B' : '$' + d.revenue + 'M';
-            return `<div class="m-earnings-bar-row">
-                <div class="m-earnings-bar-name">${d.name || d.company}</div>
+            const grade = d.dataGrade || 'A';
+            const gc = gradeColors[grade] || '#6b7280';
+            const gradeTag = `<span style="font-size:0.55rem;padding:0 3px;border-radius:2px;background:${gc}22;color:${gc};margin-left:2px;">${gradeLabels[grade]}</span>`;
+            const yoyStr = d.yoy !== null && d.yoy !== undefined ? ` <span style="color:${d.yoy >= 0 ? '#10b981' : '#ef4444'};font-size:0.65rem;">${d.yoy >= 0 ? '+' : ''}${d.yoy}%</span>` : '';
+            return `<div class="m-earnings-bar-row" title="${d.period || ''}">
+                <div class="m-earnings-bar-name">${d.name || d.company}${gradeTag}</div>
                 <div class="m-earnings-bar-track"><div class="m-earnings-bar-fill" style="width:${w}%;background:${d.color || '#6366f1'};"></div></div>
-                <div class="m-earnings-bar-value" style="color:var(--text-primary);">${revLabel}</div>
+                <div class="m-earnings-bar-value" style="color:var(--text-primary);">${revLabel}${yoyStr}</div>
             </div>`;
         }).join('');
+        if (nullCount > 0) {
+            html += `<div style="font-size:0.65rem;color:var(--text-muted);padding:6px 0;border-top:1px dashed var(--border-color);margin-top:6px;">⚠ ${nullCount}家公司数据暂缺已排除</div>`;
+        }
+        revEl.innerHTML = html;
+    }
+
+    // V7: 全年/年化收入对比
+    const fyEl = document.getElementById('mEarningsFullYear');
+    if (fyEl && typeof fullYearRevenueComparison !== 'undefined') {
+        const fyData = fullYearRevenueComparison.filter(d => d.revenue !== null && d.revenue > 0);
+        const fySorted = [...fyData].sort((a, b) => (b.revenue || 0) - (a.revenue || 0));
+        const fyMaxRev = fySorted[0]?.revenue || 1;
+        const gradeColors2 = { A: '#10b981', B: '#f59e0b', C: '#ef4444', X: '#6b7280' };
+        const gradeLabels2 = { A: '官方', B: '指引', C: '估', X: '无' };
+
+        let fyHtml = fySorted.map(d => {
+            const w = (d.revenue / fyMaxRev * 100).toFixed(1);
+            const revLabel = d.revenue >= 10000 ? '$' + (d.revenue / 1000).toFixed(1) + 'B' : '$' + (d.revenue / 1000).toFixed(2) + 'B';
+            const grade = d.dataGrade || 'A';
+            const gc = gradeColors2[grade] || '#6b7280';
+            const gradeTag = `<span style="font-size:0.55rem;padding:0 3px;border-radius:2px;background:${gc}22;color:${gc};margin-left:2px;">${gradeLabels2[grade]}</span>`;
+            const yoyStr = d.yoy !== null && d.yoy !== undefined ? ` <span style="color:${d.yoy >= 0 ? '#10b981' : '#ef4444'};font-size:0.65rem;">${d.yoy >= 0 ? '+' : ''}${d.yoy}%</span>` : '';
+            return `<div class="m-earnings-bar-row" title="${d.period || ''}">
+                <div class="m-earnings-bar-name">${d.name || d.company}${gradeTag}</div>
+                <div class="m-earnings-bar-track"><div class="m-earnings-bar-fill" style="width:${w}%;background:${d.color || '#6366f1'};"></div></div>
+                <div class="m-earnings-bar-value" style="color:var(--text-primary);">${revLabel}${yoyStr}</div>
+            </div>`;
+        }).join('');
+        fyEl.innerHTML = fyHtml;
     }
 }
 

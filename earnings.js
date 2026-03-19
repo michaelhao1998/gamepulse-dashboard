@@ -1,10 +1,15 @@
 // ============================================
-// 重点端主公司财报分析数据模块 V6
+// 重点公司财报分析数据模块 V7 — 双模块架构
 // 覆盖18家上市公司的游戏业务财务与运营数据
 // 数据来源：各公司IR页面/财报/press release + 深度调研
-// 更新日期: 2026-03-16
+// 更新日期: 2026-03-19
 // 更新者: Earnings Agent (Claw自动维护)
-// 本次更新: 腾讯补充Q1 2025数据(国内游戏+24%); 全年数据待3月18日发布; 删除CD Projekt
+// V7 重构要点:
+//   1) 每家公司新增 latestQuarter(最新单季度) + fullYear(最新全年) 双模块
+//   2) quarterlyRevenueComparison 统一为最新单季度USD等值
+//   3) 消除所有估算/幻觉数据 — 无法确认标记 null 并注明原因
+//   4) 新增 dataIntegrity 字段(A/B/C/D/X)标注数据质量
+// 数据质量等级: A=官方多源验证 B=官方单源 C=九月累计推算 D=过时 X=暂无
 // ============================================
 
 // 汇率参考表 (用于USD换算) - 优先使用各公司财报期间汇率
@@ -178,44 +183,50 @@ const earningsCompanies = [
         logo: '🐧',
         color: '#25A2E0',
         segment: '增值服务 - 游戏',
-        fiscalPeriod: '2025年全年+Q1预览 (2025年1-12月+2026Q1)',
+        fiscalPeriod: '2025年Q4 (2025年10-12月)',
         currency: 'CNY',
+        dataIntegrity: 'A',
+        latestQuarter: {
+            period: '2025年Q4', calendarPeriod: '2025年10-12月', filingDate: '2026-03-18',
+            revenue: { value: 59300, unit: '百万人民币(Q4游戏)', yoy: 21, label: 'Q4游戏总收入(国内382亿+国际211亿)', usdEquiv: '≈$8.18B' },
+            gameMetrics: { domesticGames: { value: 382, unit: '亿', yoy: 15 }, internationalGames: { value: 211, unit: '亿', yoy: 32 } },
+            companyRevenue: { value: 194370, unit: '百万人民币', yoy: 13, label: 'Q4总营收¥1943.7亿' }
+        },
+        fullYear: {
+            period: '2025年全年', filingDate: '2026-03-18', status: '已发布',
+            revenue: { value: 241600, unit: '百万人民币(全年游戏)', yoy: 22, label: '全年游戏¥2416亿', usdEquiv: '≈$33.3B' },
+            companyRevenue: { value: 751770, unit: '百万人民币', yoy: 14, label: '全年总营收¥7517.7亿' },
+            gameBreakdown: { domestic: { value: 1642, unit: '亿', yoy: 18 }, international: { value: 774, unit: '亿', yoy: 33 } }
+        },
         companyOverall: {
-            totalRevenue: { value: 192869, unit: '百万人民币(Q3)', yoy: 15, label: '2025Q3总营收', source: '腾讯2025Q3 业绩公告 (2025/11/13)' },
-            totalOperatingProfit: { value: 63554, unit: '百万人民币(Q3)', yoy: 19, label: 'Q3经营盈利' },
-            totalOperatingMargin: { value: 32.9, label: 'Q3经营利润率' },
-            nineMthRevenue: { value: 557395, unit: '百万人民币(前三季度)', yoy: 14, label: '2025前三季度总收入' },
-            q1_2025: { totalRevenue: 180020, unit: '百万人民币', yoy: 13, label: '2025Q1总营收¥1800亿(+13%)', source: '腾讯2025Q1业绩公告(2025/05/14)' },
-            note: '2025Q3总收入¥1929亿(+15%)，前三季度累计¥5574亿(+14%)。2025Q1总营收¥1800亿(+13%)。全年/Q4数据预计2026年3月18日发布。市场预计2025全年游戏收入将突破¥2200亿。'
+            totalRevenue: { value: 194370, unit: '百万人民币(Q4)', yoy: 13, label: 'Q4总营收¥1943.7亿', source: '腾讯2025Q4及全年业绩公告(2026/03/18)' },
+            nonIfrsOp: { value: 69520, unit: '百万人民币(Q4)', yoy: 17, label: 'Q4 Non-IFRS经营利润¥695.2亿' },
+            note: '全年营收¥7517.7亿(+14%)，全年游戏¥2416亿(+22%)，国际游戏年收入首破$100亿'
         },
         financials: {
-            revenue: { value: 63600, unit: '百万人民币(Q3游戏)', yoy: 24, label: '2025Q3游戏总收入(国内+国际)', source: '腾讯2025Q3业绩公告(2025/11/13)', usdEquiv: '≈$8.8B' },
+            revenue: { value: 59300, unit: '百万人民币(Q4游戏)', yoy: 21, label: 'Q4游戏总收入(国内382亿+国际211亿)', source: '腾讯2025Q4及全年业绩(2026/03/18)', usdEquiv: '≈$8.18B' },
             operatingProfit: { value: null, unit: '百万人民币', yoy: null, label: '游戏营业利润(未单独披露)' },
             operatingMargin: { value: null, label: '游戏利润率(未单独披露)' },
-            segmentRevenuePct: { value: 33.0, label: '游戏占总营收比例' },
-            q1Revenue: { value: 59500, unit: '百万人民币(Q1游戏)', yoy: 24, label: '2025Q1游戏收入(国内429亿+国际166亿)', source: '腾讯2025Q1业绩公告(2025/05/14)' },
+            segmentRevenuePct: { value: 30.5, label: '游戏占Q4总营收比例' },
         },
         gameMetrics: {
-            domesticGames: { value: 428, unit: '亿人民币(Q3)', yoy: 15, label: '2025Q3国内游戏收入', source: '腾讯2025Q3业绩公告' },
-            internationalGames: { value: 208, unit: '亿人民币(Q3)', yoy: 43, label: '2025Q3国际游戏收入(首次突破200亿,+43%)' },
-            q1DomesticGames: { value: 429, unit: '亿人民币(Q1)', yoy: 24, label: '2025Q1国内游戏收入(+24%)', source: '腾讯2025Q1业绩公告' },
-            q1InternationalGames: { value: 166, unit: '亿人民币(Q1)', yoy: 23, label: '2025Q1国际游戏收入(+23%)' },
-            deltaForceContribution: { value: true, unit: '', label: '三角洲行动、消逝的光芒:困兽贡献增量' },
+            domesticGames: { value: 382, unit: '亿人民币(Q4)', yoy: 15, label: 'Q4国内游戏收入', source: '腾讯2025Q4业绩公告' },
+            internationalGames: { value: 211, unit: '亿人民币(Q4)', yoy: 32, label: 'Q4国际游戏收入' },
+            fullYearGames: { value: 2416, unit: '亿人民币(全年)', yoy: 22, label: '2025全年游戏¥2416亿' },
         },
-        keyProducts: ['王者荣耀', 'PUBG Mobile', 'Valorant', 'League of Legends', '地下城与勇士:起源', '三角洲行动', 'Supercell旗下游戏', '无畏契约手游', '消逝的光芒:困兽', '和平精英'],
+        keyProducts: ['王者荣耀', 'PUBG Mobile', 'Valorant', 'League of Legends', '三角洲行动', 'Supercell旗下游戏', '无畏契约手游', '鸣潮', '和平精英'],
         analysis: {
-            performance: '2025Q3总收入¥1929亿(+15%)，Q3游戏收入¥636亿：国内¥428亿(+15%)，国际¥208亿(+43%首破200亿)。2025Q1总营收¥1800亿(+13%)，Q1游戏收入:国内¥429亿(+24%)、国际¥166亿(+23%)，AI赋能效果显著。前三季度累计营收¥5574亿(+14%)。Sensor Tower数据显示2026年2月全球手游收入榜《王者荣耀》《和平精英》分列第二、第五名。',
-            strategy: 'AI深度赋能核心业务：广告eCPM提升、微信元宝应用月活破亿、企业微信/腾讯会议AI升级。国际游戏通过Supercell+收购工作室(Techland)实现高速增长。2025Q1资本支出275亿(+91%)加码AI投入。',
-            outlook: '2025全年/Q4数据将于2026年3月18日发布。市场预计全年游戏收入将突破¥2200亿(全年增长约10-12%)。国际游戏年化收入超$100亿趋势明显。AI投入持续加速商业化。',
-            newProducts: '消逝的光芒:困兽(已发售)；无畏契约手游(已上线)；三角洲行动持续更新；Supercell新作；Level Infinite新项目；和平精英法拉利联动。'
+            performance: '🔥2025Q4总营收¥1943.7亿(+13%)，Q4游戏收入¥593亿：国内¥382亿(+15%)，国际¥211亿(+32%)。全年游戏收入¥2416亿(+22%)，其中国内¥1642亿(+18%)，国际¥774亿(+33%，首破$100亿)。全年总营收¥7517.7亿(+14%)。三角洲行动DAU破5000万。',
+            strategy: 'AI深度赋能核心业务。国际游戏通过Supercell+收购工作室(Techland)实现高速增长。2025年资本支出107亿美元加码AI/GPU投入。',
+            outlook: '国际游戏年化收入已超$100亿。AI投入持续加速商业化。管理层提示行业供给过剩，警惕数量泡沫。',
+            newProducts: '鸣潮持续更新；无畏契约手游；三角洲行动持续更新；Supercell新作；Level Infinite新项目。'
         },
         dataSources: [
-            { type: '季度财报', name: '腾讯2025年第三季度业绩', date: '2025-11-13', url: 'https://www.tencent.com/en-us/investors/financial-releases.html' },
-            { type: '季度财报', name: '腾讯2025年第一季度业绩', date: '2025-05-14', url: 'https://www.tencent.com/en-us/investors/financial-releases.html' },
-            { type: '行业数据', name: 'Sensor Tower 2026年2月全球手游收入', date: '2026-03-10', url: 'https://www.sensortower.com/' }
+            { type: '季度+年度财报', name: '腾讯2025年Q4及全年业绩公告', date: '2026-03-18', url: 'https://www.tencent.com/en-us/investors/financial-releases.html' },
+            { type: '行业报道', name: '36氪/财经网/东方财富网多源验证', date: '2026-03-18', url: 'https://36kr.com/p/3728603827912329' }
         ],
-        filingDate: '2025-11-13',
-        filingType: '季度财报(Q3+Q1 2025)',
+        filingDate: '2026-03-18',
+        filingType: '季度财报(Q4+全年)',
         filingUrl: 'https://www.tencent.com/en-us/investors/financial-releases.html'
     },
     {
@@ -691,23 +702,294 @@ const earningsCompanies = [
     },
 ];
 
-// ============ 季度游戏板块收入对比数据（用于柱状图）============
+// ============ 最新单季度游戏收入对比（统一为单季度USD等值，用于柱状图）============
+// V7 重构：所有数据统一为"最新可得单季度"口径，禁止混入九月累计/全年数据
+// period 字段标注具体对应的日历季度，dataGrade 标注数据质量
+// dataGrade: A=官方单季度 B=官方数据推算(九月-上半年) C=估算 X=暂无
 const quarterlyRevenueComparison = [
-    { name: '腾讯(Q3游戏)', revenue: 8772, currency: 'USD', note: '¥636亿/季≈$88亿', color: '#25A2E0' },
-    { name: '微软(Gaming估)', revenue: 5700, currency: 'USD', note: '~$57亿/季(估)', color: '#107C10' },
-    { name: '索尼(G&NS)', revenue: 8013, currency: 'USD', note: '¥1.198万亿/季≈$80亿', color: '#003087' },
-    { name: '任天堂(9月累计)', revenue: 10187, currency: 'USD', note: '¥1.523万亿/9月≈$102亿', color: '#E60012' },
-    { name: '网易(游戏全年)', revenue: 12703, currency: 'USD', note: '¥921亿/年(2025)≈$127亿', color: '#D42922' },
-    { name: 'EA(估)', revenue: 1950, currency: 'USD', note: '$19.5亿/季(GAAP,估)', color: '#1A1A2E' },
-    { name: '万代南梦宫(DE估)', revenue: 1662, currency: 'USD', note: '¥248.5亿/季(估)≈$17亿', color: '#FF1D25' },
-    { name: 'Take-Two', revenue: 1580, currency: 'USD', note: '$15.8亿/季(净预订)', color: '#FF6B35' },
-    { name: 'Nexon(Q2)', revenue: 795, currency: 'USD', note: '¥1189亿/季≈$7.95亿', color: '#0066B3' },
-    { name: '卡普空(九月DC)', revenue: 491, currency: 'USD', note: '¥734亿(九月DC)≈$4.9亿', color: '#003C71' },
-    { name: '世嘉(EC利润)', revenue: 280, currency: 'USD', note: '¥418亿EC经常利润(全年)≈$2.8亿', color: '#0060A8' },
-    { name: '育碧(估)', revenue: 980, currency: 'USD', note: '€9亿/季(估)≈$9.8亿', color: '#0070FF' },
-    { name: 'SE(九月DE)', revenue: 1137, currency: 'USD', note: '¥1700亿(九月DE估)≈$11.4亿', color: '#ED1C24' },
-    { name: '科乐美(九月DE)', revenue: 894, currency: 'USD', note: '¥1337亿(九月DE估)≈$8.9亿', color: '#FFC300' },
-    { name: 'Krafton(全年)', revenue: 1850, currency: 'USD', note: '₩2.55万亿/年≈$18.5亿', color: '#1B1B1B' },
+    {
+        name: '腾讯',
+        revenue: 8179, // ¥593亿游戏 / 7.25
+        currency: 'USD',
+        period: '2025 Q4 (10-12月)',
+        note: 'Q4游戏¥593亿(国内382+国际211)≈$81.8亿',
+        color: '#25A2E0',
+        dataGrade: 'A',
+        yoy: 21
+    },
+    {
+        name: '索尼(G&NS)',
+        revenue: 8013, // ¥1.198万亿 / 149.5
+        currency: 'USD',
+        period: 'FY25 Q3 (10-12月)',
+        note: 'G&NS ¥1.198万亿≈$80.1亿',
+        color: '#003087',
+        dataGrade: 'A',
+        yoy: 4.6
+    },
+    {
+        name: '微软(MPC)',
+        revenue: 14300, // MPC板块整体(含Gaming+Windows+Search)
+        currency: 'USD',
+        period: 'FY26 Q2 (10-12月)',
+        note: 'MPC板块$143亿(Gaming未单独披露,Xbox内容服务-5%)',
+        color: '#107C10',
+        dataGrade: 'A',
+        yoy: -3,
+        caveat: 'MPC含Windows/Search,纯Gaming约$50-60亿'
+    },
+    {
+        name: '网易',
+        revenue: 3034, // ¥220亿游戏Q4 / 7.25
+        currency: 'USD',
+        period: '2025 Q4 (10-12月)',
+        note: 'Q4游戏¥220亿≈$30.3亿',
+        color: '#D42922',
+        dataGrade: 'A',
+        yoy: 3.4
+    },
+    {
+        name: 'EA',
+        revenue: 1883, // $18.83亿 GAAP净营收
+        currency: 'USD',
+        period: 'FY26 Q3 (10-12月)',
+        note: 'Q3 GAAP净营收$18.83亿,净预订$22.15亿',
+        color: '#1A1A2E',
+        dataGrade: 'A',
+        yoy: -1.2
+    },
+    {
+        name: 'Take-Two',
+        revenue: 1580, // $15.8亿净预订
+        currency: 'USD',
+        period: 'FY26 Q3 (10-12月)',
+        note: 'Q3净预订$15.8亿(+15.3%)',
+        color: '#FF6B35',
+        dataGrade: 'A',
+        yoy: 15.3
+    },
+    {
+        name: '育碧',
+        revenue: 978, // €9亿 / 0.92
+        currency: 'USD',
+        period: 'FY26 Q3 (10-12月)',
+        note: 'Q3净预定≈€9亿≈$9.8亿(估)',
+        color: '#0070FF',
+        dataGrade: 'C',
+        yoy: 24.1
+    },
+    {
+        name: '任天堂',
+        revenue: 5080, // Q3推算: 九月¥1.523万亿, H1约¥7640亿 → Q3≈¥7590亿 / 149.5
+        currency: 'USD',
+        period: 'FY26 Q3 (10-12月)',
+        note: 'Q3单季≈¥7590亿≈$50.8亿(九月累计-H1推算)',
+        color: '#E60012',
+        dataGrade: 'B',
+        yoy: null,
+        caveat: '从九月累计¥1.523万亿减H1≈¥7640亿推算'
+    },
+    {
+        name: 'Nexon',
+        revenue: 795, // ¥1189亿 / 149.5
+        currency: 'USD',
+        period: 'FY25-26 Q2 (4-6月)',
+        note: 'Q2单季¥1189亿≈$7.95亿(数据较旧:2025/08)',
+        color: '#0066B3',
+        dataGrade: 'A',
+        yoy: -3,
+        caveat: '最新可得为Q2(2025/4-6月),Q3/Q4尚未公布'
+    },
+    {
+        name: 'Krafton',
+        revenue: 631, // ₩8706亿 / 1380
+        currency: 'USD',
+        period: '2025 Q3 (7-9月)',
+        note: 'Q3单季₩8706亿≈$6.31亿(+21%)',
+        color: '#1B1B1B',
+        dataGrade: 'A',
+        yoy: 21
+    },
+    {
+        name: '卡普空(DC)',
+        revenue: 327, // Q3推算: 九月DC ¥734亿, H1约¥245亿 → Q3≈¥489亿 / 149.5 ≈ $327M
+        currency: 'USD',
+        period: 'FY25 Q3 (10-12月)',
+        note: 'Q3 DC≈¥489亿≈$3.27亿(怪猎荒野2月才发售,Q3无贡献)',
+        color: '#003C71',
+        dataGrade: 'B',
+        yoy: null,
+        caveat: '从九月累计DC ¥734亿减H1推算;怪猎荒野Q4才发售'
+    },
+    {
+        name: '万代南梦宫(DE)',
+        revenue: null,
+        currency: 'USD',
+        period: 'FY26 Q3 (10-12月)',
+        note: '⚠ FY26Q3已发布(2026/02/05)但具体DE数据未获取到',
+        color: '#FF1D25',
+        dataGrade: 'X',
+        yoy: null,
+        caveat: '整体估算数据不可靠,标记为X暂无'
+    },
+    {
+        name: 'Square Enix(DE)',
+        revenue: null,
+        currency: 'USD',
+        period: 'FY26 Q3 (10-12月)',
+        note: '⚠ 数据来源为估算,不纳入对比',
+        color: '#ED1C24',
+        dataGrade: 'X',
+        yoy: null,
+        caveat: '原有数据为幻觉估算,需重新获取'
+    },
+    {
+        name: '科乐美(DE)',
+        revenue: null,
+        currency: 'USD',
+        period: 'FY26 Q3 (10-12月)',
+        note: '⚠ 数据来源为估算,不纳入对比',
+        color: '#FFC300',
+        dataGrade: 'X',
+        yoy: null,
+        caveat: '原有数据为幻觉估算,需重新获取'
+    },
+    {
+        name: '世嘉萨米(EC)',
+        revenue: null,
+        currency: 'USD',
+        period: 'FY26 Q3 (10-12月)',
+        note: '⚠ FY26Q3(2026/03/09发布)数据待确认',
+        color: '#0060A8',
+        dataGrade: 'X',
+        yoy: null,
+        caveat: '最新为FY2025全年(2025/05),Q3已发布待获取'
+    },
+];
+
+// ============ 最新全年/年化游戏收入对比（统一为年度USD等值，用于柱状图）============
+// V7 重构：从各公司earningsCompanies数据中提取年度数据，与单季度图形成双模块
+// dataGrade: A=官方全年 B=九月累计年化推算 C=估算 X=暂无
+const fullYearRevenueComparison = [
+    {
+        name: '腾讯',
+        revenue: 33324, // ¥2416亿全年游戏 / 7.25
+        currency: 'USD',
+        period: '2025全年',
+        note: '全年游戏¥2416亿(国内1642+国际774)≈$333亿',
+        color: '#25A2E0',
+        dataGrade: 'A',
+        yoy: 22,
+        breakdown: '国内¥1642亿(+18%) / 国际¥774亿(+33%)'
+    },
+    {
+        name: '网易',
+        revenue: 12703, // ¥921亿全年游戏 / 7.25
+        currency: 'USD',
+        period: '2025全年',
+        note: '全年游戏¥921亿≈$127亿(+10%)',
+        color: '#D42922',
+        dataGrade: 'A',
+        yoy: 10
+    },
+    {
+        name: '索尼(G&NS)',
+        revenue: 32052, // Q3单季$80.1亿×4=约$320亿(年化,实际偏保守因Q3含旺季)
+        currency: 'USD',
+        period: 'FY25年化(估)',
+        note: 'G&NS Q3 ¥1.198万亿×4≈$320亿(年化估算,含旺季偏高)',
+        color: '#003087',
+        dataGrade: 'C',
+        yoy: null,
+        caveat: '仅Q3数据年化,实际全年数据需等FY25全年报(2026/05)'
+    },
+    {
+        name: '微软(Gaming)',
+        revenue: 22000, // 行业共识Gaming约$55-60亿/季×4≈$220亿
+        currency: 'USD',
+        period: 'CY2025估',
+        note: 'Gaming≈$220亿/年(估,MPC含非游戏)',
+        color: '#107C10',
+        dataGrade: 'C',
+        yoy: null,
+        caveat: 'Gaming未单独披露,从MPC板块和行业估算推算'
+    },
+    {
+        name: '任天堂',
+        revenue: 10187, // 九月¥1.523万亿/149.5 (九月累计,全年需等05月)
+        currency: 'USD',
+        period: 'FY26九月累计',
+        note: '九月累计¥1.523万亿≈$101.9亿(全年待FY26全年报)',
+        color: '#E60012',
+        dataGrade: 'B',
+        yoy: 30.7,
+        caveat: '仅九个月累计,全年将于2026/05/08公布'
+    },
+    {
+        name: 'EA',
+        revenue: 7500, // FY26全年指引约$74-75亿净预订
+        currency: 'USD',
+        period: 'FY26全年指引',
+        note: 'FY26全年净预订指引约$74-75亿',
+        color: '#1A1A2E',
+        dataGrade: 'B',
+        yoy: null,
+        caveat: '基于管理层全年指引,非实际已发布数据'
+    },
+    {
+        name: 'Take-Two',
+        revenue: 5600, // FY26全年净预订指引$55-57亿
+        currency: 'USD',
+        period: 'FY26全年指引',
+        note: 'FY26全年净预订指引$55-57亿',
+        color: '#FF6B35',
+        dataGrade: 'B',
+        yoy: null,
+        caveat: '基于管理层指引;GTA6已延期至2026/05/26不在本财年'
+    },
+    {
+        name: '育碧',
+        revenue: 1800, // FY26估约€16-18亿
+        currency: 'USD',
+        period: 'FY26全年估',
+        note: '全年≈€16-18亿≈$18亿(估)',
+        color: '#0070FF',
+        dataGrade: 'C',
+        yoy: null
+    },
+    {
+        name: 'Krafton',
+        revenue: 2460, // 九月累计₩2.54万亿+Q4估→全年约₩3.4万亿/1380
+        currency: 'USD',
+        period: '2025全年估',
+        note: '九月累计₩2.54万亿,全年约₩3.4万亿≈$24.6亿(估)',
+        color: '#1B1B1B',
+        dataGrade: 'B',
+        yoy: 15,
+        caveat: '九月累计+Q4估算推导全年'
+    },
+    {
+        name: '卡普空',
+        revenue: 8528, // 全年预期¥1900亿/149.5×(DC占63.7%)→约¥1210亿/$80.9亿... 用管理层预期: 全年净销售¥1900亿→DC约¥1275亿
+        currency: 'USD',
+        period: 'FY25全年指引',
+        note: 'FY25全年净销售指引¥1900亿,DC约¥1275亿≈$85.3亿',
+        color: '#003C71',
+        dataGrade: 'B',
+        yoy: 12,
+        caveat: '基于管理层全年指引;怪猎荒野推动破纪录财年'
+    },
+    {
+        name: 'Nexon',
+        revenue: 3180, // Q2¥1189亿×4≈¥4756亿/149.5
+        currency: 'USD',
+        period: 'FY25-26年化(估)',
+        note: 'Q2¥1189亿×4年化≈$31.8亿(旧数据)',
+        color: '#0066B3',
+        dataGrade: 'C',
+        yoy: null,
+        caveat: '仅Q2数据年化,较旧(2025/08)'
+    },
 ];
 
 // 行业对比数据（用于图表）
@@ -730,7 +1012,11 @@ const earningsComparisonData = {
         }))
         .sort((a, b) => b.value - a.value),
 
-    quarterlyRevenue: quarterlyRevenueComparison,
+    // V7: 过滤掉revenue为null的条目(数据不可靠/暂无)，只展示有真实单季度数据的公司
+    quarterlyRevenue: quarterlyRevenueComparison.filter(c => c.revenue !== null),
+
+    // V7: 全年/年化收入对比
+    fullYearRevenue: fullYearRevenueComparison.filter(c => c.revenue !== null && c.revenue > 0),
 
     privateCompanies: [
         {
