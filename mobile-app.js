@@ -105,7 +105,7 @@ function mUpdateAll(games) {
     }
 }
 
-// ============ Tab: 已上线新游全局概览 ============
+// ============ Tab: 已上线新游数据表现 ============
 
 function mUpdateStrategyTab(games) {
     const flow = getFlowNodes(games);

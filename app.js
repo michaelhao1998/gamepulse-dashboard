@@ -97,7 +97,7 @@ function updateFilterMatch(count) {
     if (el) el.textContent = count;
 }
 
-// ============ Tab: 已上线新游全局概览 ============
+// ============ Tab: 已上线新游数据表现 ============
 
 function updateStrategyTab(games) {
     // 总览 KPI 卡片（原总览仪表盘）
@@ -2548,7 +2548,7 @@ function filterCmdResults(query, container) {
 
     // Tab快速跳转数据
     const tabs = [
-        { icon: '📊', name: '已上线新游全局概览', action: 'tab:strategy', keywords: ['概览', 'strategy', '全局', '战略'] },
+        { icon: '📊', name: '已上线新游数据表现', action: 'tab:strategy', keywords: ['数据表现', 'strategy', '已上线', '战略'] },
         { icon: '🎯', name: '待上线Pipeline', action: 'tab:pipeline', keywords: ['pipeline', '待上线', '管线'] },
         { icon: '📰', name: '行业热点新闻', action: 'tab:news', keywords: ['新闻', 'news', '热点', '行业'] },
         { icon: '💰', name: '重点公司财报分析', action: 'tab:earnings', keywords: ['财报', 'earnings', '公司', '收入'] },
