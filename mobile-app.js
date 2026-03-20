@@ -646,19 +646,35 @@ function mUpdatePipelineTab() {
     if (!container) return;
 
     const grouped = {};
-    data.forEach(g => {
+    const qOrder = ['q1', 'q2', 'q3', 'q4', '2026year', '2027', 'tbd'];
+    const qLabelMap = {
+        'q1': '2026 Q1 (1-3月)', 'q2': '2026 Q2 (4-6月)',
+        'q3': '2026 Q3 (7-9月)', 'q4': '2026 Q4 (10-12月)',
+        '2026year': '2026年（时间待定）', '2027': '2027年',
+        'tbd': '待定/未知'
+    };
+    // 先按已上线/未上线分组
+    const releasedGames = data.filter(g => g.released);
+    const unreleasedGames = data.filter(g => !g.released);
+    
+    // 已上线优先展示
+    if (releasedGames.length > 0) {
+        grouped['✅ 2026年已上线'] = releasedGames;
+    }
+    
+    unreleasedGames.forEach(g => {
         const q = getPipelineQuarter(g.releaseDate);
-        const qLabel = {
-            'q1': '2026 Q1 (1-3月)', 'q2': '2026 Q2 (4-6月)',
-            'q3': '2026 Q3 (7-9月)', 'q4': '2026 Q4 (10-12月)',
-            'tbd': '待定 / 2027+'
-        }[q] || q;
+        const qLabel = qLabelMap[q] || q;
         if (!grouped[qLabel]) grouped[qLabel] = [];
         grouped[qLabel].push(g);
     });
 
     let html = '';
-    Object.entries(grouped).forEach(([quarter, games]) => {
+    // 固定渲染顺序：已上线 → Q1 → Q2 → Q3 → Q4 → 2026年 → 2027年 → 待定
+    const renderOrder = ['✅ 2026年已上线', ...qOrder.map(k => qLabelMap[k])];
+    renderOrder.forEach(quarter => {
+        const games = grouped[quarter];
+        if (!games || games.length === 0) return;
         html += `<div class="m-quarter-header">${quarter} <span class="m-quarter-count">${games.length}款</span></div>`;
         games.forEach(g => {
             const heatMap = { '高': 'heat-high', '中高': 'heat-mid-high', '中': 'heat-mid', '中低': 'heat-mid-low', '低': 'heat-low' };

@@ -163,7 +163,7 @@ function getPipelineQuarter(dateStr) {
     if (dateStr.includes('Q3')) return 'q3';
     if (dateStr.includes('Q4')) return 'q4';
     
-    if (dateStr.includes('2026年')) return 'tbd';
+    if (dateStr.includes('2026年')) return '2026year';
     
     return 'tbd';
 }
@@ -238,11 +238,11 @@ function renderPipelineV2() {
     // 更新 KPI
     updatePipelineKPI(unreleased, released);
 
+    // 渲染已上线折叠区（置顶显示）
+    renderReleasedSection(released);
+
     // 渲染未上线时间轴
     renderPipelineTimeline(unreleased);
-
-    // 渲染已上线折叠区
-    renderReleasedSection(released);
 }
 
 function updatePipelineKPI(unreleased, released) {
@@ -278,12 +278,13 @@ function renderPipelineTimeline(games) {
     const container = document.getElementById('pipelineTimeline');
     if (!container) return;
 
-    // 按季度分组
+    // 按季度分组（顺序：Q1→Q2→Q3→Q4→2026年→2027年→待定）
     const quarters = {
         'q1': { label: '2026 Q1 (1-3月)', icon: '🌱', games: [] },
         'q2': { label: '2026 Q2 (4-6月)', icon: '☀️', games: [] },
         'q3': { label: '2026 Q3 (7-9月)', icon: '🍂', games: [] },
         'q4': { label: '2026 Q4 (10-12月)', icon: '❄️', games: [] },
+        '2026year': { label: '2026年（具体时间待定）', icon: '📆', games: [] },
         '2027': { label: '2027年', icon: '🔮', games: [] },
         'tbd': { label: '待定/未知', icon: '❓', games: [] }
     };
