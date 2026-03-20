@@ -2294,6 +2294,42 @@ tr.row-released td:first-child {
     color: #ef4444;
 }
 
+/* 国内/海外地区标签 */
+.region-tag {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.66rem;
+    font-weight: 600;
+    vertical-align: middle;
+    margin-left: 4px;
+    letter-spacing: 0.02em;
+}
+
+.region-tag.region-domestic {
+    background: rgba(239, 68, 68, 0.12);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.region-tag.region-overseas {
+    background: rgba(59, 130, 246, 0.1);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.18);
+}
+
+[data-theme="light"] .region-tag.region-domestic {
+    background: rgba(239, 68, 68, 0.08);
+    color: #dc2626;
+    border: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+[data-theme="light"] .region-tag.region-overseas {
+    background: rgba(59, 130, 246, 0.08);
+    color: #2563eb;
+    border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
 /* 已上线折叠区 */
 .released-section-wrapper {
     background: var(--bg-card);
