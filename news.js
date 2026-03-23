@@ -1,9 +1,9 @@
 // ============================================
 // 行业热点新闻数据模块
 // [AUTO-GENERATED] 由 News Agent v4.0 自动更新，请勿手动编辑
-// 最后更新: 2026-03-20T08:00:00Z
-// 更新者: news-agent
-// 数据来源: 腾讯文档 LMLdoimBsILX (Tier 0) + web_search (Tier 1-3)
+// 最后更新: 2026-03-23T18:30:00Z
+// 更新者: news-agent (web_search 四大维度更新 + 存量巡检)
+// 数据来源: web_search (Tier 1-3) — MCP 腾讯文档 access limit，7级梯队16次重试全部失败
 // 重要性方案: v4.0 — 统一重点新闻标记（featured），基于腾讯文档863行历史标记学习
 // ============================================
 
@@ -275,38 +275,38 @@ const newsData = [
     },
     {
         "id": 67,
-        "title": "《死亡搁浅2：冥滩之上》PC版3月19日正式发售，首日Steam在线火爆",
-        "summary": "小岛秀夫新作《死亡搁浅2：冥滩之上》PC版于2026年3月19日全球解锁，由Nixxes Software负责移植。PC版新增\"走向荒野\"难度、真人过场动画、Boss战重复游玩功能，支持超宽屏和DualSense。发售前113GB未加密文件遭BT泄露，但未影响首日销售热度。PS5版同步推送免费内容更新。",
+        "title": "《死亡搁浅2：冥滩之上》PC版3月19日正式发售，Steam首日表现火爆",
+        "summary": "小岛秀夫新作《死亡搁浅2：冥滩之上》PC版于2026年3月19日全球解锁，由Nixxes Software负责移植，登陆Steam和Epic Games Store。PC版标准版售价¥298，新增\"走向荒野\"难度、真人过场动画、Boss战重复游玩功能，支持超宽屏、DLSS 5和DualSense。游戏安装包约98.2GB。发售前113GB未加密文件遭BT泄露，但未影响首日销售热度。PS5版同步推送免费内容更新。Steam评价为'特别好评'。",
         "source": "PlayStation Blog",
         "sourceUrl": "https://blog.playstation.com/2026/03/17/death-stranding-2-new-pc-ps5-features-detailed-live-march-19/",
         "sourceUrls": [
             {"name": "PlayStation Blog", "url": "https://blog.playstation.com/2026/03/17/death-stranding-2-new-pc-ps5-features-detailed-live-march-19/"},
             {"name": "3DM", "url": "https://www.3dmgame.com/games/deathstranding2/"},
-            {"name": "Fragster", "url": "https://www.fragster.com/"}
+            {"name": "17173", "url": "https://news.17173.com/content/03182026/054614140.shtml"}
         ],
         "category": "game",
         "importance": "medium",
         "date": "2026-03-19",
-        "tags": ["死亡搁浅2", "小岛秀夫", "PC", "Nixxes"],
+        "tags": ["死亡搁浅2", "小岛秀夫", "PC", "Nixxes", "Steam"],
         "sentiment": "positive",
         "tdocMarking": "none"
     },
     {
         "id": 68,
-        "title": "《红色沙漠》3月20日全球正式发售，早期评测口碑两极分化",
-        "summary": "Pearl Abyss开放世界动作冒险游戏《红色沙漠》于2026年3月20日全球正式发售，登陆PC和PS5平台。Steam愿望单此前已突破300万。Rock Paper Shotgun早期评测指出游戏存在bug，开放世界指引不足，但猫和世界设计获赞；评语称'并非开放世界的革命性作品'。游戏主打雇佣兵团冒险叙事与深度动作战斗，被视为2026年Q1最重要新IP之一。首日Steam在线数据和更多媒体评分正在发布中。",
-        "source": "EuroGamer",
-        "sourceUrl": "https://www.eurogamer.net/crimson-desert-passes-3-million-wishlists-as-excitement-around-the-single-player-rpg-builds",
+        "title": "《红色沙漠》3月20日正式发售：Metacritic 78分，Steam峰值24万在线，口碑两极分化",
+        "summary": "Pearl Abyss开放世界动作冒险游戏《红色沙漠》于2026年3月20日全球正式发售，登陆PC和PS5平台。Metacritic综合评分78分（95家媒体），Steam首日峰值同时在线约23.9万人。战斗系统获得广泛好评，被称为'近年来动作游戏手感最佳之作'，但主线剧情、开放世界指引和部分bug收到批评。Steam评价为'褒贬不一'（约61%好评率）。游戏发售前Steam愿望单已突破300万，是2026年Q1最受关注的新IP之一。Pearl Abyss股价发售日上涨8%。",
+        "source": "Metacritic",
+        "sourceUrl": "https://www.metacritic.com/game/crimson-desert/",
         "sourceUrls": [
+            {"name": "Metacritic", "url": "https://www.metacritic.com/game/crimson-desert/"},
             {"name": "EuroGamer", "url": "https://www.eurogamer.net/crimson-desert-passes-3-million-wishlists-as-excitement-around-the-single-player-rpg-builds"},
-            {"name": "Rock Paper Shotgun", "url": "https://www.rockpapershotgun.com/"},
-            {"name": "红色沙漠官网", "url": "https://crimsondesert.pearlabyss.com/"}
+            {"name": "SteamDB", "url": "https://steamdb.info/app/2020070/charts/"}
         ],
         "category": "game",
         "importance": "high",
         "featured": true,
         "date": "2026-03-20",
-        "tags": ["红色沙漠", "Pearl Abyss", "开放世界", "新IP", "发售"],
+        "tags": ["红色沙漠", "Pearl Abyss", "开放世界", "新IP", "发售", "Metacritic"],
         "sentiment": "neutral",
         "tdocMarking": "none"
     },
