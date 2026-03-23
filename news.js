@@ -173,6 +173,79 @@ const newsSources = [
 
 const newsData = [
     {
+        "id": 87,
+        "title": "Sony正在研发ML帧生成技术，计划引入PlayStation主机平台",
+        "summary": "据3DTested等媒体报道，索尼互动娱乐正在内部研发基于机器学习的帧生成技术，计划将其引入PlayStation主机平台。该技术类似NVIDIA DLSS的帧生成功能，但针对PlayStation硬件进行了定制优化。此举表明索尼正加速将AI/ML技术深度整合到主机图形管线中，以提升PS5和未来PS6平台的游戏画面表现。这是继NVIDIA DLSS 5和AMD FSR之后，主机平台方首次被报道自主研发帧生成方案。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/",
+        "sourceUrls": [
+            {"name": "3DTested", "url": "https://3dtested.com/"},
+            {"name": "VGC", "url": "https://www.videogameschronicle.com/"}
+        ],
+        "category": "platform",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-21",
+        "tags": ["索尼", "PlayStation", "ML帧生成", "AI", "PSSR"],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 88,
+        "title": "《宝可梦Pokopia》Switch 2首发4天全球销量突破220万份",
+        "summary": "任天堂在投资者关系页面公布，Switch 2首发游戏《宝可梦Pokopia》在发售仅4天内全球销量即突破220万份，成为Switch 2平台销售速度最快的游戏之一。这一成绩远超市场预期，证明宝可梦IP在新平台上的强大号召力，同时也从侧面反映了Switch 2首发期的硬件装机量已达到可观规模。该作是宝可梦系列首款Switch 2独占作品。",
+        "source": "NintendoNews",
+        "sourceUrl": "https://mynintendonews.com/",
+        "sourceUrls": [
+            {"name": "任天堂IR", "url": "https://www.nintendo.co.jp/ir/"},
+            {"name": "NintendoNews", "url": "https://mynintendonews.com/"}
+        ],
+        "category": "game",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-12",
+        "tags": ["宝可梦", "Pokopia", "Switch 2", "销量", "任天堂"],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 89,
+        "title": "FromSoftware公布Switch 2独占新作《The Duskbloods》：吸血鬼题材动作RPG",
+        "summary": "FromSoftware在任天堂合作伙伴展示会上正式公布Switch 2独占新作《The Duskbloods》，游戏以吸血鬼为题材的暗黑动作RPG。这是FromSoftware继《黑暗之魂》《艾尔登法环》之后的全新IP，也是该工作室首次为任天堂平台开发独占作品。消息公布后引发玩家社区强烈反响，被视为Switch 2吸引核心玩家群体的重要举措。任天堂此举进一步证明了Switch 2在争取硬核3A开发者支持方面的战略决心。",
+        "source": "NintendoNews",
+        "sourceUrl": "https://mynintendonews.com/",
+        "sourceUrls": [
+            {"name": "IT之家", "url": "https://www.ithome.com/"},
+            {"name": "NintendoNews", "url": "https://mynintendonews.com/"},
+            {"name": "Nintendo", "url": "https://www.nintendo.com/"}
+        ],
+        "category": "game",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-22",
+        "tags": ["FromSoftware", "Duskbloods", "Switch 2", "独占", "动作RPG"],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 90,
+        "title": "DRAM内存涨价潮加剧：DDR5价格翻倍，游戏PC与显卡成本面临上涨压力",
+        "summary": "据Tom's Hardware和IEEE Spectrum报道，全球DRAM内存价格持续飙升，DDR5内存模组价格已较年初翻倍。AI数据中心对HBM（高带宽内存）的巨大需求挤压了消费级DRAM产能，导致PC游戏硬件面临成本上涨压力。分析师预计NVIDIA和AMD可能在2026年下半年上调游戏显卡价格，游戏PC整机价格预计涨幅10-20%。这一趋势与此前报道的Switch 2涨价压力、Steam Machine供应链困难形成共振，全球游戏硬件生态正面临罕见的系统性成本冲击。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/",
+        "sourceUrls": [
+            {"name": "Tom's Hardware", "url": "https://www.tomshardware.com/"},
+            {"name": "IEEE Spectrum", "url": "https://spectrum.ieee.org/"}
+        ],
+        "category": "hardware",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-22",
+        "tags": ["DRAM", "内存涨价", "DDR5", "显卡", "游戏PC", "供应链"],
+        "sentiment": "negative",
+        "tdocMarking": "none"
+    },
+    {
         "id": 81,
         "title": "Capcom宣布新Spotlight展示会：将公布《生化危机：安魂曲》《Pragmata》《怪物猎人荒野》新内容",
         "summary": "Capcom正式宣布将举办新一期Capcom Spotlight展示会，预计持续约40分钟，将带来《生化危机：安魂曲》开发团队访谈、科幻新作《Pragmata》最新进展、《怪物猎人：荒野》更新计划以及《街头霸王6》Year 3赛季内容。这是Capcom继《生化危机：安魂曲》全球销量突破600万后的首场大型展示活动。",
@@ -194,10 +267,10 @@ const newsData = [
         "title": "SEGA计划2027年3月前发布4款\"主力IP\"新游，意欲重回3A主流",
         "summary": "SEGA透露计划在2027年3月底前（FY2026内）发布4款来自旗下\"主力IP\"的大型新游。结合SEGA现有IP矩阵，候选作品可能包括《如龙》《索尼克》《女神异闻录》《全面战争》等系列的全新作品。此举表明SEGA正在积极扩大其PC/Console游戏产品线，加速从传统街机/手游公司向3A多平台发行商转型。",
         "source": "VGC",
-        "sourceUrl": "https://www.psu.com/tag/ps5/",
+        "sourceUrl": "https://www.videogameschronicle.com/",
         "sourceUrls": [
-            {"name": "PlayStation Universe", "url": "https://www.psu.com/tag/ps5/"},
-            {"name": "VGC", "url": "https://www.videogameschronicle.com/"}
+            {"name": "VGC", "url": "https://www.videogameschronicle.com/"},
+            {"name": "PlayStation Universe", "url": "https://www.psu.com/"}
         ],
         "category": "policy",
         "importance": "medium",
@@ -212,7 +285,7 @@ const newsData = [
         "title": "GamesIndustry.biz发起\"AI周\"专题：深度剖析AI对游戏行业的商业冲击",
         "summary": "全球最大游戏行业媒体GamesIndustry.biz本周推出\"AI Week\"专题，以一系列深度报道、访谈和分析文章全面探讨AI技术对游戏产业的商业影响。专题涵盖AI在开发流程中的实际应用案例、对就业市场的冲击、版权与法律争议，以及开发者对AI工具的态度调查。这是GDC 2026\"AI热\"之后行业首次系统性的商业视角分析。",
         "source": "GamesIndustry",
-        "sourceUrl": "https://investmentsummit.gamesindustry.biz/",
+        "sourceUrl": "https://www.gamesindustry.biz/",
         "category": "market",
         "importance": "medium",
         "date": "2026-03-20",
@@ -243,10 +316,10 @@ const newsData = [
         "title": "《巫师4》披露大量开发情报：战斗更流畅、引入前沿技术",
         "summary": "CD Projekt RED在官方播客\"AnsweRED\"中罕见披露《巫师4》（The Witcher IV）大量开发信息。团队透露战斗系统将比前作更加流畅丝滑，并引入多项前沿技术。此外CDPR确认《赛博朋克2077》不再开发新DLC，Switch 2版《赛博朋克2077》移植已进行\"远超7周\"的开发。《巫师4》预计将成为CDPR继《赛博朋克2077》之后最重要的项目。",
         "source": "VGC",
-        "sourceUrl": "https://gamingbolt.com/the-witcher-3-wild-hunt",
+        "sourceUrl": "https://www.videogameschronicle.com/",
         "sourceUrls": [
-            {"name": "Gamingbolt", "url": "https://gamingbolt.com/the-witcher-3-wild-hunt"},
-            {"name": "快科技", "url": "https://news.mydrivers.com/zhujiyouxi.html"}
+            {"name": "Gamingbolt", "url": "https://gamingbolt.com/"},
+            {"name": "快科技", "url": "https://news.mydrivers.com/"}
         ],
         "category": "game",
         "importance": "medium",
@@ -293,8 +366,8 @@ const newsData = [
     },
     {
         "id": 68,
-        "title": "《红色沙漠》3月20日正式发售：Metacritic 78分，Steam峰值24万在线，口碑两极分化",
-        "summary": "Pearl Abyss开放世界动作冒险游戏《红色沙漠》于2026年3月20日全球正式发售，登陆PC和PS5平台。Metacritic综合评分78分（95家媒体），Steam首日峰值同时在线约23.9万人。战斗系统获得广泛好评，被称为'近年来动作游戏手感最佳之作'，但主线剧情、开放世界指引和部分bug收到批评。Steam评价为'褒贬不一'（约61%好评率）。游戏发售前Steam愿望单已突破300万，是2026年Q1最受关注的新IP之一。Pearl Abyss股价发售日上涨8%。",
+        "title": "《红色沙漠》3月20日正式发售：Metacritic 78分，Steam峰值24万在线，Pearl Abyss股价暴跌近30%",
+        "summary": "Pearl Abyss开放世界动作冒险游戏《红色沙漠》于2026年3月20日全球正式发售，登陆PC和PS5平台。Metacritic综合评分78分（95家媒体），Steam首日峰值同时在线约23.9万人。战斗系统获得广泛好评，但主线剧情和开放世界设计受到批评，Steam评价为'褒贬不一'（约61%好评率）。据VGC报道，评测解禁后Pearl Abyss股价从₩65,600暴跌近30%至约₩46,000，市场对78分的评分反应远低于预期。该作是2026年Q1最受关注的新IP之一，此前Steam愿望单突破300万。",
         "source": "Metacritic",
         "sourceUrl": "https://www.metacritic.com/game/crimson-desert/",
         "sourceUrls": [
@@ -604,7 +677,7 @@ const newsData = [
     {
         "id": 4,
         "title": "NVIDIA在GTC 2026展示DLSS 5，黄仁勋称\"图形领域GPT时刻\"引发巨大争议",
-        "summary": "NVIDIA CEO黄仁勋在GTC 2026主题演讲中展示DLSS 5，该技术利用AI对游戏画面进行\"光照与材质的照片级真实感重建\"，宣布秋季推出。Digital Foundry盛赞\"见过最震撼的演示\"，但技术演示引发大规模争议——玩家和开发者普遍批评DLSS 5将角色脸部\"网红化/滤镜化\"。黄仁勋反驳批评者\"完全错了\"。多家工作室发梗图嘲讽。",
+        "summary": "NVIDIA CEO黄仁勋在GTC 2026主题演讲中展示DLSS 5，该技术利用AI对游戏画面进行\"光照与材质的照片级真实感重建\"，宣布秋季推出。Digital Foundry盛赞\"见过最震撼的演示\"，但技术演示引发大规模争议——玩家和开发者普遍批评DLSS 5将角色脸部\"网红化/滤镜化\"。3月21日黄仁勋再度回应批评者称\"你们完全错了\"，表示玩家误解了技术目标。同日NVIDIA公布首批DLSS 5支持游戏名单，包括《刺客信条：影》《生化危机：安魂曲》等多款大作。争议持续发酵中。",
         "source": "VGC",
         "sourceUrl": "https://www.ithome.com/0/929/681.htm",
         "sourceUrls": [
