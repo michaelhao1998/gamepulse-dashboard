@@ -1,9 +1,9 @@
 // ============================================
 // 行业热点新闻数据模块
 // [AUTO-GENERATED] 由 News Agent v4.0 自动更新，请勿手动编辑
-// 最后更新: 2026-03-23T18:30:00Z
-// 更新者: news-agent (web_search 四大维度更新 + 存量巡检)
-// 数据来源: web_search (Tier 1-3) — MCP 腾讯文档 access limit，7级梯队16次重试全部失败
+// 最后更新: 2026-03-24T19:00:00Z
+// 更新者: news-agent (MCP 腾讯文档 + web_search 四大维度 + 多源整合)
+// 数据来源: MCP 腾讯文档 LMLdoimBsILX (Tier 0) + web_search (Tier 1-3)
 // 重要性方案: v4.0 — 统一重点新闻标记（featured），基于腾讯文档863行历史标记学习
 // ============================================
 
@@ -173,20 +173,241 @@ const newsSources = [
 
 const newsData = [
     {
-        "id": 87,
-        "title": "Sony正在研发ML帧生成技术，计划引入PlayStation主机平台",
-        "summary": "据3DTested等媒体报道，索尼互动娱乐正在内部研发基于机器学习的帧生成技术，计划将其引入PlayStation主机平台。该技术类似NVIDIA DLSS的帧生成功能，但针对PlayStation硬件进行了定制优化。此举表明索尼正加速将AI/ML技术深度整合到主机图形管线中，以提升PS5和未来PS6平台的游戏画面表现。这是继NVIDIA DLSS 5和AMD FSR之后，主机平台方首次被报道自主研发帧生成方案。",
-        "source": "VGC",
-        "sourceUrl": "https://www.videogameschronicle.com/",
+        "id": 102,
+        "title": "字节跳动超60亿美元出售沐瞳科技，创中国游戏行业最大剥离交易",
+        "summary": "据钛媒体、DoNews、投资界等多家媒体报道，字节跳动正以超过60亿美元的价格出售旗下游戏工作室沐瞳科技（Moonton Technology）。沐瞳科技是《无尽对决》（Mobile Legends: Bang Bang）的开发商，该游戏在东南亚市场拥有巨大用户基础。此次出售标志着字节跳动进一步收缩游戏业务版图，继2023年朝夕光年大裁员后再度释放退出游戏赛道的强烈信号。交易金额创下中国游戏公司剥离交易历史之最。",
+        "source": "GamesIndustry",
+        "sourceUrl": "https://www.gamesindustry.biz/",
         "sourceUrls": [
-            {"name": "3DTested", "url": "https://3dtested.com/"},
-            {"name": "VGC", "url": "https://www.videogameschronicle.com/"}
+            {"name": "钛媒体", "url": "https://www.tmtpost.com/"},
+            {"name": "DoNews", "url": "https://www.donews.com/"},
+            {"name": "投资界", "url": "https://www.pedaily.cn/"}
+        ],
+        "category": "policy",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-28",
+        "tags": ["字节跳动", "沐瞳科技", "Moonton", "出售", "并购", "60亿美元"],
+        "sentiment": "neutral",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 101,
+        "title": "Fortnite正式回归Google Play商店，Epic与谷歌达成新协议",
+        "summary": "据9to5Google确认，Epic Games旗下《Fortnite》已正式回归Google Play商店。此前Epic因不满Google Play 30%的抽成政策，于2020年将Fortnite从Play Store下架。经过多年法律博弈和反垄断诉讼，双方最终达成新的分发协议。Fortnite回归Google Play意味着Android用户不再需要通过Epic官方网站侧载安装，预计将显著提升移动端新增用户获取效率。此举也被视为Epic反垄断战略取得阶段性成果。",
+        "source": "EuroGamer",
+        "sourceUrl": "https://www.eurogamer.net/",
+        "sourceUrls": [
+            {"name": "9to5Google", "url": "https://9to5google.com/"},
+            {"name": "EuroGamer", "url": "https://www.eurogamer.net/"}
         ],
         "category": "platform",
         "importance": "high",
         "featured": true,
-        "date": "2026-03-21",
-        "tags": ["索尼", "PlayStation", "ML帧生成", "AI", "PSSR"],
+        "date": "2026-03-28",
+        "tags": ["Fortnite", "Epic", "Google Play", "反垄断", "移动端"],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 100,
+        "title": "索尼持续清理PS Store低质量AI生成游戏，强化平台内容质量管控",
+        "summary": "据IT之家、游民星空、搜狐等多家媒体报道，索尼互动娱乐正在持续清理PlayStation Store上的低质量AI生成游戏。此次清理行动涉及大量使用AI工具批量生产的简陋游戏，这些游戏通常缺乏原创性和基本品质标准。索尼此举表明平台方正加强对AI生成内容的审核力度，防止PS Store沦为低质量AI内容的倾销场。这与Steam近期对AI生成游戏的监管趋严形成呼应，反映出主流游戏平台对AI内容质量底线的共识正在形成。",
+        "source": "游戏之家",
+        "sourceUrl": "https://www.ithome.com/",
+        "sourceUrls": [
+            {"name": "IT之家", "url": "https://www.ithome.com/"},
+            {"name": "游民星空", "url": "https://www.gamersky.com/"},
+            {"name": "腾讯文档MCP", "url": "https://docs.qq.com/sheet/LMLdoimBsILX"}
+        ],
+        "category": "platform",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-27",
+        "tags": ["索尼", "PS Store", "AI游戏", "内容审核", "质量管控"],
+        "sentiment": "neutral",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 99,
+        "title": "索尼战略深化：放弃PC端启动器计划，全力回归主机优先战略",
+        "summary": "据游民星空、中华网等媒体报道，索尼互动娱乐已正式放弃此前传闻中的PC端独立启动器开发计划，决定全力回归主机优先战略。这一决定与此前彭博社曝出的\"PS5单机大作不再移植PC\"路线形成战略闭环——索尼不仅不打算把独占大作搬上PC，连PC端的平台基础设施投资也一并撤回。分析认为此举将进一步强化PS5/PS6的平台黏性，但也可能引发PC玩家社区的不满。",
+        "source": "GamesIndustry",
+        "sourceUrl": "https://www.gamesindustry.biz/",
+        "sourceUrls": [
+            {"name": "游民星空", "url": "https://www.gamersky.com/"},
+            {"name": "中华网", "url": "https://www.china.com/"},
+            {"name": "腾讯文档MCP", "url": "https://docs.qq.com/sheet/LMLdoimBsILX"}
+        ],
+        "category": "platform",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-27",
+        "tags": ["索尼", "PC启动器", "主机优先", "战略转向", "PlayStation"],
+        "sentiment": "neutral",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 98,
+        "title": "CDPR披露全新IP\"Hadar\"项目进展，巫师4开发团队规模达499人",
+        "summary": "据游民星空报道，CD Projekt RED在最新投资者更新中披露了多项重要开发进展。其一，全新原创科幻IP项目\"Hadar\"（代号）正在积极推进中，这是CDPR继巫师和赛博朋克之后的第三大IP。其二，《巫师4》（The Witcher IV）开发团队已扩充至499人，较2024年团队403人增长24%，显示项目已进入全面生产阶段。CDPR目前在华沙和波兹南两大工作室同步推进多个项目，显示出强劲的多IP并行研发能力。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/",
+        "sourceUrls": [
+            {"name": "游民星空", "url": "https://www.gamersky.com/"},
+            {"name": "VGC", "url": "https://www.videogameschronicle.com/"},
+            {"name": "腾讯文档MCP", "url": "https://docs.qq.com/sheet/LMLdoimBsILX"}
+        ],
+        "category": "policy",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-27",
+        "tags": ["CDPR", "Hadar", "巫师4", "新IP", "团队规模"],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 97,
+        "title": "Switch 2欧盟版本将因新法规要求支持用户自行更换电池",
+        "summary": "据MCP腾讯文档Tier 0数据，Nintendo Switch 2的欧盟销售版本将因欧盟新修订的《电池与废电池法规》（EU 2023/1542）要求，必须支持用户自行更换电池。该法规要求从2027年起所有便携式消费电子产品需设计为用户可更换电池。任天堂选择提前在Switch 2中遵循这一规定，欧盟版Switch 2将配备可拆卸电池仓设计。这一法规合规要求可能影响Switch 2的工业设计、防水性和生产成本，同时也为第三方配件市场带来新机会。",
+        "source": "NintendoNews",
+        "sourceUrl": "https://mynintendonews.com/",
+        "sourceUrls": [
+            {"name": "腾讯文档MCP", "url": "https://docs.qq.com/sheet/LMLdoimBsILX"},
+            {"name": "NintendoNews", "url": "https://mynintendonews.com/"}
+        ],
+        "category": "policy",
+        "importance": "medium",
+        "featured": false,
+        "date": "2026-03-27",
+        "tags": ["Switch 2", "欧盟", "电池法规", "任天堂", "监管合规"],
+        "sentiment": "neutral",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 96,
+        "title": "《我的世界：地下城2》确认2026年内发售，Mojang扩展Minecraft宇宙",
+        "summary": "据MCP腾讯文档Tier 0数据，Mojang Studios正式确认《我的世界：地下城2》（Minecraft Dungeons 2）将于2026年内发售。作为2020年推出的《我的世界：地下城》续作，本作将在保持dungeon crawler核心玩法的基础上带来大幅升级。此举表明微软正加速扩展Minecraft游戏宇宙的品类覆盖，从沙盒建造向动作RPG品类进一步延伸。《我的世界：地下城》初代累计下载量已超3900万。",
+        "source": "Xbox Wire",
+        "sourceUrl": "https://news.xbox.com/en-us/",
+        "sourceUrls": [
+            {"name": "腾讯文档MCP", "url": "https://docs.qq.com/sheet/LMLdoimBsILX"},
+            {"name": "Xbox Wire", "url": "https://news.xbox.com/en-us/"}
+        ],
+        "category": "game",
+        "importance": "medium",
+        "featured": false,
+        "date": "2026-03-26",
+        "tags": ["Minecraft", "地下城2", "Mojang", "微软", "动作RPG"],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 95,
+        "title": "Capcom明确反对AI美术用于游戏制作，与CDPR形成行业反AI联盟",
+        "summary": "据MCP腾讯文档Tier 0数据，Capcom高层在近期采访中明确表态反对使用AI生成美术资产用于游戏制作，强调Capcom将坚持人工创作的品质标准。这一立场与CD Projekt RED此前公开的反AI美术声明形成呼应，两家以高品质3A游戏著称的开发商正形成行业性的\"反AI美术联盟\"。此声明发布时恰逢《红色沙漠》AI美术争议引发行业震动，Capcom的表态被视为对玩家关切的积极回应，也为行业在AI使用边界问题上树立了标杆。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/",
+        "sourceUrls": [
+            {"name": "腾讯文档MCP", "url": "https://docs.qq.com/sheet/LMLdoimBsILX"},
+            {"name": "VGC", "url": "https://www.videogameschronicle.com/"}
+        ],
+        "category": "market",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-26",
+        "tags": ["Capcom", "AI美术", "反AI", "CDPR", "行业立场"],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 94,
+        "title": "Xbox Partner Preview春季展示会公布多款第三方新作",
+        "summary": "据MCP腾讯文档Tier 0数据，微软举办了Xbox Partner Preview春季展示会，集中公布了多款第三方合作伙伴新作和更新内容。展示会涵盖了来自不同开发商的游戏预告、实机演示和发售日期确认。Xbox Partner Preview是微软定期举办的第三方游戏展示活动，与Xbox Showcase（第一方游戏）形成互补，共同构建Xbox平台的内容生态。",
+        "source": "Xbox Wire",
+        "sourceUrl": "https://news.xbox.com/en-us/",
+        "sourceUrls": [
+            {"name": "腾讯文档MCP", "url": "https://docs.qq.com/sheet/LMLdoimBsILX"},
+            {"name": "Xbox Wire", "url": "https://news.xbox.com/en-us/"}
+        ],
+        "category": "platform",
+        "importance": "medium",
+        "featured": false,
+        "date": "2026-03-26",
+        "tags": ["Xbox", "Partner Preview", "第三方", "展示会", "微软"],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 93,
+        "title": "《生化危机：安魂曲》登顶美国二月销量榜，Circana确认系列新纪录",
+        "summary": "据MCP腾讯文档Tier 0数据及Circana（原NPD）统计，卡普空《生化危机：安魂曲》成功登顶2026年2月美国游戏销量榜首位，成为该月最畅销的游戏产品。这一成绩延续了该作发售以来的强劲销售势头（此前已宣布全球销量突破600万份）。《生化危机：安魂曲》在Switch 2首发取得的商业成功，不仅证明了生化危机IP的持久号召力，也从侧面验证了Switch 2平台对3A级游戏的市场承载能力。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/",
+        "sourceUrls": [
+            {"name": "腾讯文档MCP", "url": "https://docs.qq.com/sheet/LMLdoimBsILX"},
+            {"name": "VGC", "url": "https://www.videogameschronicle.com/"}
+        ],
+        "category": "market",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-26",
+        "tags": ["生化危机", "安魂曲", "Circana", "美国销量榜", "Switch 2"],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 92,
+        "title": "GTA6 Switch 2版本传闻引发热议，Rockstar及任天堂尚未回应",
+        "summary": "据MCP腾讯文档Tier 0数据，近期有传闻称Rockstar Games正在评估将《GTA6》移植至Nintendo Switch 2平台的可能性。鉴于Switch 2采用NVIDIA T239定制芯片，其性能相比初代Switch有数量级提升，理论上具备运行GTA6缩减版本的硬件基础。然而Rockstar和任天堂均未对此传闻做出回应。业内分析人士对此持谨慎态度，指出GTA6的技术规格对主机硬件要求极高，Switch 2移植面临巨大技术挑战。此传闻需持续跟踪官方确认。",
+        "source": "IGN",
+        "sourceUrl": "https://www.ign.com/",
+        "sourceUrls": [
+            {"name": "腾讯文档MCP", "url": "https://docs.qq.com/sheet/LMLdoimBsILX"},
+            {"name": "IGN", "url": "https://www.ign.com/"}
+        ],
+        "category": "game",
+        "importance": "medium",
+        "featured": false,
+        "date": "2026-03-26",
+        "tags": ["GTA6", "Switch 2", "传闻", "Rockstar", "任天堂"],
+        "sentiment": "neutral",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 91,
+        "title": "Xbox多名高管离职潮持续，管理层重组进入深水区",
+        "summary": "据MCP腾讯文档Tier 0数据，继Phil Spencer退休和Sarah Bond辞职之后，Xbox部门又有多名高管相继离职。这波管理层变动被视为新任CEO Asha Sharma上任后推行组织架构重组的连锁反应。分析认为，Xbox正经历自2001年品牌成立以来最大规模的管理层换血，这将深刻影响Xbox未来的战略方向、工作室管理模式和Game Pass生态走向。Sharma的AI背景暗示Xbox可能进一步强化AI驱动的用户体验和内容推荐策略。",
+        "source": "IGN",
+        "sourceUrl": "https://www.ign.com/",
+        "sourceUrls": [
+            {"name": "腾讯文档MCP", "url": "https://docs.qq.com/sheet/LMLdoimBsILX"},
+            {"name": "IGN", "url": "https://www.ign.com/"}
+        ],
+        "category": "policy",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-26",
+        "tags": ["Xbox", "高管离职", "管理层变动", "Asha Sharma", "微软"],
+        "sentiment": "negative",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 87,
+        "title": "索尼确认AI帧生成技术最快2027年登陆PlayStation主机",
+        "summary": "据3DTested等媒体报道，索尼互动娱乐正在内部研发基于机器学习的帧生成技术，并确认最快将于2027年引入PlayStation主机平台。该技术类似NVIDIA DLSS的帧生成功能，但针对PlayStation硬件进行了深度定制优化。索尼此举表明正加速将AI/ML技术整合到主机图形管线中，以提升PS5和未来PS6平台的游戏画面表现。这是继NVIDIA DLSS 5和AMD FSR之后，主机平台方首次被报道自主研发帧生成方案，标志着AI图形技术已成为主机厂商的核心竞争赛道。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/",
+        "sourceUrls": [
+            {"name": "3DTested", "url": "https://3dtested.com/"},
+            {"name": "VGC", "url": "https://www.videogameschronicle.com/"},
+            {"name": "腾讯文档MCP", "url": "https://docs.qq.com/sheet/LMLdoimBsILX"}
+        ],
+        "category": "platform",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-26",
+        "tags": ["索尼", "PlayStation", "AI帧生成", "ML", "2027", "PSSR"],
         "sentiment": "positive",
         "tdocMarking": "none"
     },
@@ -366,21 +587,22 @@ const newsData = [
     },
     {
         "id": 68,
-        "title": "《红色沙漠》3月20日正式发售：Metacritic 78分，Steam峰值24万在线，Pearl Abyss股价暴跌近30%",
-        "summary": "Pearl Abyss开放世界动作冒险游戏《红色沙漠》于2026年3月20日全球正式发售，登陆PC和PS5平台。Metacritic综合评分78分（95家媒体），Steam首日峰值同时在线约23.9万人。战斗系统获得广泛好评，但主线剧情和开放世界设计受到批评，Steam评价为'褒贬不一'（约61%好评率）。据VGC报道，评测解禁后Pearl Abyss股价从₩65,600暴跌近30%至约₩46,000，市场对78分的评分反应远低于预期。该作是2026年Q1最受关注的新IP之一，此前Steam愿望单突破300万。",
+        "title": "《红色沙漠》多重危机：AI美术争议引发退款潮，累计销量仍破200万，Pearl Abyss股价暴跌30%",
+        "summary": "Pearl Abyss开放世界动作冒险游戏《红色沙漠》于2026年3月20日全球正式发售后遭遇多重危机。发售后被玩家社区发现游戏中大量使用AI生成美术素材，引发强烈反弹和大规模退款潮。Metacritic综合评分78分，Steam好评率约61%（褒贬不一）。尽管争议不断，游戏累计销量仍突破200万份。Pearl Abyss股价从₩65,600暴跌近30%至约₩46,000，市值蒸发超万亿韩元。该作是2026年Q1最受关注的新IP之一，AI美术争议成为行业标志性事件，引发开发者和玩家对AI在游戏制作中使用边界的广泛讨论。",
         "source": "Metacritic",
         "sourceUrl": "https://www.metacritic.com/game/crimson-desert/",
         "sourceUrls": [
             {"name": "Metacritic", "url": "https://www.metacritic.com/game/crimson-desert/"},
             {"name": "EuroGamer", "url": "https://www.eurogamer.net/crimson-desert-passes-3-million-wishlists-as-excitement-around-the-single-player-rpg-builds"},
-            {"name": "SteamDB", "url": "https://steamdb.info/app/2020070/charts/"}
+            {"name": "SteamDB", "url": "https://steamdb.info/app/2020070/charts/"},
+            {"name": "腾讯文档MCP", "url": "https://docs.qq.com/sheet/LMLdoimBsILX"}
         ],
         "category": "game",
         "importance": "high",
         "featured": true,
-        "date": "2026-03-20",
-        "tags": ["红色沙漠", "Pearl Abyss", "开放世界", "新IP", "发售", "Metacritic"],
-        "sentiment": "neutral",
+        "date": "2026-03-27",
+        "tags": ["红色沙漠", "Pearl Abyss", "AI美术争议", "退款", "股价暴跌", "200万销量"],
+        "sentiment": "negative",
         "tdocMarking": "none"
     },
     {
