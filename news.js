@@ -1,7 +1,7 @@
 // ============================================
 // 行业热点新闻数据模块
 // [AUTO-GENERATED] 由 News Agent v4.0 自动更新，请勿手动编辑
-// 最后更新: 2026-03-24T19:00:00Z
+// 最后更新: 2026-03-25T18:00:00Z
 // 更新者: news-agent (MCP 腾讯文档 + web_search 四大维度 + 多源整合)
 // 数据来源: MCP 腾讯文档 LMLdoimBsILX (Tier 0) + web_search (Tier 1-3)
 // 重要性方案: v4.0 — 统一重点新闻标记（featured），基于腾讯文档863行历史标记学习
@@ -172,6 +172,63 @@ const newsSources = [
 ];
 
 const newsData = [
+    {
+        "id": 105,
+        "title": "Steam春季特卖2026正式开启：3月19-26日全品类打折，年度首场大促",
+        "summary": "Valve旗下Steam平台2026年春季特卖于3月19日太平洋时间上午10点正式开启，持续至3月26日。这是Steam 2026年首场大型季节性促销活动，覆盖全品类游戏折扣。热门折扣包括《无人深空》《领主庄园》等作品的深度降价。春促期间Steam同时在线用户数创下新高。此次春促也是Valve在公布Steam Machine和Steam Frame后首次大型促销，对于推动平台生态活跃度具有重要意义。",
+        "source": "SteamDB",
+        "sourceUrl": "https://store.steampowered.com/",
+        "sourceUrls": [
+            {"name": "Steam官方", "url": "https://partner.steamgames.com/doc/marketing/upcoming_events/2026_spring_sale"},
+            {"name": "4ScarrsGaming", "url": "https://www.4scarrsgaming.com/2026/03/steam-spring-sale-2026.html"},
+            {"name": "IT之家", "url": "https://www.ithome.com/0/872/473.htm"}
+        ],
+        "category": "platform",
+        "importance": "medium",
+        "featured": false,
+        "date": "2026-03-19",
+        "tags": ["Steam", "春季特卖", "Valve", "促销", "2026"],
+        "sentiment": "positive",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 104,
+        "title": "PSN全球大规模宕机：超1.3万用户受影响，索尼约2小时后恢复服务",
+        "summary": "PlayStation Network于2026年3月21日美东时间下午4:59左右发生全球大规模宕机，影响PS5和PS4平台所有联网服务，包括在线游戏、社交功能、云串流、奖杯系统和锦标赛功能。Downdetector记录超过13,000起用户报告。索尼于当晚10:40左右恢复主要服务，但部分用户仍持续遇到好友列表显示错误等问题，日本地区在官方宣称恢复后仍出现新的投诉高峰。值得注意的是，索尼已宣布计划在2026年9月前停用\"PlayStation Network\"和\"PSN\"品牌名称。此次宕机是PSN近期最严重的服务中断事件之一。",
+        "source": "VGC",
+        "sourceUrl": "https://www.videogameschronicle.com/",
+        "sourceUrls": [
+            {"name": "GamerUrge", "url": "https://gamerurge.com/psn-down-playstation-network-outage-march-2026"},
+            {"name": "TechRadar", "url": "https://www.techradar.com/news/live/psn-down-21-march-2026"},
+            {"name": "Planet News", "url": "https://planet.news/article/playstation-network-global-outage-march-2026"}
+        ],
+        "category": "platform",
+        "importance": "high",
+        "featured": true,
+        "date": "2026-03-21",
+        "tags": ["PSN", "宕机", "PlayStation", "索尼", "在线服务"],
+        "sentiment": "negative",
+        "tdocMarking": "none"
+    },
+    {
+        "id": 103,
+        "title": "春秋电子（CQXA）获中国三部委批准收购丹麦游戏硬件公司Asetek，跨境并购迎里程碑",
+        "summary": "据Parsers.vc报道，中国苏州春秋电子科技旗下新加坡子公司CQXA Holdings已获得中国商务部(MOFCOM)、发改委(NDRC)和外汇管理局(SAFE)三大监管部门的批准，收购在纳斯达克上市的丹麦游戏硬件公司Asetek A/S。Asetek是全球领先的液体冷却技术开发商和SimSports产品制造商，其液冷方案广泛应用于高性能游戏PC。Asetek董事会已一致建议股东接受全现金收购要约，要约截止日期为2026年4月8日。此交易反映了中国企业通过收购西方先进游戏硬件技术提升全球竞争力的趋势，液冷技术在下一代游戏主机和高性能计算中的重要性持续提升。",
+        "source": "GamesIndustry",
+        "sourceUrl": "https://www.gamesindustry.biz/",
+        "sourceUrls": [
+            {"name": "Parsers.vc", "url": "https://parsers.vc/news/260323-china-clears-major-tech-takeover--cqxa/"},
+            {"name": "东方财富", "url": "https://caifuhao.eastmoney.com/news/20260319233617433250980"},
+            {"name": "Asetek IR", "url": "https://ir.asetek.com/news/stock-exchange-releases/default.aspx"}
+        ],
+        "category": "policy",
+        "importance": "medium",
+        "featured": false,
+        "date": "2026-03-23",
+        "tags": ["春秋电子", "CQXA", "Asetek", "液冷", "并购", "游戏硬件"],
+        "sentiment": "neutral",
+        "tdocMarking": "none"
+    },
     {
         "id": 102,
         "title": "字节跳动超60亿美元出售沐瞳科技，创中国游戏行业最大剥离交易",
