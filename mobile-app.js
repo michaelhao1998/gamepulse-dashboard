@@ -160,13 +160,14 @@ function mUpdateExecSummary(games, flow) {
     if (!el) return;
 
     const consolePct = pct(flow.consoleY, flow.total);
-    const xboxPct = pct(flow.xboxY, flow.consoleY);
+    const psPct = pct(flow.psY, flow.consoleY);
+    const bothPct = pct(flow.bothPlatform, flow.consoleY);
     const xgpTotal = flow.sim + flow.aft;
     const xgpPct = pct(xgpTotal, flow.xboxY);
 
     const totalRevenue = games.reduce((s, g) => s + g.lifetimeRevenue, 0);
 
-    el.innerHTML = `端主新游 Top <strong>${flow.total}</strong> 分析样本中，<strong>${consolePct}%</strong> 上线主机平台，其中 <strong>${xboxPct}%</strong> 登陆Xbox，仅 <strong>${xgpPct}%</strong> 加入XGP（首发${flow.sim}+后发${flow.aft}）。总数字收入 <strong>${formatRevenue(totalRevenue)}</strong>。`;
+    el.innerHTML = `端主新游 Top <strong>${flow.total}</strong> 中，<strong>${consolePct}%</strong> 上线主机；PS <strong>${flow.psY}</strong> 款(${psPct}%)，双平台 <strong>${flow.bothPlatform}</strong> 款(${bothPct}%，SimShip ${flow.simship})；XGP <strong>${xgpPct}%</strong>（首发${flow.sim}+后发${flow.aft}）。收入 <strong>${formatRevenue(totalRevenue)}</strong>。`;
 }
 
 function mRenderFlowSummary(flow, games) {
@@ -174,10 +175,9 @@ function mRenderFlowSummary(flow, games) {
     if (!el) return;
 
     const consolePct = pct(flow.consoleY, flow.total);
-    const xboxPct = pct(flow.xboxY, flow.consoleY);
-
+    const bothPct = pct(flow.bothPlatform, flow.consoleY);
     el.innerHTML = `
-        <strong>${flow.total}</strong> 款端主新游 → <strong>${flow.consoleY}</strong> 上线主机 (${consolePct}%) → <strong>${flow.xboxY}</strong> 登陆Xbox (${xboxPct}%)
+        <strong>${flow.total}</strong> 款端主新游 → <strong>${flow.consoleY}</strong> 上线主机 (${consolePct}%) → PS <strong>${flow.psY}</strong> · Xbox∩PS <strong>${flow.bothPlatform}</strong> (${bothPct}%, SimShip ${flow.simship})
         <br>XGP: 首发 <strong>${flow.sim}</strong> + 后发 <strong>${flow.aft}</strong> | 未加入 <strong>${flow.noXgp}</strong>
     `;
 
@@ -190,8 +190,9 @@ function mRenderFlowSummary(flow, games) {
         { label: '全部端主游戏', value: flow.total, color: '#6366f1' },
         { label: '已上线主机', value: flow.consoleY, color: '#a855f7' },
         { label: '未上线主机', value: flow.consoleN, color: '#64748b' },
-        { label: '已登陆Xbox', value: flow.xboxY, color: '#22c55e' },
-        { label: '未上Xbox', value: flow.xboxN, color: '#64748b' },
+        { label: '已登录PlayStation', value: flow.psY, color: '#0ea5e9' },
+        { label: '登录Xbox&PS', value: flow.bothPlatform, color: '#22c55e' },
+        { label: 'SimShip同步发行', value: flow.simship, color: '#f59e0b' },
         { label: '首发入库XGP', value: flow.sim, color: '#14b8a6' },
         { label: '后发入库XGP', value: flow.aft, color: '#0ea5e9' },
         { label: '未加入XGP', value: flow.noXgp, color: '#64748b' },

@@ -194,11 +194,21 @@ function getFlowNodes(games) {
     const consoleY = games.filter(d => d.isConsole === 'Y').length;
     const consoleN = total - consoleY;
     const xboxY = games.filter(d => d.isConsole === 'Y' && d.isXbox === 'Y').length;
-    const xboxN = consoleY - xboxY;
+    const psY = games.filter(d => d.isConsole === 'Y' && d.isPS === 'Y').length;
+    const bothPlatform = games.filter(d => d.isConsole === 'Y' && d.isXbox === 'Y' && d.isPS === 'Y').length;
+
+    // SimShip: 双平台同步发行（PS日期和Xbox日期相同且均非空）
+    const normDate = (s) => { if (!s) return ''; return s.replace(/[\/\-\.]/g, '').trim(); };
+    const simship = games.filter(d => {
+        if (d.isConsole !== 'Y' || d.isXbox !== 'Y' || d.isPS !== 'Y') return false;
+        const ps = normDate(d.psDate), xb = normDate(d.xboxDate);
+        return ps !== '' && xb !== '' && ps === xb;
+    }).length;
+
     const sim = games.filter(d => d.isXbox === 'Y' && d.xgpType === '首发入库XGP').length;
     const aft = games.filter(d => d.isXbox === 'Y' && d.xgpType === '后发入库XGP').length;
     const noXgp = xboxY - sim - aft;
-    return { total, consoleN, consoleY, xboxN, xboxY, sim, aft, noXgp };
+    return { total, consoleN, consoleY, xboxY, psY, bothPlatform, simship, sim, aft, noXgp };
 }
 
 /** 收入层级 × XGP策略交叉表 */
